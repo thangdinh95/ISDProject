@@ -1,1 +1,2 @@
 http://www.igniteui.com/help/api/2016.1/ui.iggridsorting
+https://www.igniteui.com/help/api/2016.2/ui.iggrid

@@ -16,7 +16,7 @@ namespace ISD.Helper
         private static SqlConnection con;
         private static SqlCommand cmd;
         private static DataTable dtReturn;
-        private static RespondingObject responding;
+        private static RespondingRequest responding;
         #endregion
 
         #region Get connection
@@ -51,17 +51,18 @@ namespace ISD.Helper
             {
                 return dtReturn;
             }
-            finally {
+            finally
+            {
                 if (con.State == ConnectionState.Open)
                     con.Close();
-            }  
+            }
         }
         #endregion
 
         #region Update data
-        public static RespondingObject update(string query, params SqlParameter[] par)
+        public static RespondingRequest update(string query, params SqlParameter[] par)
         {
-            responding = new RespondingObject();
+            responding = new RespondingRequest();
             try
             {
                 cmd = new SqlCommand();
@@ -74,11 +75,12 @@ namespace ISD.Helper
                 if (con.State == ConnectionState.Closed)
                     con.Open();
                 int row = cmd.ExecuteNonQuery();
-                if(row >= 1)
+                if (row >= 1)
                 {
                     responding.status = true;
                     responding.message = "Successful!";
-                }else
+                }
+                else
                 {
                     responding.status = false;
                     responding.message = "Fail. Please check again!";

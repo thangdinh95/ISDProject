@@ -1,0 +1,11 @@
+﻿@using ISD.Areas.AccountManagement.Models;
+@{
+    ViewBag.Title = "AdminPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AdminPage</h2>
+@{ 
+    Admins admin =(Admins) Session["Admin"];
+    <h2>@admin.name</h2>
+}

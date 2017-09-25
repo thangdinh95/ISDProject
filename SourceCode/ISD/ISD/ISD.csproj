@@ -205,13 +205,19 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\AccountManagement\AccountManagementAreaRegistration.cs" />
+    <Compile Include="Areas\AccountManagement\Models\AdminRepository.cs" />
+    <Compile Include="Areas\AccountManagement\Models\AdminRepositoryImpl.cs" />
+    <Compile Include="Areas\AccountManagement\Models\Admins.cs" />
+    <Compile Include="Areas\AccountManagement\Models\ROLES.cs" />
     <Compile Include="Areas\BillManagement\BillManagementAreaRegistration.cs" />
     <Compile Include="Areas\CategoryManagement\CategoryManagementAreaRegistration.cs" />
     <Compile Include="Areas\LogManagement\LogManagementAreaRegistration.cs" />
     <Compile Include="Areas\ProductManagement\ProductManagementAreaRegistration.cs" />
     <Compile Include="Areas\SalesManagement\SalesManagementAreaRegistration.cs" />
-    <Compile Include="CommonEntity\RespondingObject.cs" />
+    <Compile Include="CommonEntity\RespondingRequest.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginAPIController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -224,11 +230,13 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Login.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\loginBackground.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\blockUI.js" />
@@ -256,6 +264,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-3.4.2.js" />
     <Content Include="Scripts\knockout.simpleGrid.1.3.js" />
+    <Content Include="Scripts\Login\screenModel.js" />
+    <Content Include="Scripts\Login\service.js" />
+    <Content Include="Scripts\Login\start.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -274,11 +285,12 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Home\AdminPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AccountManagement\Controllers\" />
-    <Folder Include="Areas\AccountManagement\Models\" />
     <Folder Include="Areas\AccountManagement\Views\Shared\" />
     <Folder Include="Areas\BillManagement\Controllers\" />
     <Folder Include="Areas\BillManagement\Models\" />

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ISD.CommonEntity
 {
-    public class RespondingObject
+    public class RespondingRequest
     {
         public bool status { get; set; }
         public string message { get; set; }

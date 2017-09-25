@@ -1,1 +1,4 @@
 BPM: https://creately.com/app/?tempID=h5ulaq521&login_type=demo#
+https://www.lucidchart.com/pages/bpmn
+https://www.smartdraw.com/business-process-mapping/
+https://camunda.org/bpmn/tutorial/

@@ -17,10 +17,22 @@ namespace ISD.Controllers
             return View();
         }
 
-        public ActionResult AdminPage(int id)
+        public ActionResult GetSession(int id)
         {
             Session["Admin"] = adminRepository.getDataById(id);
-            return View();
+            return RedirectToAction("ToAdminHome");
+        }
+
+        public ActionResult ToAdminHome()
+        {
+            if (Session["Admin"] == null)
+            {
+                return RedirectToAction("Index", "Login", new { area = "" });
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ ScreenModel.prototype.login = function () {
         if (!data.status)
             toastr.error(data.message);
         else
-            location.href = "Home/AdminPage?id=" + parseInt(data.message);
+            location.href = "Home/GetSession?id=" + parseInt(data.message);
     });
    
 }

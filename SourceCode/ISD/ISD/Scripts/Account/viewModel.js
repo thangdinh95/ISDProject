@@ -31,7 +31,7 @@
             name: "Filtering"
         }
         ]
-    });
+     });
 }
 ScreenModel.prototype.start = function () {
     var self = this;

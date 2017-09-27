@@ -11,19 +11,45 @@ namespace ISD.Areas.AccountManagement.Models
 {
     public class AdminRepositoryImpl : AdminRepository
     {
+        private const string SELECT_ALL_DATA = "SELECT * FROM ADMINS";
+        private const string SELECT_DATA_BY_ID = "SELECT * FROM ADMINS WHERE ADMINID = @ADMINID";
+        private const string SELECT_DATA_BY_ACC_PSS = "SELECT * FROM ADMINS " +
+           " WHERE ACCOUNT = @ACCOUNT AND PASSWORD = @PASSWORD";
+        private const string CREATE_ACC = "INSERT INTO ADMINS([ACCOUNT], [PASSWORD]" +
+          ",[NAME],[BIRTHDAY],[PHONE],[MAIL],[ADDRESS],[ROLE],[CREATEDBY],[CREATEDDATE])"+
+          " VALUES(@ACCOUNT, @PASSWORD, @NAME, @BIRTHDAY, @PHONE, @MAIL, @ADDRESS, " +
+          " @ROLE, @CREATEDBY, @CREATEDDATE)";
+        private const string UPDATE_ACC = "";
+        private const string REMOVE_ACC = "";
         public RespondingRequest create(Admins admin)
         {
-            throw new NotImplementedException();
+            RespondingRequest respondingRequest = SqlHelper.update(CREATE_ACC
+                , new SqlParameter("@ACCOUNT", admin.account)
+                , new SqlParameter("@PASSWORD", admin.password)
+                , new SqlParameter("@NAME", admin.name)
+                , new SqlParameter("@BIRTHDAY", admin.birthday)
+                , new SqlParameter("@PHONE", admin.phone)
+                , new SqlParameter("@MAIL", admin.mail)
+                , new SqlParameter("@ADDRESS", admin.address)
+                , new SqlParameter("@ROLE", (int)admin.role)
+                , new SqlParameter("@CREATEDBY", admin.createdBy)
+                , new SqlParameter("@CREATEDDATE", admin.createdDate)
+                );
+            return respondingRequest;
         }
 
         public List<Admins> getData()
         {
-            throw new NotImplementedException();
+            List<Admins> lstAdmins = new List<Admins>();
+            DataTable dt = SqlHelper.getData(SELECT_ALL_DATA);
+            foreach(DataRow dr in dt.Rows)
+                lstAdmins.Add(toObject(dr));
+            return lstAdmins;
         }
 
         public Admins getDataByAccount(string account, string password)
         {
-            DataTable dt = SqlHelper.getData("SELECT * FROM ADMINS WHERE ACCOUNT = @ACCOUNT AND PASSWORD = @PASSWORD",
+            DataTable dt = SqlHelper.getData(SELECT_DATA_BY_ACC_PSS,
                 new SqlParameter("@ACCOUNT", account),
                 new SqlParameter("@PASSWORD", password));
             if(dt.Rows.Count > 0)
@@ -36,7 +62,7 @@ namespace ISD.Areas.AccountManagement.Models
 
         public Admins getDataById(int id)
         {
-            DataTable dt = SqlHelper.getData("SELECT * FROM ADMINS WHERE ADMINID = @ADMINID",
+            DataTable dt = SqlHelper.getData(SELECT_DATA_BY_ID,
                new SqlParameter("@ADMINID", id));
             if (dt.Rows.Count > 0)
             {

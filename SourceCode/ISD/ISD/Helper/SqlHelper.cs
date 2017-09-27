@@ -47,8 +47,9 @@ namespace ISD.Helper
                 adapter.Fill(dtReturn);
                 return dtReturn;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                string a = e.Message;
                 return dtReturn;
             }
             finally

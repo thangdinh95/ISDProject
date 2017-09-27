@@ -19,8 +19,10 @@ namespace ISD.Areas.AccountManagement.Models
           ",[NAME],[BIRTHDAY],[PHONE],[MAIL],[ADDRESS],[ROLE],[CREATEDBY],[CREATEDDATE])"+
           " VALUES(@ACCOUNT, @PASSWORD, @NAME, @BIRTHDAY, @PHONE, @MAIL, @ADDRESS, " +
           " @ROLE, @CREATEDBY, @CREATEDDATE)";
-        private const string UPDATE_ACC = "";
-        private const string REMOVE_ACC = "";
+        private const string UPDATE_ACC = "UPDATE ADMINS SET NAME = @NAME, BIRTHDAY = @BIRTHDAY"
+            + " PHONE = @PHONE, ADDRESS = @ADDRESS, MODIFIEDBY = @MODIFIEDBY"
+            + " MODIFIEDDATE = @MODIFIEDDATE WHERE ADMINID = @ADMINID";
+        private const string REMOVE_ACC = "DELETE ADMINS WHERE ADMINID = @ADMINID";
         public RespondingRequest create(Admins admin)
         {
             RespondingRequest respondingRequest = SqlHelper.update(CREATE_ACC
@@ -34,6 +36,7 @@ namespace ISD.Areas.AccountManagement.Models
                 , new SqlParameter("@ROLE", (int)admin.role)
                 , new SqlParameter("@CREATEDBY", admin.createdBy)
                 , new SqlParameter("@CREATEDDATE", admin.createdDate)
+              
                 );
             return respondingRequest;
         }
@@ -74,12 +77,25 @@ namespace ISD.Areas.AccountManagement.Models
 
         public RespondingRequest remove(int id)
         {
-            throw new NotImplementedException();
+            RespondingRequest respondingRequest = SqlHelper.update(REMOVE_ACC
+                , new SqlParameter("@ADMINID", id)
+                );
+            return respondingRequest;
         }
 
         public RespondingRequest update(Admins admin)
         {
-            throw new NotImplementedException();
+            RespondingRequest respondingRequest = SqlHelper.update(UPDATE_ACC
+                , new SqlParameter("@NAME", admin.name)
+                , new SqlParameter("@BIRTHDAY", admin.birthday)
+                , new SqlParameter("@PHONE", admin.phone)
+                , new SqlParameter("@MAIL", admin.mail)
+                , new SqlParameter("@ADDRESS", admin.address)
+                , new SqlParameter("@MODIFIEDBY", admin.modifiedBy)
+                , new SqlParameter("@MODIFIEDDATE", admin.modifiedDate)
+                , new SqlParameter("@ADMINID", admin.adminId)
+                );
+            return respondingRequest;
         }
 
         private Admins toObject(DataRow dr)

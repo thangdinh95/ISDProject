@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace ISD.Controllers
@@ -31,13 +32,16 @@ namespace ISD.Controllers
         [Route("command/create")]
         public RespondingRequest create(Admins admin)
         {
+            admin.createdDate = DateTime.Now;
+            admin.createdBy = admin.modifiedBy;
             return adminRepository.create(admin);
         }
 
         [HttpPost]
         [Route("command/update")]
         public RespondingRequest update(Admins admin)
-        {
+        {           
+            admin.modifiedDate = DateTime.Now;
             return adminRepository.update(admin);
         }
 

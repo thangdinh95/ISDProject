@@ -12,8 +12,9 @@
         return common.ajax(parentPath + path.getAll, null, "post");
     }
 
-    service.getDataById = function (id) {
-        return common.ajax(parentPath + path.getById, id, "post")
+    service.getDataById = function (admindId) {
+        var id = { id: admindId };
+        return common.ajax(parentPath + path.getById + "?id=" + admindId, null, "post")
     }
 
     service.create = function (obj) {
@@ -25,7 +26,7 @@
     }
 
     service.remove = function (id) {
-        return common.ajax(parentPath + path.remove, id, "post")
+        return common.ajax(parentPath + path.remove + "?id=" + id, null, "post")
     }
 
     return service;

@@ -14,23 +14,20 @@
     <script src="~/Scripts/toastr.min.js"></script>
     <link href="~/Content/toastr.min.css" rel="stylesheet" />
     <script src="~/Scripts/common.js"></script>
-    <!-- Infragistics Combined CSS -->
-    <link href="~/Helper/igniteui/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
-    <link href="~/Helper/igniteui/css/structure/infragistics.css" rel="stylesheet" />
-    <!-- jQuery UI -->
-    <link href="~/Helper/queryui/jquery-ui.min.css" rel="stylesheet" />
-    <script src="~/Helper/queryui/jquery-ui.min.js"></script>
-    <!-- Infragistics Combined Scripts -->
-    
-    <script src="~/Helper/igniteui/js/infragistics.core.js"></script>
-    <script src="~/Helper/igniteui/js/infragistics.js"></script>
-    <script src="~/Helper/igniteui/js/infragistics.lob.js"></script>
+    <script src="http://igniteui.com/js/modernizr.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+    <script src="http://cdn-na.infragistics.com/igniteui/latest/js/infragistics.core.js"></script>
+    <script src="http://cdn-na.infragistics.com/igniteui/latest/js/infragistics.lob.js"></script>
+    <script src="http://igniteui.com/js-data/nw-products"></script>
+  
+    <link href="http://cdn-na.infragistics.com/igniteui/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet">
+    <link href="http://cdn-na.infragistics.com/igniteui/latest/css/structure/infragistics.css" rel="stylesheet">
     @using ISD.Areas.AccountManagement.Models;
 
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -38,7 +35,7 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="">
                 @{ Admins admin = (Admins)Session["Admin"]; }
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "ToAdminHome", "Home", new { area ="" }, null)</li>   
@@ -58,12 +55,8 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
    

@@ -19,8 +19,8 @@ namespace ISD.Areas.AccountManagement.Models
           ",[NAME],[BIRTHDAY],[PHONE],[MAIL],[ADDRESS],[ROLE],[CREATEDBY],[CREATEDDATE])"+
           " VALUES(@ACCOUNT, @PASSWORD, @NAME, @BIRTHDAY, @PHONE, @MAIL, @ADDRESS, " +
           " @ROLE, @CREATEDBY, @CREATEDDATE)";
-        private const string UPDATE_ACC = "UPDATE ADMINS SET NAME = @NAME, BIRTHDAY = @BIRTHDAY"
-            + " PHONE = @PHONE, ADDRESS = @ADDRESS, MODIFIEDBY = @MODIFIEDBY"
+        private const string UPDATE_ACC = "UPDATE ADMINS SET NAME = @NAME, BIRTHDAY = @BIRTHDAY,"
+            + " PHONE = @PHONE, ADDRESS = @ADDRESS, MODIFIEDBY = @MODIFIEDBY,"
             + " MODIFIEDDATE = @MODIFIEDDATE WHERE ADMINID = @ADMINID";
         private const string REMOVE_ACC = "DELETE ADMINS WHERE ADMINID = @ADMINID";
         public RespondingRequest create(Admins admin)

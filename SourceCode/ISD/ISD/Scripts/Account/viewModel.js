@@ -11,7 +11,7 @@ var ScreenModel = function () {
         { id: 1, name: "Super admin" },
         { id: 2, name: "Admin" }
     ]);
-    self.modifiedByValue = ko.observable();
+    
 }
 
 
@@ -20,6 +20,7 @@ ScreenModel.prototype.start = function () {
     service.getAll().done(function (data) {
         self.lstAccount(data);
         $("#grid").igGrid("option", "dataSource", self.lstAccount());
+        self.admin().modifiedBy(parseInt($("#modifiedBy").val()));
     });
 }
 
@@ -43,17 +44,24 @@ ScreenModel.prototype.register = function () {
     var obj = ko.toJSON(self.admin());
     var correctRequired = checkRequired(obj);
     if (correctRequired) {
-        if (self.isCreate())
-            service.create(obj).done(function (data) {
-                if (data.status) {
-                    toastr.success(data.message);
-                    self.start();
-                    self.create();
+        if (self.isCreate()) {
+            service.checkAccountExist(self.admin().account()).done(function (data) {
+                if (data.status)
+                    toastr.error(data.message);
+                else {
+                    service.create(obj).done(function (data) {
+                        if (data.status) {
+                            toastr.success(data.message);
+                            self.start();
+                            self.create();
+                        }
+                        else toastr.error(data.message);
+                    }).fail(function (res) {
+                        toastr.error(res.respondText);
+                    });
                 }
-                else toastr.error(data.message);
-            }).fail(function (res) {
-                toastr.error(res.respondText);
             });
+        }
         else service.update(obj).done(function (data) {
             if (data.status) {
                 toastr.success(data.message);
@@ -70,7 +78,8 @@ ScreenModel.prototype.remove = function () {
     var accept = confirm("Are you sure to remov this account?");
     var self = this;
     if (accept) {
-        service.remove(self.admin().adminId()).done(function (data) {
+        var obj = ko.toJSON(self.admin());
+        service.remove(obj).done(function (data) {
             if (!data.status) {
                 toastr.error(data.message);
             } else {

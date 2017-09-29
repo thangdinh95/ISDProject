@@ -17,8 +17,10 @@ namespace ISD.Areas.AccountManagement.Models
         public string address { get; set; }
         public ROLES role { get; set; }
         public int createdBy { get; set; }
+        public string createdByAccount { get; set; }
         public DateTime createdDate { get; set; }
         public int modifiedBy { get; set; }
+        public string modifiedByAccount { get; set; }
         public DateTime modifiedDate { get; set; }
     }
 }

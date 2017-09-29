@@ -1,4 +1,5 @@
 ﻿using ISD.Areas.AccountManagement.Models;
+using ISD.Areas.LogManagement.Models;
 using ISD.CommonEntity;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace ISD.Controllers
     public class LoginAPIController : ApiController
     {
         private AdminRepository adminRepository = new AdminRepositoryImpl();
+        private LogRepository logRepository = new LogRepositoryImpl();
         [HttpPost]
         [Route("")]
         public RespondingRequest login(LoginInfo loginInfo)
@@ -29,6 +31,16 @@ namespace ISD.Controllers
             {
                 respondingRequest.status = true;
                 respondingRequest.message = admin.adminId.ToString();
+            }
+            if (respondingRequest.status)
+            {                
+                logRepository.create(new Logs()
+                {
+                    type = LOGTYPE.LOGIN,
+                    content = logRepository.logContent(LOGTYPE.LOGIN, " Login to system", admin.account),
+                    createdBy = admin.adminId,
+                    createdDate = DateTime.Now
+                });
             }
             return respondingRequest;
         }

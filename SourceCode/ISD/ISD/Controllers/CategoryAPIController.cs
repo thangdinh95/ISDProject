@@ -1,4 +1,5 @@
 ﻿using ISD.Areas.AccountManagement.Models;
+using ISD.Areas.CategoryManagement.Models;
 using ISD.Areas.LogManagement.Models;
 using ISD.CommonEntity;
 using System;
@@ -6,55 +7,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 
 namespace ISD.Controllers
 {
-    [RoutePrefix("api/admin/accountMN")]
-    public class AccountAPIController : ApiController
+    [RoutePrefix("api/admin/categoryMN")]
+    public class CategoryAPIController : ApiController
     {
+        private CategoryRepository categoryRepository = new CategoryRepositoryImpl();
         private AdminRepository adminRepository = new AdminRepositoryImpl();
         private LogRepository logRepository = new LogRepositoryImpl();
         [HttpPost]
         [Route("find/getAll")]
-        public List<Admins> getData()
-        {        
-            return adminRepository.getData();
+        public List<Categories> getData()
+        {
+            return categoryRepository.getAll();
         }
 
         [HttpPost]
         [Route("find/getById")]
-        public Admins getDataById(int id)
+        public Categories getDataById(int id)
         {
-            return adminRepository.getDataById(id);
-        }
-        [HttpPost]
-        [Route("find/accountExist")]
-        public RespondingRequest accountExist(string account)
-        {
-            RespondingRequest respondingRequest = new RespondingRequest();
-            respondingRequest.status = adminRepository.checkAccountExist(account);
-            if (respondingRequest.status)
-                respondingRequest.message = "Account has already existed!";
-            return respondingRequest;
+            return categoryRepository.getDataById(id);
         }
 
         [HttpPost]
         [Route("command/create")]
-        public RespondingRequest create(Admins admin)
+        public RespondingRequest create(Categories category)
         {
-            admin.createdDate = DateTime.Now;
-            admin.createdBy = admin.modifiedBy;
+            category.createdDate = DateTime.Now;
+            category.createdBy = category.modifiedBy;
             RespondingRequest respondingRequest = new RespondingRequest();
-            respondingRequest = adminRepository.create(admin);
+            respondingRequest = categoryRepository.create(category);
             if (respondingRequest.status)
             {
-                Admins staff = adminRepository.getDataById(admin.modifiedBy);
+                Admins staff = adminRepository.getDataById(category.modifiedBy);
                 logRepository.create(new Logs()
                 {
                     type = LOGTYPE.CREATE,
-                    content = logRepository.logContent(LOGTYPE.CREATE, "Account " + admin.name, staff.account),
+                    content = logRepository.logContent(LOGTYPE.CREATE, "Category " + category.name, staff.account),
                     createdBy = staff.adminId,
                     createdDate = DateTime.Now
                 });
@@ -64,18 +55,18 @@ namespace ISD.Controllers
 
         [HttpPost]
         [Route("command/update")]
-        public RespondingRequest update(Admins admin)
-        {           
-            admin.modifiedDate = DateTime.Now;
+        public RespondingRequest update(Categories category)
+        {
+            category.modifiedDate = DateTime.Now;
             RespondingRequest respondingRequest = new RespondingRequest();
-            respondingRequest = adminRepository.update(admin);
+            respondingRequest = categoryRepository.update(category);
             if (respondingRequest.status)
             {
-                Admins staff = adminRepository.getDataById(admin.modifiedBy);
+                Admins staff = adminRepository.getDataById(category.modifiedBy);
                 logRepository.create(new Logs()
                 {
                     type = LOGTYPE.UPDATE,
-                    content = logRepository.logContent(LOGTYPE.UPDATE, "Account " + admin.name, staff.account),
+                    content = logRepository.logContent(LOGTYPE.UPDATE, "Category " + category.name, staff.account),
                     createdBy = staff.adminId,
                     createdDate = DateTime.Now
                 });
@@ -85,23 +76,22 @@ namespace ISD.Controllers
 
         [HttpPost]
         [Route("command/remove")]
-        public RespondingRequest remove(Admins admin)
+        public RespondingRequest remove(Categories category)
         {
             RespondingRequest respondingRequest = new RespondingRequest();
-            respondingRequest = adminRepository.remove(admin.adminId);
+            respondingRequest = categoryRepository.remove(category.categoryId);
             if (respondingRequest.status)
             {
-                Admins staff = adminRepository.getDataById(admin.modifiedBy);
+                Admins staff = adminRepository.getDataById(category.modifiedBy);
                 logRepository.create(new Logs()
                 {
                     type = LOGTYPE.REMOVE,
-                    content = logRepository.logContent(LOGTYPE.REMOVE, "Account "+ admin.name, staff.account),
+                    content = logRepository.logContent(LOGTYPE.REMOVE,"Category " + category.name, staff.account),
                     createdBy = staff.adminId,
                     createdDate = DateTime.Now
                 });
             }
             return respondingRequest;
         }
-        
     }
 }

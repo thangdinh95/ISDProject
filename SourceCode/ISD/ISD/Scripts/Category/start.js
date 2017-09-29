@@ -6,20 +6,14 @@ $(function () {
     vm.start();
 });
 function InitAction() {
-    $('#birthday').datepicker({
-        changeYear: true,
-        changeMonth: true,
-        yearRange: '1930:2016'
-    });
     $("#grid").igGrid({
-        primaryKey: "adminId",
+        primaryKey: "categoryId",
         width: '600px',
         height: '700px',
         columns: [
-            { headerText: "Admin Id", key: "adminId", dataType: "number", width: "15%", hidden: true },
+            { headerText: "", key: "categoryId", dataType: "number", width: "15%", hidden: true },
             { headerText: "Name", key: "name", dataType: "string", width: "25%" },
-            { headerText: "Account", key: "account", dataType: "string", width: "25%" },       
-            { headerText: "Address", key: "address", dataType: "address", width: "35%" }
+            { headerText: "Description", key: "description", dataType: "string", width: "65%" }
         ],
         autoCommit: true,
         features: [
@@ -32,18 +26,18 @@ function InitAction() {
                 type: "local",
                 columnSettings: [
                     {
-                        columnKey: "mail",
+                        columnKey: "description",
                         allowFiltering: false
                     }
                 ]
             }, {
                 name: 'RowSelectors',
                 enableCheckBoxes: false,
-               
+
             },
                 {
                     name: 'Selection'
-                    ,rowSelectionChanging: gridcheckboxStateChanging
+                    , rowSelectionChanging: gridcheckboxStateChanging
                 },
             {
                 name: "Paging",

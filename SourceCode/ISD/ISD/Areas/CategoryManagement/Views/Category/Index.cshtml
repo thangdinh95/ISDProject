@@ -1,8 +1,41 @@
-﻿
+﻿@using ISD.Areas.AccountManagement.Models;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
+<script src="~/Scripts/Category/service.js"></script>
+<script src="~/Scripts/Category/viewModel.js"></script>
+<script src="~/Scripts/Category/start.js"></script>
+@{ Admins admin = (Admins)Session["Admin"]; }
+<div class="divCover">
+    <table class="tblCover">
+        <tr>
+            <td colspan="2" class="tdButton">
+                <button type="button" class="btn btn-default" data-bind="click: $root.create">Create</button>
+                <button type="button" class="btn btn-primary" data-bind="click: $root.register">Register</button>
+                <button type="button" class="btn btn-danger" data-bind="click: $root.remove, enable: $root.canRemove">Remove</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table id="grid"></table>
+            </td>
+            <td class="leftSide">
+                <table data-bind="with: $root.category">
+                    <tr>
+                        <td>Name</td>
+                        <td><input type="text" maxlength="100" data-bind="value: name" class="form-control"/></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>
+                            <input type="text" maxlength="500" data-bind="value: description" class="form-control"/>
+                            <input type="text" value="@admin.adminId.ToString()" data-bind="visible: false" id="modifiedBy" />
+                        </td>
+                    </tr>                   
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
 

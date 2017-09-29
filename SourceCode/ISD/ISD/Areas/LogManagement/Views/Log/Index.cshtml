@@ -3,6 +3,23 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
-
+<script src="~/Scripts/Log/service.js"></script>
+<script src="~/Scripts/Log/viewModel.js"></script>
+<script src="~/Scripts/Log/start.js"></script>
+<div class="divCover">
+    <table class="tblCover">
+        <tr>
+            <td class="tdButton">
+               <button class="btn btn-default">
+                   <i class="fa fa-file-excel-o"></i>
+                   Print excel
+               </button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table id="grid"></table>
+            </td>
+        </tr>
+    </table>
+</div>

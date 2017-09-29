@@ -11,10 +11,17 @@ namespace ISD.Areas.AccountManagement.Models
 {
     public class AdminRepositoryImpl : AdminRepository
     {
-        private const string SELECT_ALL_DATA = "SELECT * FROM ADMINS";
-        private const string SELECT_DATA_BY_ID = "SELECT * FROM ADMINS WHERE ADMINID = @ADMINID";
-        private const string SELECT_DATA_BY_ACC_PSS = "SELECT * FROM ADMINS " +
-           " WHERE ACCOUNT = @ACCOUNT AND PASSWORD = @PASSWORD";
+        private const string SELECT_ALL_DATA = "SELECT A.*, B.ACCOUNT AS CREATEDBYACCOUNT, "
+            + " C.ACCOUNT AS MODIFIEDBYACCOUNT FROM ADMINS A LEFT JOIN ADMINS B ON"
+            + " A.CREATEDBY = B.ADMINID LEFT JOIN ADMINS C ON A.MODIFIEDBY = C.ADMINID";
+        private const string SELECT_DATA_BY_ID = "SELECT A.*, B.ACCOUNT AS CREATEDBYACCOUNT,"
+            + " C.ACCOUNT AS MODIFIEDBYACCOUNT FROM ADMINS A LEFT JOIN ADMINS B ON"
+            + " A.CREATEDBY = B.ADMINID LEFT JOIN ADMINS C ON A.MODIFIEDBY = C.ADMINID"
+            + " WHERE A.ADMINID = @ADMINID";
+        private const string SELECT_DATA_BY_ACC_PSS = "SELECT A.*, B.ACCOUNT AS CREATEDBYACCOUNT,"
+            + " C.ACCOUNT AS MODIFIEDBYACCOUNT FROM ADMINS A LEFT JOIN ADMINS B ON"
+            + " A.CREATEDBY = B.ADMINID LEFT JOIN ADMINS C ON A.MODIFIEDBY = C.ADMINID"
+            + " WHERE A.ACCOUNT = @ACCOUNT AND A.PASSWORD = @PASSWORD";
         private const string CREATE_ACC = "INSERT INTO ADMINS([ACCOUNT], [PASSWORD]" +
           ",[NAME],[BIRTHDAY],[PHONE],[MAIL],[ADDRESS],[ROLE],[CREATEDBY],[CREATEDDATE])"+
           " VALUES(@ACCOUNT, @PASSWORD, @NAME, @BIRTHDAY, @PHONE, @MAIL, @ADDRESS, " +
@@ -23,6 +30,7 @@ namespace ISD.Areas.AccountManagement.Models
             + " PHONE = @PHONE, ADDRESS = @ADDRESS, MODIFIEDBY = @MODIFIEDBY,"
             + " MODIFIEDDATE = @MODIFIEDDATE WHERE ADMINID = @ADMINID";
         private const string REMOVE_ACC = "DELETE ADMINS WHERE ADMINID = @ADMINID";
+        private const string COUNT_ACCOUNT = "SELECT COUNT(*) FROM ADMINS WHERE ACCOUNT = @ACCOUNT";
         public RespondingRequest create(Admins admin)
         {
             RespondingRequest respondingRequest = SqlHelper.update(CREATE_ACC
@@ -36,7 +44,6 @@ namespace ISD.Areas.AccountManagement.Models
                 , new SqlParameter("@ROLE", (int)admin.role)
                 , new SqlParameter("@CREATEDBY", admin.createdBy)
                 , new SqlParameter("@CREATEDDATE", admin.createdDate)
-              
                 );
             return respondingRequest;
         }
@@ -112,11 +119,20 @@ namespace ISD.Areas.AccountManagement.Models
                 address = dr["ADDRESS"].ToString(),
                 role = Int16.Parse(dr["ROLE"].ToString()) == 1 ? ROLES.SUPERADMIN : ROLES.ADMIN,
                 createdBy = !dr.IsNull("CREATEDBY") ? Int16.Parse(dr["CREATEDBY"].ToString()) : -1,
+                createdByAccount = !dr.IsNull("CREATEDBYACCOUNT") ? dr["CREATEDBYACCOUNT"].ToString() : "",
                 createdDate = !dr.IsNull("CREATEDDATE") ? DateTime.Parse(dr["CREATEDDATE"].ToString()) : DateTime.Now,
                 modifiedBy = !dr.IsNull("MODIFIEDBY") ? Int16.Parse(dr["MODIFIEDBY"].ToString()) : -1,
+                modifiedByAccount = !dr.IsNull("MODIFIEDBYACCOUNT") ? dr["MODIFIEDBYACCOUNT"].ToString() : "",
                 modifiedDate = !dr.IsNull("MODIFIEDDATE") ? DateTime.Parse(dr["MODIFIEDDATE"].ToString()) : DateTime.Now
             };
             return admin;
+        }
+
+        public bool checkAccountExist(string account)
+        {
+            DataTable dt = SqlHelper.getData(COUNT_ACCOUNT,
+                new SqlParameter("@ACCOUNT", account));
+            return Int16.Parse(dt.Rows[0][0].ToString()) > 0;
         }
     }
 }

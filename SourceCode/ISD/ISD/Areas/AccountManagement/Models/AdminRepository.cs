@@ -15,6 +15,6 @@ namespace ISD.Areas.AccountManagement.Models
         RespondingRequest create(Admins admin);
         RespondingRequest update(Admins admin);
         RespondingRequest remove(int id);
-
+        bool checkAccountExist(string account);
     }
 }

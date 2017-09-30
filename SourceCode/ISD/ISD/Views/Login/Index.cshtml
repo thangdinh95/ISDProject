@@ -13,13 +13,15 @@
 <script src="~/Scripts/Login/service.js"></script>
 <script src="~/Scripts/Login/screenModel.js"></script>
 <script src="~/Scripts/Login/start.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <div id="cover">
     <div class="login-page">
         <div class="form"> 
             <form class="login-form">
                 <input type="text" data-bind="value: userName" maxlength="20" placeholder="username"  autofocus/>
                 <input type="password" data-bind="value: password" maxlength="20" placeholder="password" />
-                <button type="button" data-bind="click: login">login</button>
+                <button type="button" class="btn btn-success" data-bind="click: login, enable: canLogin">login</button>
             </form>
         </div>
     </div>

@@ -21,7 +21,8 @@ namespace ISD.Controllers
         public RespondingRequest login(LoginInfo loginInfo)
         {
             RespondingRequest respondingRequest = new RespondingRequest();
-            Admins admin = adminRepository.getDataByAccount(loginInfo.account, loginInfo.password);
+            //vào DB lấy dữ liệu theo account và psw
+            Admins admin = adminRepository.getDataByAccount(loginInfo.account, loginInfo.password); 
             if (admin == null)
             {
                 respondingRequest.status = false;
@@ -32,7 +33,8 @@ namespace ISD.Controllers
                 respondingRequest.status = true;
                 respondingRequest.message = admin.adminId.ToString();
             }
-            if (respondingRequest.status)
+
+            if (respondingRequest.status == true)
             {                
                 logRepository.create(new Logs()
                 {

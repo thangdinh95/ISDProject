@@ -23,6 +23,7 @@ namespace ISD.Areas.CategoryManagement.Models
         private const string UPDATE = "UPDATE CATEGORIES SET NAME = @NAME, [DESCRIPTION] = @DESCRIPTION,"
             + " MODIFIEDBY = @MODIFIEDBY, MODIFIEDDATE = @MODIFIEDDATE WHERE CATEG0RYID = @CATEGORYID";
         private const string REMOVE = "DELETE CATEGORIES WHERE CATEGORYID = @CATEGORYID";
+        private const string CHECK_CTG_NAME_EXIST = "SELECT COUNT(*) FROM CATEGORIES WHERE NAME = @NAME";
         public RespondingRequest create(Categories category)
         {
             return SqlHelper.update(CREATE, 
@@ -77,6 +78,17 @@ namespace ISD.Areas.CategoryManagement.Models
                 modifiedDate = !dr.IsNull("MODIFIEDDATE") ? DateTime.Parse(dr["MODIFIEDDATE"].ToString()) : DateTime.Now,
                 modifiedByAccount = !dr.IsNull("MODIFIEDBYACCOUNT") ? dr["MODIFIEDBYACCOUNT"].ToString() : ""
             };
+        }
+
+        public RespondingRequest checkCtgNameExist(string ctgName)
+        {
+            RespondingRequest respondingRequest = new RespondingRequest();
+            DataTable dt = SqlHelper.getData(CHECK_CTG_NAME_EXIST,
+                new SqlParameter("@NAME", ctgName));
+            respondingRequest.status = Int16.Parse(dt.Rows[0][0].ToString()) > 0;
+            if (respondingRequest.status)
+                respondingRequest.message = "Category name has already been existed!";
+            return respondingRequest;
         }
     }
 }

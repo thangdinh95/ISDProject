@@ -32,6 +32,13 @@ namespace ISD.Controllers
         }
 
         [HttpPost]
+        [Route("find/checkCtgNameExist")]
+        public RespondingRequest checkCtgNameExist(string ctgName)
+        {
+            return categoryRepository.checkCtgNameExist(ctgName);
+        }
+
+        [HttpPost]
         [Route("command/create")]
         public RespondingRequest create(Categories category)
         {

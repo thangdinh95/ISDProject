@@ -21,7 +21,7 @@ namespace ISD.Areas.LogManagement.Models
                 new SqlParameter("@TYPE", (int)log.type), 
                 new SqlParameter("@CONTENT", log.content),
                 new SqlParameter("@CREATEDBY", log.createdBy),
-                new SqlParameter("CREATEDDATE", log.createdDate));
+                new SqlParameter("@CREATEDDATE", log.createdDate));
         }
 
         public List<Logs> getData()

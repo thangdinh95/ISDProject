@@ -106,7 +106,17 @@ namespace ISD.Areas.AccountManagement.Models
         }
 
         private Admins toObject(DataRow dr)
+
         {
+            /*
+             * if(a > b)
+             * {cv dung}
+             * else{cv sai}
+             * 
+             * 
+             * 
+             * a>b?(cv dung):(cv sai)
+             */
             Admins admin = new Admins()
             {
                 adminId = Int16.Parse(dr["ADMINID"].ToString()),

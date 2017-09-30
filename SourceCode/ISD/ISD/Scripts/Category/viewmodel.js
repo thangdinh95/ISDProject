@@ -35,17 +35,24 @@ ScreenModel.prototype.register = function () {
     var self = this;
     if (self.category().name() != "") {
         var obj = ko.toJSON(self.category());
-        if (self.isCreate())
-            service.create(obj).done(function (data) {
-                if (data.status) {
-                    toastr.success(data.message);
-                    self.start();
-                    self.create();
+        if (self.isCreate()) {
+            service.checkCtgNameExist(self.category().name()).done(function (data) {
+                if(data.status)
+                    toastr.error(data.message);
+                else {
+                    service.create(obj).done(function (data) {
+                        if (data.status) {
+                            toastr.success(data.message);
+                            self.start();
+                            self.create();
+                        }
+                        else toastr.error(data.message);
+                    }).fail(function (res) {
+                        toastr.error(res.respondText);
+                    });
                 }
-                else toastr.error(data.message);
-            }).fail(function (res) {
-                toastr.error(res.respondText);
             });
+        }
         else service.update(obj).done(function (data) {
             if (data.status) {
                 toastr.success(data.message);
@@ -62,7 +69,7 @@ ScreenModel.prototype.remove = function () {
     var accept = confirm("Are you sure to remov this catogory?");
     var self = this;
     if (accept) {
-        var obj = ko.toJSON(self.admin());
+        var obj = ko.toJSON(self.category());
         service.remove(obj).done(function (data) {
             if (!data.status) {
                 toastr.error(data.message);
@@ -82,6 +89,7 @@ ScreenModel.prototype.setData = function (data) {
         self.category().categoryId(data.categoryId ? data.categoryId : -1);
         self.category().name(data.name ? data.name : "");
         self.category().description(data.description ? data.description : "");
+        self.category().modifiedBy($("#modifiedBy").val());
     }
 }
 

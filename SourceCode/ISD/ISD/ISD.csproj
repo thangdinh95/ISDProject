@@ -224,6 +224,10 @@
     <Compile Include="Areas\LogManagement\Models\Logs.cs" />
     <Compile Include="Areas\LogManagement\Models\LOGTYPE.cs" />
     <Compile Include="Areas\ProductManagement\Controllers\ProductController.cs" />
+    <Compile Include="Areas\ProductManagement\Models\Images.cs" />
+    <Compile Include="Areas\ProductManagement\Models\ProductRepository.cs" />
+    <Compile Include="Areas\ProductManagement\Models\Products.cs" />
+    <Compile Include="Areas\ProductManagement\Models\ProductStatus.cs" />
     <Compile Include="Areas\ProductManagement\ProductManagementAreaRegistration.cs" />
     <Compile Include="Areas\SalesManagement\Controllers\SalesController.cs" />
     <Compile Include="Areas\SalesManagement\SalesManagementAreaRegistration.cs" />
@@ -329,7 +333,6 @@
     <Folder Include="Areas\BillManagement\Views\Shared\" />
     <Folder Include="Areas\CategoryManagement\Views\Shared\" />
     <Folder Include="Areas\LogManagement\Views\Shared\" />
-    <Folder Include="Areas\ProductManagement\Models\" />
     <Folder Include="Areas\ProductManagement\Views\Shared\" />
     <Folder Include="Areas\SalesManagement\Models\" />
     <Folder Include="Areas\SalesManagement\Views\Shared\" />

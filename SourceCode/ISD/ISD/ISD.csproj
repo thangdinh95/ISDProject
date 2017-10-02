@@ -205,17 +205,37 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\AccountManagement\AccountManagementAreaRegistration.cs" />
+    <Compile Include="Areas\AccountManagement\Controllers\AccountController.cs" />
     <Compile Include="Areas\AccountManagement\Models\AdminRepository.cs" />
     <Compile Include="Areas\AccountManagement\Models\AdminRepositoryImpl.cs" />
     <Compile Include="Areas\AccountManagement\Models\Admins.cs" />
     <Compile Include="Areas\AccountManagement\Models\ROLES.cs" />
     <Compile Include="Areas\BillManagement\BillManagementAreaRegistration.cs" />
+    <Compile Include="Areas\BillManagement\Controllers\BillController.cs" />
     <Compile Include="Areas\CategoryManagement\CategoryManagementAreaRegistration.cs" />
+    <Compile Include="Areas\CategoryManagement\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\CategoryManagement\Models\Categories.cs" />
+    <Compile Include="Areas\CategoryManagement\Models\CategoryRepository.cs" />
+    <Compile Include="Areas\CategoryManagement\Models\CategoryRepositoryImpl.cs" />
+    <Compile Include="Areas\LogManagement\Controllers\LogController.cs" />
     <Compile Include="Areas\LogManagement\LogManagementAreaRegistration.cs" />
+    <Compile Include="Areas\LogManagement\Models\LogRepository.cs" />
+    <Compile Include="Areas\LogManagement\Models\LogRepositoryImpl.cs" />
+    <Compile Include="Areas\LogManagement\Models\Logs.cs" />
+    <Compile Include="Areas\LogManagement\Models\LOGTYPE.cs" />
+    <Compile Include="Areas\ProductManagement\Controllers\ProductController.cs" />
+    <Compile Include="Areas\ProductManagement\Models\Images.cs" />
+    <Compile Include="Areas\ProductManagement\Models\ProductRepository.cs" />
+    <Compile Include="Areas\ProductManagement\Models\Products.cs" />
+    <Compile Include="Areas\ProductManagement\Models\ProductStatus.cs" />
     <Compile Include="Areas\ProductManagement\ProductManagementAreaRegistration.cs" />
+    <Compile Include="Areas\SalesManagement\Controllers\SalesController.cs" />
     <Compile Include="Areas\SalesManagement\SalesManagementAreaRegistration.cs" />
     <Compile Include="CommonEntity\RespondingRequest.cs" />
+    <Compile Include="Controllers\AccountAPIController.cs" />
+    <Compile Include="Controllers\CategoryAPIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogAPIController.cs" />
     <Compile Include="Controllers\LoginAPIController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -228,6 +248,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Account\main.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Login.css" />
@@ -236,7 +257,9 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Images\loginBackground.jpg" />
+    <Content Include="Scripts\Account\service.js" />
+    <Content Include="Scripts\Account\start.js" />
+    <Content Include="Scripts\Account\viewModel.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\blockUI.js" />
@@ -253,7 +276,16 @@
     <Content Include="Areas\ProductManagement\Views\web.config" />
     <Content Include="Areas\LogManagement\Views\web.config" />
     <Content Include="Areas\SalesManagement\Views\web.config" />
+    <Content Include="Areas\AccountManagement\Views\Account\Index.cshtml" />
+    <Content Include="Areas\BillManagement\Views\Bill\Index.cshtml" />
+    <Content Include="Areas\CategoryManagement\Views\Category\Index.cshtml" />
+    <Content Include="Areas\LogManagement\Views\Log\Index.cshtml" />
+    <Content Include="Areas\ProductManagement\Views\Product\Index.cshtml" />
+    <Content Include="Areas\SalesManagement\Views\Sales\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Category\service.js" />
+    <Content Include="Scripts\Category\start.js" />
+    <Content Include="Scripts\Category\viewmodel.js" />
     <Content Include="Scripts\common.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -262,11 +294,17 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.2.1.debug.js" />
+    <Content Include="Scripts\knockout-2.2.1.js" />
     <Content Include="Scripts\knockout-3.4.2.js" />
     <Content Include="Scripts\knockout.simpleGrid.1.3.js" />
+    <Content Include="Scripts\lodash.js" />
     <Content Include="Scripts\Login\screenModel.js" />
     <Content Include="Scripts\Login\service.js" />
     <Content Include="Scripts\Login\start.js" />
+    <Content Include="Scripts\Log\service.js" />
+    <Content Include="Scripts\Log\start.js" />
+    <Content Include="Scripts\Log\viewmodel.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -286,27 +324,19 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Home\AdminPage.cshtml" />
+    <Content Include="Views\Home\ToAdminHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\AccountManagement\Controllers\" />
     <Folder Include="Areas\AccountManagement\Views\Shared\" />
-    <Folder Include="Areas\BillManagement\Controllers\" />
     <Folder Include="Areas\BillManagement\Models\" />
     <Folder Include="Areas\BillManagement\Views\Shared\" />
-    <Folder Include="Areas\CategoryManagement\Controllers\" />
-    <Folder Include="Areas\CategoryManagement\Models\" />
     <Folder Include="Areas\CategoryManagement\Views\Shared\" />
-    <Folder Include="Areas\LogManagement\Controllers\" />
-    <Folder Include="Areas\LogManagement\Models\" />
     <Folder Include="Areas\LogManagement\Views\Shared\" />
-    <Folder Include="Areas\ProductManagement\Controllers\" />
-    <Folder Include="Areas\ProductManagement\Models\" />
     <Folder Include="Areas\ProductManagement\Views\Shared\" />
-    <Folder Include="Areas\SalesManagement\Controllers\" />
     <Folder Include="Areas\SalesManagement\Models\" />
     <Folder Include="Areas\SalesManagement\Views\Shared\" />
+    <Folder Include="Images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

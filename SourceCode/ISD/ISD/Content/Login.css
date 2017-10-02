@@ -5,7 +5,7 @@
 #cover {
     width: 100%;
     min-height: 100%;
-    background-color: #e1dddd;
+    background-color: #b8e6ce;
 }
 .login-page {
   width: 360px;
@@ -33,6 +33,7 @@
   font-size: 14px;
 }
 .form button {
+  border-radius: 0px;
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -46,9 +47,9 @@
   transition: all 0.3 ease;
   cursor: pointer;
 }
-.form button:hover,.form button:active,.form button:focus {
+/*.form button:hover,.form button:active,.form button:focus {
   background: #43A047;
-}
+}*/
 .form .message {
   margin: 15px 0 0;
   color: #b3b3b3;

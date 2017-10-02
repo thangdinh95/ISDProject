@@ -1,17 +1,22 @@
-﻿body {
-    padding-top: 50px;
+﻿.divCover{
+    min-width: 1200px;
+    margin-left: 30px;
+}
+.tblCover{
+    margin-top: 120px;
+}
+.tblCover td{
+    vertical-align: top;
+}
+.tdButton{
     padding-bottom: 20px;
 }
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.leftSide{
+    padding-left: 20px;
+    border: 1px solid gray;
+    width: 600px;
+    background-color: #eefafb
 }
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.leftSide table td{
+    padding: 5px 10px;
 }

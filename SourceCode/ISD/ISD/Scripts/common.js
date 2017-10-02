@@ -1,6 +1,7 @@
 ﻿var common = (function () {
     var common = {};
     common.ajax = function (url, data, type) {
+        $.blockUI();
         var d = $.Deferred();
         if (!data) data = {};
         if (typeof data === 'object') data = JSON.stringify(data);
@@ -15,6 +16,8 @@
             d.resolve(res);
         }).fail(function (res) {
             d.reject(res);
+        }).always(function () {
+            $.unblockUI();
         });
         return d.promise();
     };

@@ -5,7 +5,7 @@
     self.canLogin = ko.observable(true);
 }
 
-ScreenModel.prototype.login = function () {//prototype dùng để khai báo method trong js
+ScreenModel.prototype.login = function () {//prototype gọi đến đối tượng cha (ở đây là ScreenModel). Ở đây dùng để khai báo function 
     var self = this;
     self.canLogin(false);
     service.login(self.userName(), self.password()).done(function (data) {

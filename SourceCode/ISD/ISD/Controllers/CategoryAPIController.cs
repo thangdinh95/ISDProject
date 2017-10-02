@@ -45,6 +45,8 @@ namespace ISD.Controllers
             category.createdDate = DateTime.Now;
             category.createdBy = category.modifiedBy;
             RespondingRequest respondingRequest = new RespondingRequest();
+
+            // gọi đến model để update dữ liệu
             respondingRequest = categoryRepository.create(category);
             if (respondingRequest.status)
             {

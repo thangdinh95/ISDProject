@@ -11,6 +11,7 @@ namespace ISD.Areas.CategoryManagement.Models
 {
     public class CategoryRepositoryImpl : CategoryRepository
     {
+        #region declare
         private const string GET_ALL = "SELECT C.*, A.ACCOUNT AS CREATEDBYACCOUNT, B.ACCOUNT AS MODIFIEDBYACCOUNT" 
             + " FROM CATEGORIES C LEFT JOIN ADMINS A ON C.CREATEDBY = A.ADMINID"
             + " LEFT JOIN ADMINS B ON C.MODIFIEDBY = B.ADMINID";
@@ -24,6 +25,9 @@ namespace ISD.Areas.CategoryManagement.Models
             + " MODIFIEDBY = @MODIFIEDBY, MODIFIEDDATE = @MODIFIEDDATE WHERE CATEG0RYID = @CATEGORYID";
         private const string REMOVE = "DELETE CATEGORIES WHERE CATEGORYID = @CATEGORYID";
         private const string CHECK_CTG_NAME_EXIST = "SELECT COUNT(*) FROM CATEGORIES WHERE NAME = @NAME";
+        #endregion
+
+        #region Create
         public RespondingRequest create(Categories category)
         {
             return SqlHelper.update(CREATE, 
@@ -32,7 +36,9 @@ namespace ISD.Areas.CategoryManagement.Models
                 new SqlParameter("@CREATEDBY", category.createdBy),
                 new SqlParameter("@CREATEDDATE", category.createdDate));
         }
+        #endregion
 
+        #region get all
         public List<Categories> getAll()
         {
             List<Categories> lstCategory = new List<Categories>();
@@ -41,20 +47,26 @@ namespace ISD.Areas.CategoryManagement.Models
                 lstCategory.Add(toObject(dr));
             return lstCategory;
         }
+        #endregion
 
+        #region get data by id
         public Categories getDataById(int id)
         {
             DataTable dt = SqlHelper.getData(GET_ALL_BY_ID,
                 new SqlParameter("@CATEGORYID", id));
             return toObject(dt.Rows[0]);
         }
+        #endregion
 
+        #region remove
         public RespondingRequest remove(int categoryId)
         {
             return SqlHelper.update(REMOVE,
                 new SqlParameter("@CATEGORYID", categoryId));
         }
+        #endregion
 
+        #region update
         public RespondingRequest update(Categories category)
         {
             return SqlHelper.update(UPDATE,
@@ -64,7 +76,9 @@ namespace ISD.Areas.CategoryManagement.Models
                 new SqlParameter("@MODIFIEDDATE", category.modifiedDate),
                 new SqlParameter("@CATEGORYID", category.categoryId));
         }
+        #endregion
 
+        #region to object
         private Categories toObject(DataRow dr)
         {
             return new Categories() {
@@ -79,7 +93,9 @@ namespace ISD.Areas.CategoryManagement.Models
                 modifiedByAccount = !dr.IsNull("MODIFIEDBYACCOUNT") ? dr["MODIFIEDBYACCOUNT"].ToString() : ""
             };
         }
+        #endregion
 
+        #region check category name exist
         public RespondingRequest checkCtgNameExist(string ctgName)
         {
             RespondingRequest respondingRequest = new RespondingRequest();
@@ -90,5 +106,6 @@ namespace ISD.Areas.CategoryManagement.Models
                 respondingRequest.message = "Category name has already been existed!";
             return respondingRequest;
         }
+        #endregion
     }
 }

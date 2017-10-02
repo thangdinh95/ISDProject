@@ -9,7 +9,8 @@
 
 ScreenModel.prototype.start = function () {
     var self = this;
-    service.getAll().done(function (data) {
+    service.getAll()// send request
+        .done(function (data) {// receive response
         self.lstCategories(data);
         $("#grid").igGrid("option", "dataSource", self.lstCategories());
         self.category().modifiedBy(parseInt($("#modifiedBy").val()));

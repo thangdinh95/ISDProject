@@ -1,8 +1,78 @@
-﻿
+﻿@using ISD.Areas.AccountManagement.Models;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="~/Scripts/Account/service.js"></script>
+<script src="~/Scripts/Account/viewModel.js"></script>
+<script src="~/Scripts/Account/start.js"></script>
+<link href="~/Content/Account/main.css" rel="stylesheet" />
+@{ Admins admin = (Admins)Session["Admin"]; }
+<div class="divCover">
+    <table class="tblCover">
+        <tr>
+            <td colspan="2" class="tdButton">
+                <button type="button" class="btn btn-default" data-bind="click: $root.create">Create</button>
+                <button type="button" class="btn btn-primary" data-bind="click: $root.register">Register</button>
+                <button type="button" class="btn btn-danger" data-bind="click: $root.remove, enable: $root.canRemove">Remove</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table id="grid"></table>
+            </td>
+            <td class="leftSide">
+               <table>
+                   <tr>
+                       <td>Category</td>
+                       <td><select class="form-control"></select></td>
+                   </tr>
+                   <tr>
+                       <td>Name</td>
+                       <td><input type="text" maxlength="100" class="form-control" autofocus/></td>
+                   </tr>
+                   <tr>
+                       <td>Price</td>
+                       <td><input type="number" min="0" max="10000000" class="form-control"/></td>
+                   </tr>
+                   <tr>
+                       <td>Quantity</td>
+                       <td><input type="number" min="0" max="1000" class="form-control"/></td>
+                   </tr>
+                   <tr>
+                       <td>Description</td>
+                       <td><textarea maxlength="500" class="form-control"></textarea></td>
+                   </tr>
+                   <tr>
+                       <td>Image</td>
+                       <td>
+                           <table>
+                               <tr>
+                                   <td><section class="form-control"><!--display images--></section></td>
+                                   <td>
+                                       <table>
+                                           <tr>
+                                               <td>Name</td>
+                                               <td><input type="text" maxlength="100" class="form-control"/></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Link</td>
+                                               <td></td>
+                                           </tr>
+                                           <tr>
+                                               <td>Priority</td>
+                                               <td><input type="number" min="1" max="10" class="form-control"/></td>
+                                           </tr>
+                                       </table>
+                                   </td>
+                               </tr>
+                           </table>
+                       </td>
+                   </tr>
+               </table>
+            </td>
+        </tr>
+    </table>
+</div>
 
-<h2>Index</h2>
 

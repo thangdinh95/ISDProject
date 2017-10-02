@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ISD.CommonEntity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,10 @@ namespace ISD.Areas.ProductManagement.Models
 {
     interface ProductRepository
     {
+        List<Products> getData();
+        Products getDataById(int id);
+        RespondingRequest create(Products product);
+        RespondingRequest update(Products product);
+        RespondingRequest remove(Products product);
     }
 }

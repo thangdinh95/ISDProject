@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ISD.Areas.AccountManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace ISD.Areas.CategoryManagement.Controllers
         // GET: CategoryManagement/Home
         public ActionResult Index()
         {
-            if (Session["Admin"] == null)
+            Admins admin = (Admins)Session["Admin"];
+            if (admin == null)
                 return RedirectToAction("Index", "Login", new { area = "" });
             else return View();
         }

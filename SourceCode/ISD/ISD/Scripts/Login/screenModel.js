@@ -9,7 +9,9 @@ ScreenModel.prototype.login = function () {//prototype gọi đến đối tư�
     var self = this;  
     if (self.canLogin()) {
         self.canLogin(false);
-        service.login(self.userName(), self.password()).done(function (data) {
+        service.login(self.userName(), self.password())// send request
+            .done(function (data)// receive response
+            {
             if (!data.status) {
                 self.canLogin(true);
                 toastr.error(data.message);

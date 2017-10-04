@@ -6,7 +6,7 @@ using ISD.CommonEntity;
 using ISD.Helper;
 using System.Data.SqlClient;
 
-namespace ISD.Areas.ProductManagement.Models
+namespace ISD.Areas.ProductManagement.Models.ProductStatusRepositoryFolder
 {
     public class ProductStatusRepositoryImpl : ProductStatusRepository
     {

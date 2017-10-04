@@ -7,7 +7,7 @@ using System.Data;
 using ISD.Helper;
 using System.Data.SqlClient;
 
-namespace ISD.Areas.ProductManagement.Models
+namespace ISD.Areas.ProductManagement.Models.ProductRepositoryFolder
 {
     public class ProductRepositoryImpl : ProductRepository
     {

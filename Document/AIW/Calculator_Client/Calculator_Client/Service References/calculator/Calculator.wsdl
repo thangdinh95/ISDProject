@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:intf="http://main" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://main" targetNamespace="http://main" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://main">
+      <xsd:element name="add">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="a" type="xsd:float" />
+            <xsd:element name="b" type="xsd:float" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="addReturn" type="xsd:float" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="mul">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="a" type="xsd:float" />
+            <xsd:element name="b" type="xsd:float" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="mulResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="mulReturn" type="xsd:float" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sub">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="a" type="xsd:float" />
+            <xsd:element name="b" type="xsd:float" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="subResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="subReturn" type="xsd:float" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="div">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="a" type="xsd:float" />
+            <xsd:element name="b" type="xsd:float" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="divResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="divReturn" type="xsd:float" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="addResponse">
+    <wsdl:part name="parameters" element="impl:addResponse" />
+  </wsdl:message>
+  <wsdl:message name="mulResponse">
+    <wsdl:part name="parameters" element="impl:mulResponse" />
+  </wsdl:message>
+  <wsdl:message name="divResponse">
+    <wsdl:part name="parameters" element="impl:divResponse" />
+  </wsdl:message>
+  <wsdl:message name="addRequest">
+    <wsdl:part name="parameters" element="impl:add" />
+  </wsdl:message>
+  <wsdl:message name="subResponse">
+    <wsdl:part name="parameters" element="impl:subResponse" />
+  </wsdl:message>
+  <wsdl:message name="subRequest">
+    <wsdl:part name="parameters" element="impl:sub" />
+  </wsdl:message>
+  <wsdl:message name="divRequest">
+    <wsdl:part name="parameters" element="impl:div" />
+  </wsdl:message>
+  <wsdl:message name="mulRequest">
+    <wsdl:part name="parameters" element="impl:mul" />
+  </wsdl:message>
+  <wsdl:portType name="Calculator">
+    <wsdl:operation name="add">
+      <wsdl:input name="addRequest" message="impl:addRequest" />
+      <wsdl:output name="addResponse" message="impl:addResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="mul">
+      <wsdl:input name="mulRequest" message="impl:mulRequest" />
+      <wsdl:output name="mulResponse" message="impl:mulResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sub">
+      <wsdl:input name="subRequest" message="impl:subRequest" />
+      <wsdl:output name="subResponse" message="impl:subResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="div">
+      <wsdl:input name="divRequest" message="impl:divRequest" />
+      <wsdl:output name="divResponse" message="impl:divResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CalculatorSoapBinding" type="impl:Calculator">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="add">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="addRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mul">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="mulRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="mulResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sub">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="subRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="subResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="div">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="divRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="divResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CalculatorService">
+    <wsdl:port name="Calculator" binding="impl:CalculatorSoapBinding">
+      <wsdlsoap:address location="http://localhost:8181/Webservice/services/Calculator" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

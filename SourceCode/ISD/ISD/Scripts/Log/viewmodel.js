@@ -10,7 +10,7 @@ ScreenModel.prototype.start = function () {
     service.getAll().done(function (data) {
         var lst = _.map(data, function (item) {
             var type = item.type, returnType = "";
-            if (type == 1) returnType = "GET DATA";
+            if (type == 1) returnType = "LOGIN";
             else if (type == 2) returnType = "CREATE";
             else if (type == 3) returnType = "UPDATE";
             else if (type == 4) returnType = "REMOVE";

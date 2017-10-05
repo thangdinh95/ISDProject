@@ -1,8 +1,8 @@
 ﻿var common = (function () {
     var common = {};
     common.ajax = function (url, data, type) {
-        $.blockUI();
-        var d = $.Deferred();
+        $.blockUI();//hien message please wait...
+        var d = $.Deferred();// sync trong js
         if (!data) data = {};
         if (typeof data === 'object') data = JSON.stringify(data);
         if (!type) type = "post";
@@ -17,7 +17,7 @@
         }).fail(function (res) {
             d.reject(res);
         }).always(function () {
-            $.unblockUI();
+            $.unblockUI();// tắt nó đi
         });
         return d.promise();
     };

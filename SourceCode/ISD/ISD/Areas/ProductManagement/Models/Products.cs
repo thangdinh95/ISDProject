@@ -9,6 +9,7 @@ namespace ISD.Areas.ProductManagement.Models
     {
         public int productId { get; set; }
         public int categoryId { get; set; }
+        public string categoryName { get; set; }
         public string name { get; set; }
         public double price { get; set; }
         public ProductStatus status { get; set; }

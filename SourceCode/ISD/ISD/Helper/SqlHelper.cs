@@ -20,7 +20,7 @@ namespace ISD.Helper
         #endregion
 
         #region Get connection
-        private static SqlConnection getConection()
+        public static SqlConnection getConection()
         {
             if (con == null)
                 con = new SqlConnection(sqlConnection);

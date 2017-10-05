@@ -147,7 +147,7 @@
   </wsdl:binding>
   <wsdl:service name="CalculatorService">
     <wsdl:port name="Calculator" binding="impl:CalculatorSoapBinding">
-      <wsdlsoap:address location="http://localhost:8181/Webservice/services/Calculator" />
+      <wsdlsoap:address location="http://localhost:8080/Webservice/services/Calculator" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

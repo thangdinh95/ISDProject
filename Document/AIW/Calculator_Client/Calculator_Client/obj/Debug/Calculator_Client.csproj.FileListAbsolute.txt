@@ -7,3 +7,12 @@ c:\users\xuan vinh\documents\visual studio 2015\Projects\Calculator_Client\Calcu
 c:\users\xuan vinh\documents\visual studio 2015\Projects\Calculator_Client\Calculator_Client\obj\Debug\Calculator_Client.csproj.GenerateResource.Cache
 c:\users\xuan vinh\documents\visual studio 2015\Projects\Calculator_Client\Calculator_Client\obj\Debug\Calculator_Client.exe
 c:\users\xuan vinh\documents\visual studio 2015\Projects\Calculator_Client\Calculator_Client\obj\Debug\Calculator_Client.pdb
+C:\Users\xuan vinh\Documents\GitHub\ISDProject\Document\AIW\Calculator_Client\Calculator_Client\bin\Debug\Calculator_Client.exe.config
+C:\Users\xuan vinh\Documents\GitHub\ISDProject\Document\AIW\Calculator_Client\Calculator_Client\obj\Debug\Calculator_Client.exe
+C:\Users\xuan vinh\Documents\GitHub\ISDProject\Document\AIW\Calculator_Client\Calculator_Client\obj\Debug\Calculator_Client.pdb
+C:\Users\xuan vinh\Documents\GitHub\ISDProject\Document\AIW\Calculator_Client\Calculator_Client\bin\Debug\Calculator_Client.exe
+C:\Users\xuan vinh\Documents\GitHub\ISDProject\Document\AIW\Calculator_Client\Calculator_Client\bin\Debug\Calculator_Client.pdb
+C:\Users\xuan vinh\Documents\GitHub\ISDProject\Document\AIW\Calculator_Client\Calculator_Client\obj\Debug\Calculator_Client.csprojResolveAssemblyReference.cache
+C:\Users\xuan vinh\Documents\GitHub\ISDProject\Document\AIW\Calculator_Client\Calculator_Client\obj\Debug\Calculator_Client.Form1.resources
+C:\Users\xuan vinh\Documents\GitHub\ISDProject\Document\AIW\Calculator_Client\Calculator_Client\obj\Debug\Calculator_Client.Properties.Resources.resources
+C:\Users\xuan vinh\Documents\GitHub\ISDProject\Document\AIW\Calculator_Client\Calculator_Client\obj\Debug\Calculator_Client.csproj.GenerateResource.Cache

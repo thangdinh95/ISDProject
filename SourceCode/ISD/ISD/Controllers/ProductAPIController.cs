@@ -46,7 +46,7 @@ namespace ISD.Controllers
 
         #region create
         [HttpPost]
-        [Route("find/create")]
+        [Route("command/create")]
         public RespondingRequest create(ProductBusinessObject command)
         {
             return productBuzRepository.create(command);
@@ -54,7 +54,7 @@ namespace ISD.Controllers
         #endregion
         #region update
         [HttpPost]
-        [Route("find/update")]
+        [Route("command/update")]
         public RespondingRequest update(ProductBusinessObject command)
         {
             return productBuzRepository.update(command);
@@ -62,7 +62,7 @@ namespace ISD.Controllers
         #endregion
         #region remove
         [HttpPost]
-        [Route("find/remove")]
+        [Route("command/remove")]
         public RespondingRequest remove(ProductBusinessObject command)
         {
             return productBuzRepository.remove(command);

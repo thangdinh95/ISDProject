@@ -6,7 +6,7 @@
 <script src="~/Scripts/Account/service.js"></script>
 <script src="~/Scripts/Account/viewModel.js"></script>
 <script src="~/Scripts/Account/start.js"></script>
-<link href="~/Content/Account/main.css" rel="stylesheet" />
+<link href="~/Content/Product/main.css" rel="stylesheet" />
 @{ Admins admin = (Admins)Session["Admin"]; }
 <div class="divCover">
     <table class="tblCover">
@@ -41,17 +41,21 @@
                    </tr>
                    <tr>
                        <td>Description</td>
-                       <td><textarea maxlength="500" class="form-control"></textarea></td>
+                       <td><textarea maxlength="500" class="form-control description"></textarea></td>
                    </tr>
                    <tr>
                        <td>Image</td>
                        <td>
                            <table>
                                <tr>
-                                   <td colspan="2"></td>
+                                   <td colspan="2">
+                                       <button type="button" class="btn btn-default" data-bind="">Create</button>
+                                       <button type="button" class="btn btn-primary" data-bind="">Register</button>
+                                       <button type="button" class="btn btn-danger" data-bind="">Remove</button>
+                                   </td>
                                </tr>
                                <tr>
-                                   <td><select class="form-control"><!--display images--></select></td>
+                                   <td class="selectImg"><select class="form-control" multiple></select></td>
                                    <td>
                                        <table>
                                            <tr>
@@ -60,7 +64,7 @@
                                            </tr>
                                            <tr>
                                                <td>Link</td>
-                                               <td></td>
+                                               <td><input type="text" maxlength="100" class="form-control" /></td>
                                            </tr>
                                            <tr>
                                                <td>Priority</td>

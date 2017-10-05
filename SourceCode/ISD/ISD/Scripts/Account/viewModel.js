@@ -75,7 +75,7 @@ ScreenModel.prototype.register = function () {
 }
 
 ScreenModel.prototype.remove = function () {
-    var accept = confirm("Are you sure to remov this account?");
+    var accept = confirm("Are you sure to remove this account?");
     var self = this;
     if (accept) {
         var obj = ko.toJSON(self.admin());

@@ -359,3 +359,5 @@ C:\Users\Acer\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\obj\Debug\ISD.cspro
 C:\Users\Acer\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\obj\Debug\ISD.csproj.CoreCompileInputs.cache
 C:\Users\Acer\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\obj\Debug\ISD.dll
 C:\Users\Acer\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\obj\Debug\ISD.pdb
+C:\Users\xuan vinh\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\bin\CKFinder.dll
+C:\Users\xuan vinh\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\bin\CKFinder.pdb

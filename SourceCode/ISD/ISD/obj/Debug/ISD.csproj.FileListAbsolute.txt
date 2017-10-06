@@ -361,3 +361,5 @@ C:\Users\Acer\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\obj\Debug\ISD.dll
 C:\Users\Acer\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\obj\Debug\ISD.pdb
 C:\Users\xuan vinh\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\bin\CKFinder.dll
 C:\Users\xuan vinh\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\bin\CKFinder.pdb
+C:\Users\xuanvinh\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\bin\CKFinder.dll
+C:\Users\xuanvinh\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\bin\CKFinder.pdb

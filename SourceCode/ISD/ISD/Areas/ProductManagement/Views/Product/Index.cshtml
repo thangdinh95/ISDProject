@@ -3,9 +3,10 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script src="~/Scripts/Account/service.js"></script>
-<script src="~/Scripts/Account/viewModel.js"></script>
-<script src="~/Scripts/Account/start.js"></script>
+<script src="~/Content/ckfinder/ckfinder.js"></script>
+<script src="~/Scripts/Product/service.js"></script>
+<script src="~/Scripts/Product/viewModel.js"></script>
+<script src="~/Scripts/Product/start.js"></script>
 <link href="~/Content/Product/main.css" rel="stylesheet" />
 @{ Admins admin = (Admins)Session["Admin"]; }
 <!--new content-->
@@ -26,7 +27,7 @@
                <table>
                    <tr>
                        <td>Category</td>
-                       <td><select class="form-control"></select></td>
+                       <td><select class="form-control" data-bind="options:$root.lstCategories, optionsText: 'name', optionsValue: 'categoryId', value: $root.categoryId"></select></td>
                    </tr>
                    <tr>
                        <td>Name</td>
@@ -65,7 +66,10 @@
                                            </tr>
                                            <tr>
                                                <td>Link</td>
-                                               <td><input type="text" maxlength="100" class="form-control" /></td>
+                                               <td>
+                                                   <label data-bind="text: $root.link"></label>
+                                                   <button type="button" id="getImage">Get image</button>
+                                               </td>
                                            </tr>
                                            <tr>
                                                <td>Priority</td>

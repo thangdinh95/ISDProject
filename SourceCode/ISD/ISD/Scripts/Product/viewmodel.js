@@ -3,11 +3,21 @@ var ScreenModel = function () {
     var self = this;
 
     self.lstProducts = ko.observableArray([]);
+    self.lstCategories = ko.observableArray([]);
+    self.categoryId = ko.observable();
     self.product = ko.observable(new Product());
     self.productBusiness = ko.observable(new ProductBusiness());
     self.canRemove = ko.observable(false);
     self.isCreate = ko.observable(true);
-
+    self.link = ko.observable("");
+    $("#getImage").click(function () {
+        var ckFinder = new CKFinder();
+        ckFinder.selectActionFunction = function (url) {
+            self.link(url);
+        }
+        ckFinder.popup();
+    });
+   
 }
 
 
@@ -17,6 +27,9 @@ ScreenModel.prototype.start = function () {
         self.lstProducts(data);
         $("#grid").igGrid("option", "dataSource", self.lstProducts());
         self.product().modifiedBy(parseInt($("#modifiedBy").val()));
+    });
+    service.getAllCategory().done(function (data) {
+        self.lstCategories(data);
     });
 }
 
@@ -37,6 +50,7 @@ ScreenModel.prototype.create = function () {
 
 ScreenModel.prototype.register = function () {
     var self = this;
+    console.log(self.categoryId());
 }
 
 ScreenModel.prototype.remove = function () {

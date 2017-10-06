@@ -4,7 +4,6 @@ var ScreenModel = function () {
 
     self.lstProducts = ko.observableArray([]);
     self.lstCategories = ko.observableArray([]);
-    self.categoryId = ko.observable();
     self.product = ko.observable(new Product());
     self.productBusiness = ko.observable(new ProductBusiness());
     self.canRemove = ko.observable(false);
@@ -50,7 +49,7 @@ ScreenModel.prototype.create = function () {
 
 ScreenModel.prototype.register = function () {
     var self = this;
-    console.log(self.categoryId());
+    console.log(self.product().categoryId());
 }
 
 ScreenModel.prototype.remove = function () {

@@ -1,4 +1,4 @@
-﻿
+﻿//
 var ScreenModel = function () {
     var self = this;
 

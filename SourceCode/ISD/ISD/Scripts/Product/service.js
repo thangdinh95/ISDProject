@@ -1,4 +1,5 @@
-﻿var service = function () {
+﻿//
+var service = function () {
     var parentPath = "api/admin/productMN";
     var path = {
         getAllProducts: "find/getAllProducts",

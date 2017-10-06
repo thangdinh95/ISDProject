@@ -1,4 +1,5 @@
-﻿var vm = {};
+﻿//
+var vm = {};
 $(function () {
     vm = new ScreenModel();
     InitAction();

@@ -6,7 +6,6 @@
     height: 140px !important;
     resize: none;
 }
-.selectImg select{
-    width: 200px;
-    height: 300px;
+#imageGrid {
+    overflow-x: scroll;
 }

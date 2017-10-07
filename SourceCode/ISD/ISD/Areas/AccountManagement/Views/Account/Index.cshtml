@@ -1,6 +1,6 @@
 ﻿@using ISD.Areas.AccountManagement.Models;
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Account management";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="~/Scripts/Account/service.js"></script>
@@ -11,6 +11,7 @@
 <div class="divCover">
     <table class="tblCover">
         <tr>
+            <!--các nút chức năng-->
             <td colspan="2" class="tdButton">
                 <button type="button" class="btn btn-default" data-bind="click: $root.create">Create</button>
                 <button type="button" class="btn btn-primary" data-bind="click: $root.register">Register</button>
@@ -19,9 +20,11 @@
         </tr>
         <tr>
             <td>
+                <!--bảng hiện thị các danh sách các tài khoản-->
                 <table id="grid"></table>
             </td>
             <td class="leftSide">
+                <!--form thông tin của 1 tài khoản-->
                 <table data-bind="with: $root.admin">
                     <tr>
                         <td>Name</td>

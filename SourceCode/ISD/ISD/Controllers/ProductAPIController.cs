@@ -35,12 +35,25 @@ namespace ISD.Controllers
         }
         #endregion
 
-        #region get all image by product
+        #region getDataById
         [HttpPost]
-        [Route("find/getAllImages")]
-        public List<Images> getAllImages(int productId)
+        [Route("find/getProductById")]
+        public ProductBusinessObject getAllImages(int productId)
         {
-            return imageRepository.getAll(productId);
+            ProductBusinessObject productBusinessObject = new ProductBusinessObject();
+            productBusinessObject.lstImages = imageRepository.getAll(productId);
+            productBusinessObject.product = productRepository.getDataById(productId);
+            return productBusinessObject;
+        }
+        #endregion
+
+        #region get image by id
+        [HttpPost]
+        [Route("find/getImageById")]
+        public Images getAllImageById(int imageId)
+        {
+            Images image = imageRepository.getDataById(imageId);
+            return image;
         }
         #endregion
 
@@ -52,6 +65,7 @@ namespace ISD.Controllers
             return productBuzRepository.create(command);
         }
         #endregion
+
         #region update
         [HttpPost]
         [Route("command/update")]
@@ -60,6 +74,7 @@ namespace ISD.Controllers
             return productBuzRepository.update(command);
         }
         #endregion
+
         #region remove
         [HttpPost]
         [Route("command/remove")]

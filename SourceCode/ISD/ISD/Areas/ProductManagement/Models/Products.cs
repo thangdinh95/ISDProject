@@ -11,7 +11,8 @@ namespace ISD.Areas.ProductManagement.Models
         public int categoryId { get; set; }
         public string categoryName { get; set; }
         public string name { get; set; }
-        public double price { get; set; }
+        public double inPrice { get; set; }
+        public double outPrice { get; set; }
         public ProductStatus status { get; set; }
         public string description { get; set; }
         public int createdBy { get; set; }

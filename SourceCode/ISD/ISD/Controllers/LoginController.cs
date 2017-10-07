@@ -11,6 +11,7 @@ namespace ISD.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            // skill session
             Session["Admin"] = null;
             return View();
         }

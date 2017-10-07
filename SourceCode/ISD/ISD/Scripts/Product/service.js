@@ -3,7 +3,8 @@ var service = function () {
     var parentPath = "/api/admin/productMN/";
     var path = {
         getAllProducts: "find/getAllProducts",
-        getAllImages: "find/getAllImages",
+        getProductById: "find/getProductById",
+        getImageById:"find/getImageById",
         create: "command/create",
         update: "command/update",
         remove: "command/remove",
@@ -13,8 +14,11 @@ var service = function () {
     service.getAllProducts = function () {
         return common.ajax(parentPath + path.getAllProducts, null, "post");
     }
-    service.getAllImages = function (productId) {
-        return common.ajax(parentPath + path.getAllImages + "?productId=" + productId, null, "post");
+    service.getProductById = function (productId) {
+        return common.ajax(parentPath + path.getProductById + "?productId=" + productId, null, "post");
+    }
+    service.getImageById = function (imageId) {
+        return common.ajax(parentPath + path.getImageById + "?imageId=" + imageId, null, "post");
     }
     service.create = function (obj) {
         return common.ajax(parentPath + path.create, null, "post");

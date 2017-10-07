@@ -11,17 +11,18 @@ function InitAction() {
         changeMonth: true,
         yearRange: '1930:2016'
     });
+
+    //vẽ bảng hiện thị thông tin danh sách các tài khoản
     $("#grid").igGrid({
-        primaryKey: "adminId",
+        primaryKey: "adminId",//dữ liệu được lấy khi mà click vào 1 dòng trong bảng
         width: '600px',
-        height: '700px',
+        height: '500px',
         columns: [
             { headerText: "Admin Id", key: "adminId", dataType: "number", width: "15%", hidden: true },
             { headerText: "Name", key: "name", dataType: "string", width: "25%" },
             { headerText: "Account", key: "account", dataType: "string", width: "25%" },       
             { headerText: "Address", key: "address", dataType: "address", width: "35%" }
         ],
-        autoCommit: true,
         features: [
             {
                 name: "Sorting",
@@ -43,6 +44,7 @@ function InitAction() {
             },
                 {
                     name: 'Selection'
+                     // sư kiện khi lựa chọn 1 dòng trong bảng
                     ,rowSelectionChanging: gridcheckboxStateChanging
                 },
             {

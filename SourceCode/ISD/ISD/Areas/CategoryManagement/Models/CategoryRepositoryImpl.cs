@@ -23,8 +23,9 @@ namespace ISD.Areas.CategoryManagement.Models
             + " VALUES(@NAME, @DESCRIPTION, @CREATEDBY, @CREATEDDATE)";
         private const string UPDATE = "UPDATE CATEGORIES SET NAME = @NAME, [DESCRIPTION] = @DESCRIPTION,"
             + " MODIFIEDBY = @MODIFIEDBY, MODIFIEDDATE = @MODIFIEDDATE WHERE CATEGORYID = @CATEGORYID";
+        private const string COUNT_PRODUCT_IN_CATEGORY = "SELECT COUNT(*) FROM PRODUCTS WHERE CATEGORYID = @CATEGORYID";
         private const string REMOVE = "DELETE CATEGORIES WHERE CATEGORYID = @CATEGORYID";
-        private const string CHECK_CTG_NAME_EXIST = "SELECT COUNT(*) FROM CATEGORIES WHERE NAME = @NAME";
+        private const string CHECK_CTG_NAME_EXIST = "SELECT COUNT(*) FROM CATEGORIES WHERE NAME = @NAME AND NOT(NAME = @CURRENTNAME)";// so sanh name cua 4 cai con lai
         #endregion
 
         #region Create
@@ -61,8 +62,18 @@ namespace ISD.Areas.CategoryManagement.Models
         #region remove
         public RespondingRequest remove(int categoryId)
         {
-            return SqlHelper.update(REMOVE,
+            RespondingRequest respondingRequest = new RespondingRequest();
+            DataTable dt = SqlHelper.getData(COUNT_PRODUCT_IN_CATEGORY,
                 new SqlParameter("@CATEGORYID", categoryId));
+            if(Int16.Parse(dt.Rows[0][0].ToString()) > 0)
+            {
+                respondingRequest.status = false;
+                respondingRequest.message = "Can not remove: Category still contains products.";
+            }
+            else
+                respondingRequest =  SqlHelper.update(REMOVE,
+                new SqlParameter("@CATEGORYID", categoryId));
+            return respondingRequest;
         }
         #endregion
 
@@ -96,11 +107,12 @@ namespace ISD.Areas.CategoryManagement.Models
         #endregion
 
         #region check category name exist
-        public RespondingRequest checkCtgNameExist(string ctgName)
+        public RespondingRequest checkCtgNameExist(string ctgName, string currentName)
         {
             RespondingRequest respondingRequest = new RespondingRequest();
             DataTable dt = SqlHelper.getData(CHECK_CTG_NAME_EXIST,
-                new SqlParameter("@NAME", ctgName));
+                new SqlParameter("@NAME", ctgName),
+                 new SqlParameter("@CURRENTNAME", currentName));
             respondingRequest.status = Int16.Parse(dt.Rows[0][0].ToString()) > 0;
             if (respondingRequest.status)
                 respondingRequest.message = "Category name has already been existed!";

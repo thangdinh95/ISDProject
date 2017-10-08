@@ -14,6 +14,6 @@ namespace ISD.Areas.CategoryManagement.Models
         RespondingRequest create(Categories category);
         RespondingRequest update(Categories category);
         RespondingRequest remove(int categoryId);
-        RespondingRequest checkCtgNameExist(string ctgName);
+        RespondingRequest checkCtgNameExist(string ctgName, string currentName);
     }
 }

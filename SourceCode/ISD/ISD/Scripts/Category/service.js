@@ -1,12 +1,12 @@
 ﻿var service = function () {
     var parentPath = "/api/admin/categoryMN/";
-    var path = {
+    var path = { //lay link trong server
         getAll: "find/getAll",
         getById: "find/getById",
         create: "command/create",
         update: "command/update",
         remove: "command/remove",
-        checkCtgNameExist: "find/checkCtgNameExist"
+        checkCtgNameExist: "find/checkCtgNameExist"// k dc lap lai trong cate
     };
     var service = {};
     service.getAll = function () {
@@ -30,8 +30,11 @@
         return common.ajax(parentPath + path.remove, obj, "post");
     }
 
-    service.checkCtgNameExist = function(ctgName){
-        return common.ajax(parentPath + path.checkCtgNameExist + "?ctgName=" + ctgName, null, "post");
+    service.checkCtgNameExist = function (ctgName, currentName) {
+        var command = {
+            ctgName: ctgName, currentName:currentName
+        };
+        return common.ajax(parentPath + path.checkCtgNameExist, command, "post");
     }
     return service;
 }();

@@ -15,7 +15,7 @@ function InitAction() {
             { headerText: "Name", key: "name", dataType: "string", width: "25%" },
             { headerText: "Description", key: "description", dataType: "string", width: "65%" }
         ],
-        autoCommit: true,
+       
         features: [
             {
                 name: "Sorting",

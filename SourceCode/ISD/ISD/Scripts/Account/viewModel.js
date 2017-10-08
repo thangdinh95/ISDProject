@@ -18,6 +18,7 @@ var ScreenModel = function () {
 ScreenModel.prototype.start = function () {
     var self = this;
     service.getAll().done(function (data) {
+        //fill data into table
         self.lstAccount(data);
         $("#grid").igGrid("option", "dataSource", self.lstAccount());
         self.admin().modifiedBy(parseInt($("#modifiedBy").val()));
@@ -36,14 +37,15 @@ ScreenModel.prototype.getById = function (id) {
 
 ScreenModel.prototype.create = function () {
     var self = this;
-    self.setData({});
-    self.canRemove(false);
+    self.setData({});//clear form
+    self.canRemove(false);// disable remove 
     self.isCreate(true);
 }
 
 ScreenModel.prototype.register = function () {
     var self = this;
     var obj = ko.toJSON(self.admin());
+    
     var correctRequired = checkRequired(self.admin());
     if (correctRequired) {
         if (self.isCreate()) {

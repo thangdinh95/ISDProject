@@ -33,9 +33,9 @@ namespace ISD.Controllers
 
         [HttpPost]
         [Route("find/checkCtgNameExist")]
-        public RespondingRequest checkCtgNameExist(string ctgName)
+        public RespondingRequest checkCtgNameExist(CheckCtgExistObject command)
         {
-            return categoryRepository.checkCtgNameExist(ctgName);
+            return categoryRepository.checkCtgNameExist(command.ctgName, command.currentName);
         }
 
         [HttpPost]
@@ -95,12 +95,16 @@ namespace ISD.Controllers
                 logRepository.create(new Logs()
                 {
                     type = LOGTYPE.REMOVE,
-                    content = logRepository.logContent(LOGTYPE.REMOVE,"Category " + category.name, staff.account),
+                    content = logRepository.logContent(LOGTYPE.REMOVE, "Category " + category.name, staff.account),
                     createdBy = staff.adminId,
                     createdDate = DateTime.Now
                 });
             }
             return respondingRequest;
         }
+    }
+    public class CheckCtgExistObject{
+        public string ctgName { get; set; }
+        public string currentName { get; set; }
     }
 }

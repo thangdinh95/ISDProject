@@ -51,9 +51,9 @@ namespace ISD.Areas.AccountManagement.Models
         public List<Admins> getData()
         {
             List<Admins> lstAdmins = new List<Admins>();
-            DataTable dt = SqlHelper.getData(SELECT_ALL_DATA);
+            DataTable dt = SqlHelper.getData(SELECT_ALL_DATA);//lay dl db
             foreach(DataRow dr in dt.Rows)
-                lstAdmins.Add(toObject(dr));
+                lstAdmins.Add(toObject(dr));//maping du lieu cua db sang object
             return lstAdmins;
         }
 
@@ -119,7 +119,7 @@ namespace ISD.Areas.AccountManagement.Models
              */
             Admins admin = new Admins()
             {
-                adminId = Int16.Parse(dr["ADMINID"].ToString()),
+                adminId = Int16.Parse(dr["ADMINID"].ToString()),//chu do la ten cot trong db, ben trai la ten thuoc tinh
                 account = dr["ACCOUNT"].ToString(),
                 password = dr["PASSWORD"].ToString(),
                 name = dr["NAME"].ToString(),

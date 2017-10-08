@@ -5,7 +5,7 @@
         var loginInfo = {//data được dùng khi gửi request bằng ajax
             account: account,
             password: password
-        };
+        };//
         return common.ajax(path, loginInfo, "post");//override ajax
     }
     return service;

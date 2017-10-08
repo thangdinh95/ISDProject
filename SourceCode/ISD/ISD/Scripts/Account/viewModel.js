@@ -23,28 +23,31 @@ ScreenModel.prototype.start = function () {
         self.admin().modifiedBy(parseInt($("#modifiedBy").val()));
     });
 }
-
+//lấy full thông tin của một tài khoản theo Id khi mà người dùng lựa chọn vào 1 dòng trong bảng
 ScreenModel.prototype.getById = function (id) {
     var self = this;
     service.getDataById(id).done(function(data){
+        self.isCreate(false);
         self.setData(data);
         self.canRemove(true);
-        self.isCreate(false);
+        
     });
 };
 
 ScreenModel.prototype.create = function () {
     var self = this;
     self.setData({});
+    self.canRemove(false);
     self.isCreate(true);
 }
 
 ScreenModel.prototype.register = function () {
     var self = this;
     var obj = ko.toJSON(self.admin());
-    var correctRequired = checkRequired(obj);
+    var correctRequired = checkRequired(self.admin());
     if (correctRequired) {
         if (self.isCreate()) {
+            //tạo mới một tải khoản
             service.checkAccountExist(self.admin().account()).done(function (data) {
                 if (data.status)
                     toastr.error(data.message);
@@ -62,6 +65,7 @@ ScreenModel.prototype.register = function () {
                 }
             });
         }
+            //chỉnh sửa một tài khoản
         else service.update(obj).done(function (data) {
             if (data.status) {
                 toastr.success(data.message);
@@ -75,7 +79,7 @@ ScreenModel.prototype.register = function () {
 }
 
 ScreenModel.prototype.remove = function () {
-    var accept = confirm("Are you sure to remov this account?");
+    var accept = confirm("Are you sure to remove this account?");
     var self = this;
     if (accept) {
         var obj = ko.toJSON(self.admin());
@@ -92,6 +96,7 @@ ScreenModel.prototype.remove = function () {
        
 }
 
+//sét dữ liệu vào form
 ScreenModel.prototype.setData = function (data) {
     if (data) {
         var self = this;
@@ -129,12 +134,12 @@ function formateDate(date) {
 }
 
 function checkRequired(obj) {
-    for (var key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            if (obj[key] == "") {                
-                return false;
-            }
+    var allCorrect = true;
+    ko.utils.objectForEach(obj, function (key, value) {
+        if (value() == "") {
+            allCorrect = false;
+            return;
         }
-    }
-    return true;
+    });
+    return allCorrect;
 }

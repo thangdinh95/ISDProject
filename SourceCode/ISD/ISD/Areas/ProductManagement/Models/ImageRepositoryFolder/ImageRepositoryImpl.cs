@@ -74,6 +74,7 @@ namespace ISD.Areas.ProductManagement.Models.ImageRepositoryFolder
         {
             return new Images()
             {
+                imageId = Int16.Parse(dr["IMAGEID"].ToString()),
                 productId = Int16.Parse(dr["PRODUCTID"].ToString()),
                 name = !dr.IsNull("NAME") ? dr["NAME"].ToString() : "",
                 link = dr["LINK"].ToString(),

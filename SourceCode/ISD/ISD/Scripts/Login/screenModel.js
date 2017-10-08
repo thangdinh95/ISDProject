@@ -1,10 +1,10 @@
 ﻿function ScreenModel() {
     var self = this;
-    self.userName = ko.observable("");
+    self.userName = ko.observable(""); // khai bao knockout js đc sử dụng ở html.
     self.password = ko.observable("");
     self.canLogin = ko.observable(true);
 }
-
+// xử lý sự kiện login
 ScreenModel.prototype.login = function () {//prototype gọi đến đối tượng cha (ở đây là ScreenModel). Ở đây dùng để khai báo function 
     var self = this;  
     if (self.canLogin()) {

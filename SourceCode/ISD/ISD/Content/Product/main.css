@@ -1,0 +1,11 @@
+﻿/**new content*/
+.leftSide>table{
+    height: 700px;
+}
+.description {
+    height: 140px !important;
+    resize: none;
+}
+#imageGrid {
+    overflow-x: scroll;
+}

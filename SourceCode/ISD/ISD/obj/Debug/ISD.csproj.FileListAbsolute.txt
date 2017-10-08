@@ -359,6 +359,7 @@ C:\Users\Acer\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\obj\Debug\ISD.cspro
 C:\Users\Acer\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\obj\Debug\ISD.csproj.CoreCompileInputs.cache
 C:\Users\Acer\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\obj\Debug\ISD.dll
 C:\Users\Acer\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\obj\Debug\ISD.pdb
+<<<<<<< HEAD
 C:\Users\adminpc\OneDrive\Documents\New folder\ISDProject\SourceCode\ISD\ISD\bin\ApplicationInsights.config
 C:\Users\adminpc\OneDrive\Documents\New folder\ISDProject\SourceCode\ISD\ISD\bin\roslyn\csc.exe
 C:\Users\adminpc\OneDrive\Documents\New folder\ISDProject\SourceCode\ISD\ISD\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -449,3 +450,9 @@ C:\Users\adminpc\OneDrive\Documents\New folder\ISDProject\SourceCode\ISD\ISD\bin
 C:\Users\adminpc\OneDrive\Documents\New folder\ISDProject\SourceCode\ISD\ISD\obj\Debug\ISD.dll
 C:\Users\adminpc\OneDrive\Documents\New folder\ISDProject\SourceCode\ISD\ISD\obj\Debug\ISD.pdb
 C:\Users\adminpc\OneDrive\Documents\New folder\ISDProject\SourceCode\ISD\ISD\obj\Debug\ISD.csprojResolveAssemblyReference.cache
+=======
+C:\Users\xuan vinh\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\bin\CKFinder.dll
+C:\Users\xuan vinh\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\bin\CKFinder.pdb
+C:\Users\xuanvinh\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\bin\CKFinder.dll
+C:\Users\xuanvinh\Documents\GitHub\ISDProject\SourceCode\ISD\ISD\bin\CKFinder.pdb
+>>>>>>> 290d47dde01b6171ae87cedd00c9cf8d97b98e93

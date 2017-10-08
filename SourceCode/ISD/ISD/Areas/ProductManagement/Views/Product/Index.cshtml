@@ -1,13 +1,15 @@
 ﻿@using ISD.Areas.AccountManagement.Models;
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Product management";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script src="~/Scripts/Account/service.js"></script>
-<script src="~/Scripts/Account/viewModel.js"></script>
-<script src="~/Scripts/Account/start.js"></script>
-<link href="~/Content/Account/main.css" rel="stylesheet" />
+<script src="~/Content/ckfinder/ckfinder.js"></script>
+<script src="~/Scripts/Product/service.js"></script>
+<script src="~/Scripts/Product/viewModel.js"></script>
+<script src="~/Scripts/Product/start.js"></script>
+<link href="~/Content/Product/main.css" rel="stylesheet" />
 @{ Admins admin = (Admins)Session["Admin"]; }
+<!--new content-->
 <div class="divCover">
     <table class="tblCover">
         <tr>
@@ -22,49 +24,61 @@
                 <table id="grid"></table>
             </td>
             <td class="leftSide">
-               <table>
+               <table data-bind="with: product">
                    <tr>
                        <td>Category</td>
-                       <td><select class="form-control"></select></td>
+                       <td><select class="form-control" data-bind="options:$root.lstCategories, optionsText: 'name', optionsValue: 'categoryId', value: $root.product().categoryId"></select></td>
                    </tr>
                    <tr>
                        <td>Name</td>
-                       <td><input type="text" maxlength="100" class="form-control" autofocus/></td>
+                       <td><input type="text" data-bind="value: name" maxlength="100" class="form-control" autofocus/></td>
                    </tr>
                    <tr>
-                       <td>Price</td>
-                       <td><input type="number" min="0" max="10000000" class="form-control"/></td>
+                       <td>In price</td>
+                       <td><input type="number" data-bind="value: inPrice" min="0" max="10000000" class="form-control"/></td>
+                   </tr>
+                   <tr>
+                       <td>Out Price</td>
+                       <td><input type="number" data-bind="value: outPrice" min="0" max="10000000" class="form-control" /></td>
                    </tr>
                    <tr>
                        <td>Quantity</td>
-                       <td><input type="number" min="0" max="1000" class="form-control"/></td>
+                       <td><input type="number" data-bind="value: status().quantity" min="0" max="1000" class="form-control"/></td>
                    </tr>
                    <tr>
                        <td>Description</td>
-                       <td><textarea maxlength="500" class="form-control"></textarea></td>
+                       <td><textarea maxlength="500" data-bind="value: description" class="form-control description"></textarea></td>
                    </tr>
                    <tr>
                        <td>Image</td>
                        <td>
                            <table>
                                <tr>
-                                   <td colspan="2"></td>
-                               </tr>
+                                   <td colspan="2">
+                                       <button type="button" class="btn btn-default" data-bind="">Create</button>
+                                       <button type="button" class="btn btn-primary" data-bind="">Register</button>
+                                       <button type="button" class="btn btn-danger" data-bind="">Remove</button>
+                                   </td>
+                               </tr>                               
                                <tr>
-                                   <td><select class="form-control"><!--display images--></select></td>
+                                   <td class="selectImg">
+                                       <table id="imageGrid"></table>
+                                   </td>
                                    <td>
-                                       <table>
+                                       <table data-bind="with: $root.image()">
                                            <tr>
                                                <td>Name</td>
-                                               <td><input type="text" maxlength="100" class="form-control"/></td>
+                                               <td><input type="text" maxlength="100" data-bind="value: name"  class="form-control"/></td>
                                            </tr>
                                            <tr>
-                                               <td>Link</td>
-                                               <td></td>
+                                               <td>Image</td>
+                                               <td>
+                                                   <button type="button" id="getImage">Get image</button>
+                                               </td>
                                            </tr>
                                            <tr>
                                                <td>Priority</td>
-                                               <td><input type="number" min="1" max="10" class="form-control"/></td>
+                                               <td><input type="number" data-bind="value: priority" min="1" max="10" class="form-control"/></td>
                                            </tr>
                                        </table>
                                    </td>

@@ -1,4 +1,5 @@
-﻿using ISD.Areas.LogManagement.Models;
+﻿using GemBox.Spreadsheet;
+using ISD.Areas.LogManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,7 @@ namespace ISD.Controllers
         {
             return logRepository.getData();
         }
+
+       
     }
 }

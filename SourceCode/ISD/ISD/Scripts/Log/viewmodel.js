@@ -24,3 +24,7 @@ ScreenModel.prototype.start = function () {
     });
 }
 
+ScreenModel.prototype.print = function () {
+    service.print();
+}
+

@@ -1,7 +1,6 @@
 ﻿
 var ScreenModel = function () {
     var self = this;
-   
     self.lstAccount = ko.observableArray([]);
     self.subcribeValue = ko.observable();
     self.admin = ko.observable(new Admins());
@@ -17,13 +16,17 @@ var ScreenModel = function () {
 
 ScreenModel.prototype.start = function () {
     var self = this;
-    service.getAll().done(function (data) {
+   
+    service.getAll()//send request
+        .done(function (data) {// receive response
         //fill data into table
         self.lstAccount(data);
         $("#grid").igGrid("option", "dataSource", self.lstAccount());
         self.admin().modifiedBy(parseInt($("#modifiedBy").val()));
     });
 }
+
+
 //lấy full thông tin của một tài khoản theo Id khi mà người dùng lựa chọn vào 1 dòng trong bảng
 ScreenModel.prototype.getById = function (id) {
     var self = this;
@@ -39,23 +42,25 @@ ScreenModel.prototype.create = function () {
     var self = this;
     self.setData({});//clear form
     self.canRemove(false);// disable remove 
-    self.isCreate(true);
+    self.isCreate(true);// chuyển thao tác nút register là thêm mới (có 2 thao tác là thêm mới và chỉnh sửa)
 }
 
 ScreenModel.prototype.register = function () {
     var self = this;
-    var obj = ko.toJSON(self.admin());
+    var obj = ko.toJSON(self.admin());// chuyển đổi  knockout object sang json object
     
-    var correctRequired = checkRequired(self.admin());
+    var correctRequired = checkRequired(self.admin());// check all fields required
     if (correctRequired) {
         if (self.isCreate()) {
             //tạo mới một tải khoản
-            service.checkAccountExist(self.admin().account()).done(function (data) {
-                if (data.status)
+            service.checkAccountExist(self.admin().account())// check account exist
+                .done(function (data) {
+                if (data.status)//1. true: đã tồn tại 2. false: ko tồn tại
                     toastr.error(data.message);
                 else {
+                    //lưu dữ liệu vào trong db
                     service.create(obj).done(function (data) {
-                        if (data.status) {
+                        if (data.status) {//1. true: thành công 2. false: lỗi
                             toastr.success(data.message);
                             self.start();
                             self.create();

@@ -8,7 +8,7 @@ $(function () {
 function InitAction() {
     $("#grid").igGrid({
         width: '1024px',
-        height: '500px',
+        height: '480px',
         columns: [
             { headerText: "Type", key: "type", dataType: "string", width: "20%"},
             { headerText: "Content", key: "content", dataType: "string", width: "60%" },

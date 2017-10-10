@@ -2,7 +2,7 @@
     var common = {};
     common.ajax = function (url, data, type) {// khai bao voi 3 tham so truyen vao
         $.blockUI();//hien message please wait...
-        var d = $.Deferred();// sync trong js
+        var d = $.Deferred();// sync trong js 
         if (!data) data = {};
         if (typeof data === 'object') data = JSON.stringify(data);
         if (!type) type = "post";// type undefine-> post

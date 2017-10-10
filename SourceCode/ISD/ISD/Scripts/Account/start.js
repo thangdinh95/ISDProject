@@ -16,7 +16,7 @@ function InitAction() {
     $("#grid").igGrid({
         primaryKey: "adminId",//dữ liệu được lấy khi mà click vào 1 dòng trong bảng
         width: '600px',
-        height: '500px',
+        height: '480px',
         columns: [
             { headerText: "Admin Id", key: "adminId", dataType: "number", width: "15%", hidden: true },
             { headerText: "Name", key: "name", dataType: "string", width: "25%" },

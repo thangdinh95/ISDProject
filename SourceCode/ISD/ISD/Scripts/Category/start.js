@@ -9,7 +9,7 @@ function InitAction() {
     $("#grid").igGrid({
         primaryKey: "categoryId",
         width: '600px',
-        height: '500px',
+        height: '450px',
         columns: [
             { headerText: "", key: "categoryId", dataType: "number", width: "15%", hidden: true },
             { headerText: "Name", key: "name", dataType: "string", width: "25%" },

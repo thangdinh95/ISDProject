@@ -237,9 +237,6 @@
     <Compile Include="Areas\ProductManagement\Models\ImageRepositoryFolder\ImageRepository.cs" />
     <Compile Include="Areas\ProductManagement\Models\ImageRepositoryFolder\ImageRepositoryImpl.cs" />
     <Compile Include="Areas\ProductManagement\Models\Images.cs" />
-    <Compile Include="Areas\ProductManagement\Models\ProductBusinessRepository\ProductBusinessObject.cs" />
-    <Compile Include="Areas\ProductManagement\Models\ProductBusinessRepository\ProductBuzRepository.cs" />
-    <Compile Include="Areas\ProductManagement\Models\ProductBusinessRepository\ProductBuzRepositoryImpl.cs" />
     <Compile Include="Areas\ProductManagement\Models\ProductRepositoryFolder\ProductRepository.cs" />
     <Compile Include="Areas\ProductManagement\Models\ProductRepositoryFolder\ProductRepositoryImpl.cs" />
     <Compile Include="Areas\ProductManagement\Models\Products.cs" />

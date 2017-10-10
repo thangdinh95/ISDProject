@@ -34,7 +34,9 @@ namespace ISD.Controllers
                 respondingRequest.message = admin.adminId.ToString();
             }
 
-            if (respondingRequest.status == true)
+
+            // Create log
+            if (respondingRequest.status == true)// khi login thành công thì ghi log
             {                
                 logRepository.create(new Logs()
                 {

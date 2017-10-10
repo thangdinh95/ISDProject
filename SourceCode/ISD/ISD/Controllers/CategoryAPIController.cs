@@ -48,6 +48,8 @@ namespace ISD.Controllers
 
             // gọi đến model để update dữ liệu
             respondingRequest = categoryRepository.create(category);
+
+            //write log
             if (respondingRequest.status)
             {
                 Admins staff = adminRepository.getDataById(category.modifiedBy);
@@ -69,6 +71,8 @@ namespace ISD.Controllers
             category.modifiedDate = DateTime.Now;
             RespondingRequest respondingRequest = new RespondingRequest();
             respondingRequest = categoryRepository.update(category);
+
+            //write log
             if (respondingRequest.status)
             {
                 Admins staff = adminRepository.getDataById(category.modifiedBy);
@@ -89,6 +93,8 @@ namespace ISD.Controllers
         {
             RespondingRequest respondingRequest = new RespondingRequest();
             respondingRequest = categoryRepository.remove(category.categoryId);
+
+            //write log
             if (respondingRequest.status)
             {
                 Admins staff = adminRepository.getDataById(category.modifiedBy);

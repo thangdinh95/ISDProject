@@ -48,6 +48,8 @@ namespace ISD.Controllers
             admin.createdBy = admin.modifiedBy;
             RespondingRequest respondingRequest = new RespondingRequest();
             respondingRequest = adminRepository.create(admin);
+
+            //write log
             if (respondingRequest.status)
             {
                 Admins staff = adminRepository.getDataById(admin.modifiedBy);
@@ -69,6 +71,8 @@ namespace ISD.Controllers
             admin.modifiedDate = DateTime.Now;
             RespondingRequest respondingRequest = new RespondingRequest();
             respondingRequest = adminRepository.update(admin);
+
+            //write log
             if (respondingRequest.status)
             {
                 Admins staff = adminRepository.getDataById(admin.modifiedBy);
@@ -89,6 +93,8 @@ namespace ISD.Controllers
         {
             RespondingRequest respondingRequest = new RespondingRequest();
             respondingRequest = adminRepository.remove(admin.adminId);
+
+            //Write log
             if (respondingRequest.status)
             {
                 Admins staff = adminRepository.getDataById(admin.modifiedBy);

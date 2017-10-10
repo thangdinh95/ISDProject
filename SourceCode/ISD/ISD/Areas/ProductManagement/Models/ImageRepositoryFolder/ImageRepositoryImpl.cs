@@ -15,8 +15,10 @@ namespace ISD.Areas.ProductManagement.Models.ImageRepositoryFolder
         #region declare sql query
         private const string GET_DATA = "SELECT * FROM IMAGES WHERE PRODUCTID = @PRODUCTID";
         private const string GET_DATA_BY_ID = "SELECT * FROM IMAGES WHERE IMAGEID = @IMAGEID";
-        private const string CREATE = "INSERT INTO IMAGES (PRODUCTID, NAME, LINK, [PRIORITY])"
+        private const string CREATE = "INSERT INTO IMAGES (PRODUCTID, NAME, LINK, [PRIORITY] = )"
             + " VALUES(@PRODUCTID, @NAME, @LINK, @PRIORITY)";
+        private const string UPDATE = "UPDAET PRODUCTS SET NAME = @NAME, LINK = @LINK, [PRIORITY] = @PRIORITY)"
+            + " WHERE IMAGEID = @IMAGEID";
         private const string REMOVE_BY_RPODUCT_ID = "DELETE IMAGES WHERE PRODUCTID = @PRODUCTID";
         private const string REMOVE = "DELETE IMAGES WHERE IMAGEID = @IMAGEID";
         #endregion
@@ -53,6 +55,17 @@ namespace ISD.Areas.ProductManagement.Models.ImageRepositoryFolder
         }
         #endregion
 
+        #region update
+        public RespondingRequest update(Images image)
+        {
+            return SqlHelper.update(UPDATE,
+                new SqlParameter("@IMAGEID", image.imageId),
+                new SqlParameter("@NAME", image.name),
+                new SqlParameter("@LINK", image.link),
+                new SqlParameter("@PRIORITY", image.priority));
+        }
+        #endregion
+
         #region remove by productId
         public RespondingRequest removeByProductId(int productId)
         {
@@ -80,7 +93,7 @@ namespace ISD.Areas.ProductManagement.Models.ImageRepositoryFolder
                 link = dr["LINK"].ToString(),
                 priority = Int16.Parse(dr["PRIORITY"].ToString())
             };
-        }
+        }      
         #endregion
     }
 }

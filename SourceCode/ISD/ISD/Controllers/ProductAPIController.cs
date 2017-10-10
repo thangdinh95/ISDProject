@@ -1,7 +1,6 @@
 ﻿using ISD.Areas.LogManagement.Models;
 using ISD.Areas.ProductManagement.Models;
 using ISD.Areas.ProductManagement.Models.ImageRepositoryFolder;
-using ISD.Areas.ProductManagement.Models.ProductBusinessRepository;
 using ISD.Areas.ProductManagement.Models.ProductRepositoryFolder;
 using ISD.Areas.ProductManagement.Models.ProductStatusRepositoryFolder;
 using ISD.CommonEntity;
@@ -22,7 +21,6 @@ namespace ISD.Controllers
         private ProductRepository productRepository = new ProductRepositoryImpl();
         private ProductStatusRepository productStatusRepository = new ProductStatusRepositoryImpl();
         private ImageRepository imageRepository = new ImageRepositoryImpl();
-        private ProductBuzRepository productBuzRepository = new ProductBuzRepositoryImpl();
         private LogRepository logRepository = new LogRepositoryImpl();
         #endregion
 
@@ -38,7 +36,7 @@ namespace ISD.Controllers
         #region getDataById
         [HttpPost]
         [Route("find/getProductById")]
-        public ProductBusinessObject getAllImages(int productId)
+        public ProductBusinessObject getProductById(int productId)
         {
             ProductBusinessObject productBusinessObject = new ProductBusinessObject();
             productBusinessObject.lstImages = imageRepository.getAll(productId);
@@ -57,32 +55,46 @@ namespace ISD.Controllers
         }
         #endregion
 
-        #region create
+        #region create product
         [HttpPost]
-        [Route("command/create")]
-        public RespondingRequest create(ProductBusinessObject command)
+        [Route("command/product/create")]
+        public RespondingRequest createProduct(Products command)
         {
-            return productBuzRepository.create(command);
+            return productRepository.create(command);
         }
         #endregion
 
-        #region update
+        #region update product
         [HttpPost]
-        [Route("command/update")]
-        public RespondingRequest update(ProductBusinessObject command)
+        [Route("command/product/update")]
+        public RespondingRequest updateProduct(Products command)
         {
-            return productBuzRepository.update(command);
+            return productRepository.update(command);
         }
         #endregion
 
-        #region remove
+        #region remove product
         [HttpPost]
-        [Route("command/remove")]
-        public RespondingRequest remove(ProductBusinessObject command)
+        [Route("command/product/remove")]
+        public RespondingRequest removeProduct(Products command)
         {
-            return productBuzRepository.remove(command);
+            return productRepository.remove(command);
         }
         #endregion
 
+        #region create image
+        [HttpPost]
+        [Route("command/image/create")]
+        public RespondingRequest updateImage(Images command)
+        {
+            return imageRepository.create(command);
+        }
+        #endregion
+
+    }
+    public class ProductBusinessObject
+    {
+        public Products product { get; set; }
+        public List<Images> lstImages { get; set; }
     }
 }

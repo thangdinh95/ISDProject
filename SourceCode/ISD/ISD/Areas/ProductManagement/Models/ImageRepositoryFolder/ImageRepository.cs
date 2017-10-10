@@ -12,6 +12,7 @@ namespace ISD.Areas.ProductManagement.Models.ImageRepositoryFolder
         List<Images> getAll(int pId);
         Images getDataById(int imageId);
         RespondingRequest create(Images image);
+        RespondingRequest update(Images image);
         RespondingRequest removeByProductId(int productId);
         RespondingRequest remove(Images image);
     }

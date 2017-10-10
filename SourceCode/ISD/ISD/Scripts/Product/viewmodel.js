@@ -4,9 +4,8 @@ var ScreenModel = function () {
 
     self.lstProducts = ko.observableArray([]);
     self.lstCategories = ko.observableArray([]);
-    self.lstImages = ko.observable();
-    self.image = ko.observable(new Image());
-    
+    self.lstImages = ko.observableArray([]);
+    self.image = ko.observable(new Image()); 
     self.product = ko.observable(new Product());
     self.productBusiness = ko.observable(new ProductBusiness());
     self.canRemove = ko.observable(false);
@@ -15,14 +14,6 @@ var ScreenModel = function () {
         var ckFinder = new CKFinder();
         ckFinder.selectActionFunction = function (url) {
             self.image().link(url);
-            var arr = _.map(self.lstImages(), function (item) {
-                if (item.imageId == self.image().imageId())
-                    item.link = self.image().link();
-                return item;
-            });
-            self.lstImages([]);
-            self.lstImages(arr);
-            $("#imageGrid").igGrid("option", "dataSource", self.lstImages());
         }
         ckFinder.popup();
     });
@@ -51,21 +42,66 @@ ScreenModel.prototype.getProductById = function (id) {
     });
 };
 
-ScreenModel.prototype.create = function () {
+ScreenModel.prototype.createProduct = function () {
     var self = this;
     self.setData({});
     self.isCreate(true);
 }
 
-ScreenModel.prototype.register = function () {
+
+
+ScreenModel.prototype.registerProduct = function () {
     var self = this;
     console.log(self.lstImages());
 }
 
-ScreenModel.prototype.remove = function () {
+ScreenModel.prototype.removeProduct = function () {
     var accept = confirm("Are you sure to remove this account?");
     var self = this;
     if (accept) {
+    }
+}
+
+ScreenModel.prototype.createImage = function () {
+    var self = this;
+    self.image().isCreate(true);
+    self.image().setData({});
+    self.image().canRemove(false);
+}
+
+ScreenModel.prototype.registerImage = function () {
+    var self = this;
+    if (self.image().link() == "" || !self.image().link()) {
+        toastr.error("Please input image!");
+    } else {
+        var imageObject = {
+            imageId: self.image().imageId(),
+            name: self.image().name(),
+            link: self.image().link(),
+            priority: self.lstImages().length + 1
+        };
+        if (self.image().isCreate()) {
+            //create
+            self.lstImages().push(imageObject);
+            var arr = _.orderBy(self.lstImages(), ['priority'], ['desc']);
+            self.lstImages([]);
+            self.lstImages(arr);
+        } else {
+            //update
+            var index = _.findIndex(self.lstImages(), function (item) { item.imageId = imageObject.imageId; });
+            self.lstImages().splice(index, 1, imageObject);
+        }
+        $("#imageGrid").igGrid("option", "dataSource", self.lstImages());
+    }
+}
+
+ScreenModel.prototype.removeImage = function () {
+    var ok = confirm("Are you sure to remove this image?");
+    if (ok) {
+        var self = this;
+        var imageId = self.image().imageId();
+        _.remove(self.lstImages(), function (image) { return image.imageId == imageId; });
+        console.log(self.lstImages());
     }
 }
 
@@ -87,6 +123,8 @@ ScreenModel.prototype.setData = function (product, lstImages) {
     }
 }
 
+
+
 function Product() {
     var self = this;
     self.productId = ko.observable();
@@ -107,15 +145,21 @@ function ProductStatus() {
 function Image() {
     var self = this;
     self.imageId = ko.observable();
-    self.productId = ko.observable();
     self.name = ko.observable();
     self.link = ko.observable();
     self.priority = ko.observable();
+    self.isCreate = ko.observable(true);
+    self.canRemove = ko.observable(false);
+    
+    
+
     self.getImageById = function (id) {
         service.getImageById(id).done(function (data) {
             self.setData(data);
+            self.canRemove(true);
         });
     }
+
     self.setData = function (data) {
         if (data) {
             self.imageId(data.imageId?data.imageId: -1);

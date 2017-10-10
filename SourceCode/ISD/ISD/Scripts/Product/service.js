@@ -5,9 +5,10 @@ var service = function () {
         getAllProducts: "find/getAllProducts",
         getProductById: "find/getProductById",
         getImageById:"find/getImageById",
-        create: "command/create",
-        update: "command/update",
-        remove: "command/remove",
+        createProduct: "command/product/create",
+        updateProduct: "command/product/update",
+        removeProduct: "command/product/remove",
+        updateImages: "command/image/update",
         getAllCategory: "/api/admin/categoryMN/find/getAll"
     };
     var service = {};
@@ -20,14 +21,17 @@ var service = function () {
     service.getImageById = function (imageId) {
         return common.ajax(parentPath + path.getImageById + "?imageId=" + imageId, null, "post");
     }
-    service.create = function (obj) {
-        return common.ajax(parentPath + path.create, null, "post");
+    service.createProduct = function (obj) {
+        return common.ajax(parentPath + path.createProduct, null, "post");
     }
-    service.update = function (obj) {
-        return common.ajax(parentPath + path.update, null, "post");
+    service.updateProduct = function (obj) {
+        return common.ajax(parentPath + path.updateProduct, null, "post");
     }
-    service.remove = function (obj) {
-        return common.ajax(parentPath + path.remove, null, "post");
+    service.removeProduct = function (obj) {
+        return common.ajax(parentPath + path.removeProduct, null, "post");
+    }
+    service.updateImage = function (obj) {
+        return common.ajax(parentPath + path.updateImages, null, "post");
     }
     service.getAllCategory = function(){
         return common.ajax(path.getAllCategory, null, "post");

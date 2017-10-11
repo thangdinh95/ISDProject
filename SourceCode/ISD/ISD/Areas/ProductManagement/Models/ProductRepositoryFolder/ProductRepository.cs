@@ -11,7 +11,7 @@ namespace ISD.Areas.ProductManagement.Models.ProductRepositoryFolder
     {
         List<Products> getData();
         Products getDataById(int id);
-        RespondingRequest create(Products product);
+        int create(Products product);
         RespondingRequest update(Products product);
         RespondingRequest remove(Products product);
     }

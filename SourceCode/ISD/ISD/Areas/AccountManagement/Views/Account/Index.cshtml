@@ -27,35 +27,35 @@
                 <!--form thông tin của 1 tài khoản-->
                 <table data-bind="with: $root.admin">
                     <tr>
-                        <td>Name</td>
+                        <td class="required">Name</td>
                         <td><input type="text" maxlength="50" data-bind="value: name" class="form-control" required/></td>
                     </tr>
                     <tr>
-                        <td>Account</td>
+                        <td class="required">Account</td>
                         <td><input type="text" maxlength="20" data-bind="value: account, enable: $root.isCreate" class="form-control" required /></td>
                     </tr>
                     <tr data-bind="visible: $root.isCreate">
-                        <td>Password</td>
+                        <td class="required">Password</td>
                         <td><input type="password" maxlength="20" data-bind="value: password" class="form-control" required /></td>
                     </tr>
                     <tr>
-                        <td>Birthday</td>
+                        <td class="required">Birthday</td>
                         <td><input type="text" data-bind="value: birthday" id="birthday" class="form-control" required /></td>
                     </tr>
                     <tr>
-                        <td>Phone</td>
+                        <td class="required">Phone</td>
                         <td><input type="text" maxlength="20" data-bind="value: phone" class="form-control" required /></td>
                     </tr>
                     <tr>
-                        <td>Mail</td>
+                        <td class="required">Mail</td>
                         <td><input type="email" maxlength="100" data-bind="value: mail, enable: $root.isCreate" class="form-control" required /></td>
                     </tr>
                     <tr>
-                        <td>Address</td>
+                        <td class="required">Address</td>
                         <td><input type="text" maxlength="200" data-bind="value: address" class="form-control" required /></td>
                     </tr>
                     <tr>
-                        <td>Role</td>
+                        <td class="required">Role</td>
                         <td>
                             <select class="form-control" data-bind="options: $root.roleOptions, enable: $root.isCreate, optionsText: 'name', optionsValue: 'id', value: role"></select>
                             <input type="text" value="@admin.adminId.ToString()" data-bind="visible: false" id="modifiedBy" />

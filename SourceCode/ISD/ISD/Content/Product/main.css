@@ -3,7 +3,7 @@
     height: 700px;
 }
 .description {
-    height: 140px !important;
+    height: 100px !important;
     resize: none;
 }
 #imageGrid {

@@ -18,7 +18,7 @@
                 <table id="grid"></table>
             </td>
             <td class="leftSide">
-               <table >
+               <table>
                    <tr>
                        <td colspan="2" class="tdButton">
                            <button type="button" class="btn btn-default" data-bind="click: $root.createProduct">Create</button>
@@ -27,37 +27,41 @@
                        </td>
                    </tr>
                    <tr>
-                       <td>Category</td>
-                       <td><select class="form-control" data-bind="options:$root.lstCategories, optionsText: 'name', optionsValue: 'categoryId', value: $root.product().categoryId"></select></td>
+                       <td class="required">Category</td>
+                       <td><select class="form-control" data-bind="enable: $root.isCreate, options:$root.lstCategories, optionsText: 'name', optionsValue: 'categoryId', value: $root.product().categoryId"></select></td>
                    </tr>
                    <tr>
-                       <td>Name</td>
+                       <td class="required">Name</td>
                        <td><input type="text" data-bind="value: $root.product().name" maxlength="100" class="form-control" autofocus/></td>
                    </tr>
                    <tr>
-                       <td>In price</td>
+                       <td class="required">In price</td>
                        <td><input type="number" data-bind="value:  $root.product().inPrice" min="0" max="10000000" class="form-control"/></td>
                    </tr>
                    <tr>
-                       <td>Out Price</td>
+                       <td class="required">Out Price</td>
                        <td><input type="number" data-bind="value:  $root.product().outPrice" min="0" max="10000000" class="form-control" /></td>
                    </tr>
                    <tr>
-                       <td>Quantity</td>
+                       <td class="required">Quantity</td>
                        <td><input type="number" data-bind="value:  $root.product().status().quantity" min="0" max="1000" class="form-control"/></td>
                    </tr>
                    <tr>
                        <td>Description</td>
-                       <td><textarea maxlength="500" data-bind="value:  $root.product().description" class="form-control description"></textarea></td>
+                       <td>     
+                           <textarea maxlength="500" data-bind="value:  $root.product().description" class="form-control description"></textarea>
+                           <input type="text" value="@admin.adminId.ToString()" data-bind="visible: false" id="modifiedBy" />
+                       </td>
                    </tr>
                    <tr>
                        <td>Image</td>
-                       <td style="height: 330px;width: 465px;">
-                           <table data-bind="visible: false">
+                       <td style="height: 285px;width: 465px;">
+                          
+                           <table>
                                <tr>
                                    <td colspan="2">
-                                       <button type="button" class="btn btn-default" data-bind="click: $root.createImage">Create</button>
-                                       <button type="button" class="btn btn-primary" data-bind="click: $root.registerImage">Register</button>
+                                       <button type="button" class="btn btn-default" data-bind="click: $root.createImage, enable: false">Create</button>
+                                       <button type="button" class="btn btn-primary" data-bind="click: $root.registerImage, enable: false">Register</button>
                                        <button type="button" class="btn btn-danger" data-bind="click: $root.removeImage, enable: $root.image().canRemove">Remove</button>
                                    </td>
                                </tr>                               
@@ -69,19 +73,16 @@
                                        <table data-bind="with: $root.image()">
                                            <tr>
                                                <td>Name</td>
-                                               <td><input type="text" maxlength="100" data-bind="value: name"  class="form-control"/></td>
+                                               <td><input type="text" maxlength="100" data-bind="value: name, enable: false"  class="form-control"/></td>
                                            </tr>
                                            <tr>
                                                <td>Image</td>
                                                <td>
                                                    <img width="35" height="35" data-bind="attr:{src: $root.image().link}"/>
-                                                   <button type="button" id="getImage">Get image</button>
+                                                   <button type="button" id="getImage" data-bind="enable: false">Get image</button>
                                                </td>
                                            </tr>
-                                           <tr>
-                                               <td>Priority</td>
-                                               <td><input type="number" data-bind="value: priority" min="1" max="10" class="form-control"/></td>
-                                           </tr>
+                                           
                                        </table>
                                    </td>
                                </tr>

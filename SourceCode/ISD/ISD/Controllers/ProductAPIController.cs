@@ -1,4 +1,5 @@
-﻿using ISD.Areas.LogManagement.Models;
+﻿using ISD.Areas.AccountManagement.Models;
+using ISD.Areas.LogManagement.Models;
 using ISD.Areas.ProductManagement.Models;
 using ISD.Areas.ProductManagement.Models.ImageRepositoryFolder;
 using ISD.Areas.ProductManagement.Models.ProductRepositoryFolder;
@@ -18,8 +19,8 @@ namespace ISD.Controllers
     {
 
         #region declare repository
-        private ProductRepository productRepository = new ProductRepositoryImpl();
-        private ProductStatusRepository productStatusRepository = new ProductStatusRepositoryImpl();
+        private ProductRepository productRepository = new ProductRepositoryImpl();       
+        private AdminRepository adminRepository = new AdminRepositoryImpl();
         private ImageRepository imageRepository = new ImageRepositoryImpl();
         private LogRepository logRepository = new LogRepositoryImpl();
         #endregion
@@ -58,9 +59,25 @@ namespace ISD.Controllers
         #region create product
         [HttpPost]
         [Route("command/product/create")]
-        public RespondingRequest createProduct(Products command)
+        public int createProduct(Products command)
         {
-            return productRepository.create(command);
+            
+            command.createdBy = command.modifiedBy;
+            command.createdDate = DateTime.Now;
+            int productId = productRepository.create(command);
+            //write log
+            if (productId > 0)
+            {
+                Admins staff = adminRepository.getDataById(command.modifiedBy);
+                logRepository.create(new Logs()
+                {
+                    type = LOGTYPE.CREATE,
+                    content = logRepository.logContent(LOGTYPE.CREATE, "Product " + command.name, staff.account),
+                    createdBy = staff.adminId,
+                    createdDate = DateTime.Now
+                });
+            }
+            return productId;
         }
         #endregion
 
@@ -69,7 +86,23 @@ namespace ISD.Controllers
         [Route("command/product/update")]
         public RespondingRequest updateProduct(Products command)
         {
-            return productRepository.update(command);
+            RespondingRequest respondingRequest = new RespondingRequest();
+            command.modifiedDate = DateTime.Now;
+            respondingRequest = productRepository.update(command);
+
+            //write log
+            if (respondingRequest.status)
+            {             
+                Admins staff = adminRepository.getDataById(command.modifiedBy);
+                logRepository.create(new Logs()
+                {
+                    type = LOGTYPE.UPDATE,
+                    content = logRepository.logContent(LOGTYPE.CREATE, "Product " + command.name, staff.account),
+                    createdBy = staff.adminId,
+                    createdDate = DateTime.Now
+                });
+            }
+            return respondingRequest;
         }
         #endregion
 
@@ -78,7 +111,23 @@ namespace ISD.Controllers
         [Route("command/product/remove")]
         public RespondingRequest removeProduct(Products command)
         {
-            return productRepository.remove(command);
+            
+            RespondingRequest respondingRequest = new RespondingRequest();
+            productRepository.remove(command);
+
+            //write log
+            if (respondingRequest.status)
+            {
+                Admins staff = adminRepository.getDataById(command.modifiedBy);
+                logRepository.create(new Logs()
+                {
+                    type = LOGTYPE.REMOVE,
+                    content = logRepository.logContent(LOGTYPE.REMOVE, "Category " + command.name, staff.account),
+                    createdBy = staff.adminId,
+                    createdDate = DateTime.Now
+                });
+            }
+            return respondingRequest;
         }
         #endregion
 

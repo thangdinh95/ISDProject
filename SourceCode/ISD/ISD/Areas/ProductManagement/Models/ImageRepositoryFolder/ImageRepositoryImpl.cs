@@ -15,9 +15,9 @@ namespace ISD.Areas.ProductManagement.Models.ImageRepositoryFolder
         #region declare sql query
         private const string GET_DATA = "SELECT * FROM IMAGES WHERE PRODUCTID = @PRODUCTID";
         private const string GET_DATA_BY_ID = "SELECT * FROM IMAGES WHERE IMAGEID = @IMAGEID";
-        private const string CREATE = "INSERT INTO IMAGES (PRODUCTID, NAME, LINK, [PRIORITY] = )"
-            + " VALUES(@PRODUCTID, @NAME, @LINK, @PRIORITY)";
-        private const string UPDATE = "UPDAET PRODUCTS SET NAME = @NAME, LINK = @LINK, [PRIORITY] = @PRIORITY)"
+        private const string CREATE = "INSERT INTO IMAGES (PRODUCTID, NAME, LINK)"
+            + " VALUES(@PRODUCTID, @NAME, @LINK)";
+        private const string UPDATE = "UPDAET PRODUCTS SET NAME = @NAME, LINK = @LINK)"
             + " WHERE IMAGEID = @IMAGEID";
         private const string REMOVE_BY_RPODUCT_ID = "DELETE IMAGES WHERE PRODUCTID = @PRODUCTID";
         private const string REMOVE = "DELETE IMAGES WHERE IMAGEID = @IMAGEID";
@@ -50,8 +50,7 @@ namespace ISD.Areas.ProductManagement.Models.ImageRepositoryFolder
             return SqlHelper.update(CREATE,
                 new SqlParameter("@PRODUCTID", image.productId), 
                 new SqlParameter("@NAME", image.name),
-                new SqlParameter("@LINK", image.link),
-                new SqlParameter("@PRIORITY", image.priority));
+                new SqlParameter("@LINK", image.link));
         }
         #endregion
 
@@ -61,8 +60,7 @@ namespace ISD.Areas.ProductManagement.Models.ImageRepositoryFolder
             return SqlHelper.update(UPDATE,
                 new SqlParameter("@IMAGEID", image.imageId),
                 new SqlParameter("@NAME", image.name),
-                new SqlParameter("@LINK", image.link),
-                new SqlParameter("@PRIORITY", image.priority));
+                new SqlParameter("@LINK", image.link));
         }
         #endregion
 
@@ -90,8 +88,7 @@ namespace ISD.Areas.ProductManagement.Models.ImageRepositoryFolder
                 imageId = Int16.Parse(dr["IMAGEID"].ToString()),
                 productId = Int16.Parse(dr["PRODUCTID"].ToString()),
                 name = !dr.IsNull("NAME") ? dr["NAME"].ToString() : "",
-                link = dr["LINK"].ToString(),
-                priority = Int16.Parse(dr["PRIORITY"].ToString())
+                link = dr["LINK"].ToString()
             };
         }      
         #endregion

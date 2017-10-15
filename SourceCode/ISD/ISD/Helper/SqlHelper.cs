@@ -41,7 +41,7 @@ namespace ISD.Helper
                 else cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = query;
                 cmd.Parameters.AddRange(par);
-                if (con.State == ConnectionState.Closed)
+                if (con.State != ConnectionState.Open)
                     con.Open();
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dtReturn);
@@ -54,9 +54,10 @@ namespace ISD.Helper
             }
             finally
             {
-                if (con.State == ConnectionState.Open)
+                if (con.State != ConnectionState.Closed)
                     con.Close();
             }
+
         }
         #endregion
 
@@ -73,7 +74,44 @@ namespace ISD.Helper
                 else cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = query;
                 cmd.Parameters.AddRange(par);
-                if (con.State == ConnectionState.Closed)
+                if (con.State != ConnectionState.Open)
+                    con.Open();
+                int row = cmd.ExecuteNonQuery();
+                if (row >= 1)
+                {
+                    responding.status = true;
+                    responding.message = "Successful!";
+                }
+                else
+                {
+                    responding.status = false;
+                    responding.message = "Fail. Please check again!";
+                }
+            }
+            catch (Exception e)
+            {
+                responding.status = false;
+                responding.message = e.Message;
+            }
+            return responding;
+        }
+        #endregion
+
+        #region Update data tran
+        public static RespondingRequest update(string query,SqlTransaction tran ,params SqlParameter[] par)
+        {
+            responding = new RespondingRequest();
+            try
+            {
+                cmd = new SqlCommand();
+                cmd.Connection = getConection();
+                cmd.Transaction = tran;
+                if (query.Contains(" "))
+                    cmd.CommandType = CommandType.Text;
+                else cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = query;
+                cmd.Parameters.AddRange(par);
+                if (con.State != ConnectionState.Open)
                     con.Open();
                 int row = cmd.ExecuteNonQuery();
                 if (row >= 1)
@@ -94,10 +132,35 @@ namespace ISD.Helper
             }
             finally
             {
-                if (con.State == ConnectionState.Open)
-                    con.Close();
+                //if (con.State == ConnectionState.Open)
+                //con.Close();
             }
             return responding;
+        }
+        #endregion
+
+        #region Create and return data
+        public static object exeScalar(string query, SqlTransaction tran, params SqlParameter[] par)
+        {
+            try
+            {
+                cmd = new SqlCommand();
+                cmd.Connection = getConection();
+                if (query.Contains(" "))
+                    cmd.CommandType = CommandType.Text;
+                else cmd.CommandType = CommandType.StoredProcedure;
+                if (tran != null) cmd.Transaction = tran;
+                cmd.CommandText = query;
+                cmd.Parameters.AddRange(par);
+                if (con.State != ConnectionState.Open)
+                    con.Open();
+                return cmd.ExecuteScalar(); 
+            }
+            catch(Exception e)
+            {
+                string a = e.Message;
+                return null;
+            }
         }
         #endregion
     }

@@ -11,6 +11,5 @@ namespace ISD.Areas.ProductManagement.Models
         public int productId { get; set; }
         public string name { get; set; }
         public string link { get; set; }
-        public int priority { get; set; }
     }
 }

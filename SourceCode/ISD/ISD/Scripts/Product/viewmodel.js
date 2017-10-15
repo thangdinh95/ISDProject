@@ -46,19 +46,58 @@ ScreenModel.prototype.createProduct = function () {
     var self = this;
     self.setData({});
     self.isCreate(true);
+    self.canRemove(false);
+    $("#grid").igGridSelection("selectRow", self.lstProducts().length);
 }
 
 
 
 ScreenModel.prototype.registerProduct = function () {
     var self = this;
-    console.log(self.lstImages());
+    var obj = ko.toJSON(self.product());
+    if (checkRequired(self.product())) {
+        if (self.isCreate()) {
+            service.createProduct(obj).done(function (data) {
+                var productId = parseInt(data);
+                if (productId > 0) {
+                    
+                    self.start();
+                    self.product().productId(productId);
+                    var index = _.findIndex(self.lstProducts(), function (item) { return parseInt(item.productId) = parseInt(self.product().productId()); });
+                    $("#grid").igGridSelection("selectRow", index);
+                } else {
+                    toastr.error("Add product fail!");
+                }
+            });
+        } else {
+            service.updateProduct(obj).done(function (data) {
+                if (data.status) {//1. true: thành công 2. false: lỗi
+                    toastr.success(data.message);
+                    self.start();
+                    var index = _.findIndex(self.lstProducts(), function (item) { return parseInt(item.productId) = parseInt(self.product().productId()); });
+                    $("#grid").igGridSelection("selectRow", index);
+                }
+                else toastr.error(data.message);
+            });
+        }
+       
+    } else toastr.error("Required fields or nagative number!");
 }
 
 ScreenModel.prototype.removeProduct = function () {
     var accept = confirm("Are you sure to remove this account?");
     var self = this;
+    var obj = ko.toJSON(self.product());
     if (accept) {
+        service.removeProduct(obj).done(function (data) {
+            if (data.status) {//1. true: thành công 2. false: lỗi
+                toastr.success(data.message);
+                self.start();
+                var index = _.findIndex(self.lstProducts(), function (item) { return parseInt(item.productId) = parseInt(self.product().productId()); });
+                $("#grid").igGridSelection("selectRow", index);
+            }
+            else toastr.error(data.message);
+        });
     }
 }
 
@@ -77,15 +116,11 @@ ScreenModel.prototype.registerImage = function () {
         var imageObject = {
             imageId: self.image().imageId(),
             name: self.image().name(),
-            link: self.image().link(),
-            priority: self.lstImages().length + 1
+            link: self.image().link()
         };
         if (self.image().isCreate()) {
             //create
             self.lstImages().push(imageObject);
-            var arr = _.orderBy(self.lstImages(), ['priority'], ['desc']);
-            self.lstImages([]);
-            self.lstImages(arr);
         } else {
             //update
             var index = _.findIndex(self.lstImages(), function (item) { item.imageId = imageObject.imageId; });
@@ -113,7 +148,7 @@ ScreenModel.prototype.setData = function (product, lstImages) {
         self.product().name(product.name ? product.name : "");
         self.product().inPrice(product.inPrice ? product.inPrice : "");
         self.product().outPrice(product.outPrice ? product.outPrice : "");
-        self.product().status().quantity(product.status.quantity ? product.status.quantity : null);
+        self.product().status().quantity(product.status? product.status.quantity : "");
         self.product().description(product.description ? product.description : "");
         self.product().modifiedBy(parseInt($("#modifiedBy").val()));
     }
@@ -127,19 +162,19 @@ ScreenModel.prototype.setData = function (product, lstImages) {
 
 function Product() {
     var self = this;
-    self.productId = ko.observable();
-    self.categoryId = ko.observable();
-    self.name = ko.observable();
-    self.inPrice = ko.observable();
-    self.outPrice = ko.observable();
+    self.productId = ko.observable("");
+    self.categoryId = ko.observable("");
+    self.name = ko.observable("");
+    self.inPrice = ko.observable("");
+    self.outPrice = ko.observable("");
     self.status = ko.observable(new ProductStatus());
-    self.description = ko.observable();
-    self.modifiedBy = ko.observable();
+    self.description = ko.observable("");
+    self.modifiedBy = ko.observable("");
 }
 
 function ProductStatus() {
     var self = this;
-    self.quantity = ko.observable();
+    self.quantity = ko.observable("");
 }
 
 function Image() {
@@ -147,7 +182,6 @@ function Image() {
     self.imageId = ko.observable();
     self.name = ko.observable();
     self.link = ko.observable();
-    self.priority = ko.observable();
     self.isCreate = ko.observable(true);
     self.canRemove = ko.observable(false);
     
@@ -165,7 +199,6 @@ function Image() {
             self.imageId(data.imageId?data.imageId: -1);
             self.name(data.name?data.name: "");
             self.link(data.link?data.link: "");
-            self.priority(data.priority?data.priority: 0);
         }
     }
 }
@@ -177,12 +210,10 @@ function ProductBusiness() {
 }
 
 function checkRequired(obj) {
-    for (var key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            if (obj[key] == "") {
-                return false;
-            }
-        }
+    if (obj.categoryId() !="" && obj.name() != "" && obj.inPrice() != "" && obj.outPrice() != "" && obj.status().quantity() != "") {
+        if (parseInt(obj.inPrice()) > 0 && parseInt(obj.outPrice()) > 0 && parseInt(obj.status().quantity()) > 0)
+            return true;
+        else return false;
     }
-    return true;
+    else return false;
 }

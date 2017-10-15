@@ -22,16 +22,16 @@ var service = function () {
         return common.ajax(parentPath + path.getImageById + "?imageId=" + imageId, null, "post");
     }
     service.createProduct = function (obj) {
-        return common.ajax(parentPath + path.createProduct, null, "post");
+        return common.ajax(parentPath + path.createProduct, obj, "post");
     }
     service.updateProduct = function (obj) {
-        return common.ajax(parentPath + path.updateProduct, null, "post");
+        return common.ajax(parentPath + path.updateProduct, obj, "post");
     }
     service.removeProduct = function (obj) {
-        return common.ajax(parentPath + path.removeProduct, null, "post");
+        return common.ajax(parentPath + path.removeProduct, obj, "post");
     }
     service.updateImage = function (obj) {
-        return common.ajax(parentPath + path.updateImages, null, "post");
+        return common.ajax(parentPath + path.updateImages, obj, "post");
     }
     service.getAllCategory = function(){
         return common.ajax(path.getAllCategory, null, "post");

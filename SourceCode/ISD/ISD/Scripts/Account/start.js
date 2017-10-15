@@ -12,9 +12,9 @@ function InitAction() {
         yearRange: '1930:2016'
     });
 
-    //vẽ bảng hiện thị thông tin danh sách các tài khoản
+   
     $("#grid").igGrid({
-        primaryKey: "adminId",//dữ liệu được lấy khi mà click vào 1 dòng trong bảng
+        primaryKey: "adminId",
         width: '600px',
         height: '480px',
         columns: [
@@ -44,7 +44,7 @@ function InitAction() {
             },
                 {
                     name: 'Selection'
-                     // sư kiện khi lựa chọn 1 dòng trong bảng
+                    
                     ,rowSelectionChanging: gridcheckboxStateChanging
                 },
             {

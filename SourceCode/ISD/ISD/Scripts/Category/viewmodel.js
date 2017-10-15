@@ -3,15 +3,15 @@
     self.lstCategories = ko.observableArray([]);
     self.category = ko.observable(new Categories());
     self.canRemove = ko.observable(false);
-    self.isCreate = ko.observable(true);// dua vao de biet laf  creat hay update
+    self.isCreate = ko.observable(true);
     self.currentName = ko.observable("");
 }
 
 
 ScreenModel.prototype.start = function () {
     var self = this;
-    service.getAll()// send request
-        .done(function (data) {// receive response
+    service.getAll()
+        .done(function (data) {
         self.lstCategories(data);
         $("#grid").igGrid("option", "dataSource", self.lstCategories());
         self.category().modifiedBy(parseInt($("#modifiedBy").val()));
@@ -28,7 +28,7 @@ ScreenModel.prototype.getById = function (id) {
     });
 };
 
-ScreenModel.prototype.create = function () { //ham
+ScreenModel.prototype.create = function () { 
     var self = this;
     self.currentName("");
     self.setData({});

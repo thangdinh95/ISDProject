@@ -1,23 +1,23 @@
 ﻿var common = (function () {
     var common = {};
-    common.ajax = function (url, data, type) {// khai bao voi 3 tham so truyen vao
-        $.blockUI();//hien message please wait...
-        var d = $.Deferred();// sync trong js 
+    common.ajax = function (url, data, type) {
+        $.blockUI();
+        var d = $.Deferred();
         if (!data) data = {};
         if (typeof data === 'object') data = JSON.stringify(data);
-        if (!type) type = "post";// type undefine-> post
-        $.ajax({// aj chinh
+        if (!type) type = "post";
+        $.ajax({
             url: url,
             contentType: 'application/json',
             type: type,
             data: data,
             dataType: 'json'
         }).done(function (res) {
-            d.resolve(res); // cua  var d = $.Deferred();
+            d.resolve(res);
         }).fail(function (res) {
             d.reject(res);
         }).always(function () { 
-            $.unblockUI();// tắt  $.blockUI();//hien message please wait... đi
+            $.unblockUI();
         });
         return d.promise();
     };

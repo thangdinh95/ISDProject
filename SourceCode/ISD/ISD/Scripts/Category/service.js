@@ -1,12 +1,12 @@
 ﻿var service = function () {
     var parentPath = "/api/admin/categoryMN/";
-    var path = { //lay link trong server
+    var path = { 
         getAll: "find/getAll",
         getById: "find/getById",
         create: "command/create",
         update: "command/update",
         remove: "command/remove",
-        checkCtgNameExist: "find/checkCtgNameExist"// k dc lap lai trong cate
+        checkCtgNameExist: "find/checkCtgNameExist"
     };
     var service = {};
     service.getAll = function () {

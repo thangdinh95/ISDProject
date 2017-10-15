@@ -12,11 +12,11 @@ namespace ISD.Helper
     public class SqlHelper
     {
         #region Declare globle variable
-        private static string sqlConnection = ConfigurationManager.ConnectionStrings["conStr"].ConnectionString;
-        private static SqlConnection con;
-        private static SqlCommand cmd;
-        private static DataTable dtReturn;
-        private static RespondingRequest responding;
+        private static string sqlConnection = ConfigurationManager.ConnectionStrings["conStr"].ConnectionString;//khai bao cau lenh string connect giua file va data
+        private static SqlConnection con;//khai bao connection
+        private static SqlCommand cmd;//khai bao command để tương tác csdl
+        private static DataTable dtReturn;//khai báo datatable để chua dl
+        private static RespondingRequest responding;//khai báo đối tượng respond
         #endregion
 
         #region Get connection

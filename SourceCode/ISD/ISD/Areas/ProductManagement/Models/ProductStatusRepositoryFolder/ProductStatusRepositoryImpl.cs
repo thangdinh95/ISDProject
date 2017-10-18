@@ -15,24 +15,24 @@ namespace ISD.Areas.ProductManagement.Models.ProductStatusRepositoryFolder
         private const string UPDATE = "UPDATE PRODUCTSTATUS SET QUANTITY = @QUANTITY, NUMOFSOLD = @NUMOFSOLD,"
             + " NUMOFVIEW = @NUMOFVIEW WHERE PRODUCTID = @PRODUCTID";
         private const string REMOVE = "DELETE PRODUCTSTATUS WHERE PRODUCTID = @PRODUCTID";
-        public RespondingRequest create(Products ps)
+        public RespondingRequest create(Products ps, SqlTransaction tran)
         {
-            return SqlHelper.update(CREATE,
+            return SqlHelper.update(CREATE, tran, 
                 new SqlParameter("@PRODUCTID", ps.productId),
                 new SqlParameter("@QUANTITY", ps.status.quantity),
                 new SqlParameter("@NUMOFSOLD", ps.status.numOfSold),
                 new SqlParameter("@NUMOFVIEW", ps.status.numOfView));
         }
 
-        public RespondingRequest remove(int productId)
+        public RespondingRequest remove(int productId, SqlTransaction tran)
         {
-            return SqlHelper.update(REMOVE,
+            return SqlHelper.update(REMOVE, tran,
                 new SqlParameter("@PRODUCTID", productId));
         }
 
-        public RespondingRequest update(Products ps)
+        public RespondingRequest update(Products ps, SqlTransaction tran)
         {
-            return SqlHelper.update(UPDATE,
+            return SqlHelper.update(UPDATE, tran,
                 new SqlParameter("@PRODUCTID", ps.productId),
                 new SqlParameter("@QUANTITY", ps.status.quantity),
                 new SqlParameter("@NUMOFSOLD", ps.status.numOfSold),

@@ -11,7 +11,6 @@ namespace ISD.Areas.LogManagement.Models
         CREATE = 2,
         UPDATE = 3,
         REMOVE = 4, 
-        PRINT = 5,
-        OTHER = 6
+        PRINT = 5
     }
 }

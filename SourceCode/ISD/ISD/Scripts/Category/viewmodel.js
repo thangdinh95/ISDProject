@@ -12,17 +12,17 @@ ScreenModel.prototype.start = function () {
     var self = this;
     service.getAll()// send request
         .done(function (data) {// receive response
-        self.lstCategories(data);
+        self.lstCategories(data);// gán giá trị của list = data
         $("#grid").igGrid("option", "dataSource", self.lstCategories());
         self.category().modifiedBy(parseInt($("#modifiedBy").val()));
     });
 }
-
+///[a, c, d] --> kiểm tra số lần xuất hiện -> count > 1 -> return false;
 ScreenModel.prototype.getById = function (id) {
     var self = this;
     service.getDataById(id).done(function (data) {
         self.setData(data);
-        self.currentName(self.category().name());
+        self.currentName(self.category().name());//dùng ở hàm register bên dưới
         self.canRemove(true);
         self.isCreate(false);
     });
@@ -34,14 +34,16 @@ ScreenModel.prototype.create = function () { //ham
     self.setData({});
     self.isCreate(true);
     self.canRemove(false);
+    $("#grid").igGridSelection("selectRow", self.lstCategories().length);
 }
 
 ScreenModel.prototype.register = function () {
     var self = this;
     if (self.category().name() != "") {
         var obj = ko.toJSON(self.category());
+
         service.checkCtgNameExist(self.category().name(), self.currentName()).done(function (data) {
-            if (data.status)
+            if (data.status)// 
                 toastr.error(data.message);
             else {
                 if (self.isCreate()) {
@@ -49,8 +51,8 @@ ScreenModel.prototype.register = function () {
                     service.create(obj).done(function (data) {
                         if (data.status) {
                             toastr.success(data.message);
-                            self.start();
-                            self.create();
+                            self.start();// loading lại dữ liệu
+                            self.create();// clear form bên phải
                         }
                         else toastr.error(data.message);
                     }).fail(function (res) {
@@ -96,7 +98,7 @@ ScreenModel.prototype.remove = function () {
 ScreenModel.prototype.setData = function (data) {
     if (data) {
         var self = this;
-        self.category().categoryId(data.categoryId ? data.categoryId : -1);
+        self.category().categoryId(data.categoryId != null ? data.categoryId : -1);
         self.category().name(data.name ? data.name : "");
         self.category().description(data.description ? data.description : "");
         self.category().modifiedBy($("#modifiedBy").val());

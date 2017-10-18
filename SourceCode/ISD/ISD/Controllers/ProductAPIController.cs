@@ -113,7 +113,7 @@ namespace ISD.Controllers
         {
             
             RespondingRequest respondingRequest = new RespondingRequest();
-            productRepository.remove(command);
+            respondingRequest = productRepository.remove(command);
 
             //write log
             if (respondingRequest.status)
@@ -134,9 +134,27 @@ namespace ISD.Controllers
         #region create image
         [HttpPost]
         [Route("command/image/create")]
-        public RespondingRequest updateImage(Images command)
+        public RespondingRequest createImage(Images command)
         {
             return imageRepository.create(command);
+        }
+        #endregion
+
+        #region create image
+        [HttpPost]
+        [Route("command/image/update")]
+        public RespondingRequest updateImage(Images command)
+        {
+            return imageRepository.update(command);
+        }
+        #endregion
+
+        #region create image
+        [HttpPost]
+        [Route("command/image/remove")]
+        public RespondingRequest removeImage(Images command)
+        {
+            return imageRepository.remove(command);
         }
         #endregion
 

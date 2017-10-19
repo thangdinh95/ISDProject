@@ -52,6 +52,7 @@ namespace ISD.Controllers
             //write log
             if (respondingRequest.status)
             {
+                // lấy thông tin tài khoản của người thực hiện
                 Admins staff = adminRepository.getDataById(category.modifiedBy);
                 logRepository.create(new Logs()
                 {

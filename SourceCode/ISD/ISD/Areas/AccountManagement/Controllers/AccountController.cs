@@ -17,6 +17,8 @@ namespace ISD.Areas.AccountManagement.Controllers
                 return RedirectToAction("Index", "Login", new { area = ""});
             }else
             {
+                // nếu là quyền admin -> về trang đăng nhập/ nếu là quyền 
+                //supper admin thì sẽ vào trang view của ql account
                 Admins admin = (Admins)Session["Admin"];
                 if (admin.role == ROLES.ADMIN)
                 {

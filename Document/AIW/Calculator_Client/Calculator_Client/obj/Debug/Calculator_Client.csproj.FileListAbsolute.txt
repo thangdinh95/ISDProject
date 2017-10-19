@@ -16,3 +16,6 @@ C:\Users\xuan vinh\Documents\GitHub\ISDProject\Document\AIW\Calculator_Client\Ca
 C:\Users\xuan vinh\Documents\GitHub\ISDProject\Document\AIW\Calculator_Client\Calculator_Client\obj\Debug\Calculator_Client.Form1.resources
 C:\Users\xuan vinh\Documents\GitHub\ISDProject\Document\AIW\Calculator_Client\Calculator_Client\obj\Debug\Calculator_Client.Properties.Resources.resources
 C:\Users\xuan vinh\Documents\GitHub\ISDProject\Document\AIW\Calculator_Client\Calculator_Client\obj\Debug\Calculator_Client.csproj.GenerateResource.Cache
+C:\Users\xuanvinh\Documents\GitHub\ISDProject\Document\AIW\Calculator_Client\Calculator_Client\bin\Debug\Calculator_Client.exe.config
+C:\Users\xuanvinh\Documents\GitHub\ISDProject\Document\AIW\Calculator_Client\Calculator_Client\obj\Debug\Calculator_Client.exe
+C:\Users\xuanvinh\Documents\GitHub\ISDProject\Document\AIW\Calculator_Client\Calculator_Client\obj\Debug\Calculator_Client.pdb

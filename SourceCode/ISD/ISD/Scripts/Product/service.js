@@ -8,7 +8,9 @@ var service = function () {
         createProduct: "command/product/create",
         updateProduct: "command/product/update",
         removeProduct: "command/product/remove",
+        createImages: "command/image/create",
         updateImages: "command/image/update",
+        removeImages: "command/image/remove",
         getAllCategory: "/api/admin/categoryMN/find/getAll"
     };
     var service = {};
@@ -30,8 +32,14 @@ var service = function () {
     service.removeProduct = function (obj) {
         return common.ajax(parentPath + path.removeProduct, obj, "post");
     }
+    service.createImage = function (obj) {
+        return common.ajax(parentPath + path.createImages, obj, "post");
+    }
     service.updateImage = function (obj) {
         return common.ajax(parentPath + path.updateImages, obj, "post");
+    }
+    service.removeImage = function (obj) {
+        return common.ajax(parentPath + path.removeImages, obj, "post");
     }
     service.getAllCategory = function(){
         return common.ajax(path.getAllCategory, null, "post");

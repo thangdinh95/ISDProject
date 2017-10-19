@@ -1,6 +1,6 @@
 ﻿function ScreenModel() {
     var self = this;
-    self.userName = ko.observable(""); // khai bao knockout js đc sử dụng ở html.
+    self.userName = ko.observable(""); //khai bao knockout js đc sử dụng ở html.
     self.password = ko.observable("");
     self.canLogin = ko.observable(true);
 }
@@ -10,9 +10,9 @@ ScreenModel.prototype.login = function () {//prototype gọi đến đối tư�
     if (self.canLogin()) {
         self.canLogin(false);
         service.login(self.userName(), self.password())// send request
-            .done(function (data)// receive response
+            .done(function (data)// receive response sync
             {
-            if (!data.status) {
+            if (data.status == false) {
                 self.canLogin(true);
                 toastr.error(data.message);
             }

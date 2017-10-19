@@ -13,9 +13,9 @@
             data: data,
             dataType: 'json'
         }).done(function (res) {
-            d.resolve(res); // cua  var d = $.Deferred();
+            d.resolve(res); // thực thiện khi request gửi thành công
         }).fail(function (res) {
-            d.reject(res);
+            d.reject(res); // thực hiện khi request lỗi
         }).always(function () { 
             $.unblockUI();// tắt  $.blockUI();//hien message please wait... đi
         });

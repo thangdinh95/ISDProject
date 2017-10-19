@@ -17,7 +17,7 @@ namespace ISD.Areas.ProductManagement.Models.ImageRepositoryFolder
         private const string GET_DATA_BY_ID = "SELECT * FROM IMAGES WHERE IMAGEID = @IMAGEID";
         private const string CREATE = "INSERT INTO IMAGES (PRODUCTID, NAME, LINK)"
             + " VALUES(@PRODUCTID, @NAME, @LINK)";
-        private const string UPDATE = "UPDAET PRODUCTS SET NAME = @NAME, LINK = @LINK)"
+        private const string UPDATE = "UPDATE IMAGES SET NAME = @NAME, LINK = @LINK"
             + " WHERE IMAGEID = @IMAGEID";
         private const string REMOVE_BY_RPODUCT_ID = "DELETE IMAGES WHERE PRODUCTID = @PRODUCTID";
         private const string REMOVE = "DELETE IMAGES WHERE IMAGEID = @IMAGEID";
@@ -65,9 +65,9 @@ namespace ISD.Areas.ProductManagement.Models.ImageRepositoryFolder
         #endregion
 
         #region remove by productId
-        public RespondingRequest removeByProductId(int productId)
+        public RespondingRequest removeByProductId(int productId, SqlTransaction tran)
         {
-            return SqlHelper.update(REMOVE_BY_RPODUCT_ID,
+            return SqlHelper.update(REMOVE_BY_RPODUCT_ID, tran,
                 new SqlParameter("@PRODUCTID", productId));
         }
         #endregion

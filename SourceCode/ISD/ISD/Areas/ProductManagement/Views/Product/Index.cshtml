@@ -60,9 +60,9 @@
                            <table>
                                <tr>
                                    <td colspan="2">
-                                       <button type="button" class="btn btn-default" data-bind="click: $root.createImage, enable: false">Create</button>
-                                       <button type="button" class="btn btn-primary" data-bind="click: $root.registerImage, enable: false">Register</button>
-                                       <button type="button" class="btn btn-danger" data-bind="click: $root.removeImage, enable: $root.image().canRemove">Remove</button>
+                                       <button type="button" class="btn btn-default" data-bind="click: $root.createImage, enable: $root.imageControl">Create</button>
+                                       <button type="button" class="btn btn-primary" data-bind="click: $root.registerImage, enable: $root.imageControl">Register</button>
+                                       <button type="button" class="btn btn-danger" data-bind="click: $root.removeImage, enable: ($root.image().canRemove() && $root.imageControl)">Remove</button>
                                    </td>
                                </tr>                               
                                <tr>
@@ -73,13 +73,13 @@
                                        <table data-bind="with: $root.image()">
                                            <tr>
                                                <td>Name</td>
-                                               <td><input type="text" maxlength="100" data-bind="value: name, enable: false"  class="form-control"/></td>
+                                               <td><input type="text" maxlength="100" data-bind="value: name, enable: $root.imageControl"  class="form-control"/></td>
                                            </tr>
                                            <tr>
                                                <td>Image</td>
                                                <td>
                                                    <img width="35" height="35" data-bind="attr:{src: $root.image().link}"/>
-                                                   <button type="button" id="getImage" data-bind="enable: false">Get image</button>
+                                                   <button type="button" id="getImage" data-bind="enable: $root.imageControl">Get image</button>
                                                </td>
                                            </tr>
                                            

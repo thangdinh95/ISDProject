@@ -23,7 +23,7 @@ namespace ISD.Areas.AccountManagement.Models
             + " A.CREATEDBY = B.ADMINID LEFT JOIN ADMINS C ON A.MODIFIEDBY = C.ADMINID"
             + " WHERE A.ACCOUNT = @ACCOUNT AND A.PASSWORD = @PASSWORD";
         private const string CREATE_ACC = "INSERT INTO ADMINS([ACCOUNT], [PASSWORD]" +
-          ",[NAME],[BIRTHDAY],[PHONE],[MAIL],[ADDRESS],[ROLE],[CREATEDBY],[CREATEDDATE])"+
+          ",[NAME],[BIRTHDAY],[PHONE],[MAIL],[ADDRESS],[ROLE],[CREATEDBY],[CREATEDDATE])" +
           " VALUES(@ACCOUNT, @PASSWORD, @NAME, @BIRTHDAY, @PHONE, @MAIL, @ADDRESS, " +
           " @ROLE, @CREATEDBY, @CREATEDDATE)";
         private const string UPDATE_ACC = "UPDATE ADMINS SET NAME = @NAME, BIRTHDAY = @BIRTHDAY,"
@@ -52,7 +52,7 @@ namespace ISD.Areas.AccountManagement.Models
         {
             List<Admins> lstAdmins = new List<Admins>();
             DataTable dt = SqlHelper.getData(SELECT_ALL_DATA);//lay dl db
-            foreach(DataRow dr in dt.Rows)
+            foreach (DataRow dr in dt.Rows)
                 lstAdmins.Add(toObject(dr));//maping du lieu cua db sang object
             return lstAdmins;
         }
@@ -62,7 +62,7 @@ namespace ISD.Areas.AccountManagement.Models
             DataTable dt = SqlHelper.getData(SELECT_DATA_BY_ACC_PSS,
                 new SqlParameter("@ACCOUNT", account),
                 new SqlParameter("@PASSWORD", password));
-            if(dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0)
             {
                 Admins admin = toObject(dt.Rows[0]);
                 return admin;
@@ -106,7 +106,6 @@ namespace ISD.Areas.AccountManagement.Models
         }
 
         private Admins toObject(DataRow dr)
-
         {
             /*
              * if(a > b)

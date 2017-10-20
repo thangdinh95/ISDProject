@@ -18,6 +18,7 @@ var ScreenModel = function () {
         ckFinder.popup();
     });
    
+    self.imageControl = ko.observable(false);
 }
 
 
@@ -27,10 +28,11 @@ ScreenModel.prototype.start = function () {
         self.lstProducts(data);
         $("#grid").igGrid("option", "dataSource", self.lstProducts());
         self.product().modifiedBy(parseInt($("#modifiedBy").val()));
+         service.getAllCategory().done(function (res) {
+             self.lstCategories(res);
+        });
     });
-    service.getAllCategory().done(function (data) {
-        self.lstCategories(data);
-    });
+   
 }
 
 ScreenModel.prototype.getProductById = function (id) {
@@ -39,6 +41,8 @@ ScreenModel.prototype.getProductById = function (id) {
         self.setData(data.product, data.lstImages);
         self.canRemove(true);
         self.isCreate(false);
+        self.imageControl(true);
+        self.createImage();
     });
 };
 
@@ -47,6 +51,10 @@ ScreenModel.prototype.createProduct = function () {
     self.setData({});
     self.isCreate(true);
     self.canRemove(false);
+    self.imageControl(false);
+    self.image().setData({});
+    self.lstImages([]);
+    $("#imageGrid").igGrid("option", "dataSource", self.lstImages());
     $("#grid").igGridSelection("selectRow", self.lstProducts().length);
 }
 
@@ -60,10 +68,9 @@ ScreenModel.prototype.registerProduct = function () {
             service.createProduct(obj).done(function (data) {
                 var productId = parseInt(data);
                 if (productId > 0) {
-                    
                     self.start();
                     self.product().productId(productId);
-                    var index = _.findIndex(self.lstProducts(), function (item) { return parseInt(item.productId) = parseInt(self.product().productId()); });
+                    var index = _.findIndex(self.lstProducts(), function (item) { return parseInt(item.productId) == parseInt(self.product().productId()); });
                     $("#grid").igGridSelection("selectRow", index);
                 } else {
                     toastr.error("Add product fail!");
@@ -74,7 +81,9 @@ ScreenModel.prototype.registerProduct = function () {
                 if (data.status) {//1. true: thành công 2. false: lỗi
                     toastr.success(data.message);
                     self.start();
-                    var index = _.findIndex(self.lstProducts(), function (item) { return parseInt(item.productId) = parseInt(self.product().productId()); });
+                    var index = _.findIndex(self.lstProducts(), function (item) {
+                        return parseInt(item.productId) == parseInt(self.product().productId());
+                    });
                     $("#grid").igGridSelection("selectRow", index);
                 }
                 else toastr.error(data.message);
@@ -93,8 +102,7 @@ ScreenModel.prototype.removeProduct = function () {
             if (data.status) {//1. true: thành công 2. false: lỗi
                 toastr.success(data.message);
                 self.start();
-                var index = _.findIndex(self.lstProducts(), function (item) { return parseInt(item.productId) = parseInt(self.product().productId()); });
-                $("#grid").igGridSelection("selectRow", index);
+                self.createProduct();
             }
             else toastr.error(data.message);
         });
@@ -115,18 +123,32 @@ ScreenModel.prototype.registerImage = function () {
     } else {
         var imageObject = {
             imageId: self.image().imageId(),
+            productId: self.product().productId(),
             name: self.image().name(),
             link: self.image().link()
         };
         if (self.image().isCreate()) {
             //create
-            self.lstImages().push(imageObject);
+            service.createImage(imageObject).done(function (data) {
+                if (!data.status)
+                    toastr.error("Add image fail!");
+                else {
+                    self.getProductById(self.product().productId());
+                    $("#imageGrid").igGridSelection("selectRow", self.lstImages().length);
+                }
+            });
         } else {
             //update
-            var index = _.findIndex(self.lstImages(), function (item) { item.imageId = imageObject.imageId; });
-            self.lstImages().splice(index, 1, imageObject);
+            service.updateImage(imageObject).done(function (data) {
+                if (!data.status)
+                    toastr.error("Update image fail!");
+                else {
+                    self.getProductById(self.product().productId());
+                    $("#imageGrid").igGridSelection("selectRow", self.lstImages().length);
+                }
+            });
         }
-        $("#imageGrid").igGrid("option", "dataSource", self.lstImages());
+       
     }
 }
 
@@ -134,9 +156,13 @@ ScreenModel.prototype.removeImage = function () {
     var ok = confirm("Are you sure to remove this image?");
     if (ok) {
         var self = this;
-        var imageId = self.image().imageId();
-        _.remove(self.lstImages(), function (image) { return image.imageId == imageId; });
-        console.log(self.lstImages());
+        service.removeImage(ko.toJSON(self.image())).done(function (data) {
+            if (!data.status)
+                toastr.error("Update image fail!");
+            else {
+                self.getProductById(self.product().productId());
+            }
+        });
     }
 }
 
@@ -190,6 +216,7 @@ function Image() {
     self.getImageById = function (id) {
         service.getImageById(id).done(function (data) {
             self.setData(data);
+            self.isCreate(false);
             self.canRemove(true);
         });
     }
@@ -198,7 +225,7 @@ function Image() {
         if (data) {
             self.imageId(data.imageId?data.imageId: -1);
             self.name(data.name?data.name: "");
-            self.link(data.link?data.link: "");
+            self.link(data.link?data.link: null);
         }
     }
 }

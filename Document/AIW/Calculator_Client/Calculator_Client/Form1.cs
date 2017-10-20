@@ -18,8 +18,11 @@ namespace Calculator_Client
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
+
             var service = new calculator.CalculatorClient();
+            //lấy giá trị 2 ô textbox và validate
             FormObject returnObject = getValue();
+
             if (!returnObject.status)
                 MessageBox.Show(returnObject.message);
             else

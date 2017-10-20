@@ -13,9 +13,13 @@
             data: data,
             dataType: 'json'
         }).done(function (res) {
+<<<<<<< HEAD
             d.resolve(res);
+=======
+            d.resolve(res); // thực thiện khi request gửi thành công
+>>>>>>> de28096d38dc0ef9dc130eb3083a604841bb6429
         }).fail(function (res) {
-            d.reject(res);
+            d.reject(res); // thực hiện khi request lỗi
         }).always(function () { 
             $.unblockUI();
         });

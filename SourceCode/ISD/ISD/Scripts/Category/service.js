@@ -32,7 +32,8 @@
 
     service.checkCtgNameExist = function (ctgName, currentName) {
         var command = {
-            ctgName: ctgName, currentName:currentName
+            ctgName: ctgName,
+            currentName: currentName
         };
         return common.ajax(parentPath + path.checkCtgNameExist, command, "post");
     }

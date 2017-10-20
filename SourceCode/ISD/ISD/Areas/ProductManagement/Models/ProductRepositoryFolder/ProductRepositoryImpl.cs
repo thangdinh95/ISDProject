@@ -7,6 +7,7 @@ using System.Data;
 using ISD.Helper;
 using System.Data.SqlClient;
 using ISD.Areas.ProductManagement.Models.ProductStatusRepositoryFolder;
+using ISD.Areas.ProductManagement.Models.ImageRepositoryFolder;
 
 namespace ISD.Areas.ProductManagement.Models.ProductRepositoryFolder
 {
@@ -32,8 +33,8 @@ namespace ISD.Areas.ProductManagement.Models.ProductRepositoryFolder
             + " VALUES(@PRODUCTID, @QUANTITY, @NUMOFSOLD, @NUMOFVIEW)";
         private const string UPDATEPS = "UPDATE PRODUCTSTATUS SET QUANTITY = @QUANTITY, NUMOFSOLD = @NUMOFSOLD,"
             + " NUMOFVIEW = @NUMOFVIEW WHERE PRODUCTID = @PRODUCTID";
-        private const string REMOVEPS = "DELETE PRODUCTSTATUS WHERE PRODUCTID = @PRODUCTID";
         private ProductStatusRepository productStatusRepository = new ProductStatusRepositoryImpl();
+        private ImageRepository imageRepository = new ImageRepositoryImpl();
         #endregion
 
         #region create product
@@ -59,12 +60,10 @@ namespace ISD.Areas.ProductManagement.Models.ProductRepositoryFolder
                         product.productId = Int16.Parse(result.ToString());
                         product.status.numOfSold = 0;
                         product.status.numOfView = 0;
-                        SqlHelper.update(CREATEPS, tran,
-                            new SqlParameter("@PRODUCTID", product.productId),
-                            new SqlParameter("@QUANTITY", product.status.quantity),
-                            new SqlParameter("@NUMOFSOLD", product.status.numOfSold),
-                            new SqlParameter("@NUMOFVIEW", product.status.numOfView));
-                        tran.Commit();
+                        RespondingRequest respondingRequest = productStatusRepository.create(product, tran);
+                        if (respondingRequest.status)
+                            tran.Commit();
+                        else result = null;
                     }
                     
                 }
@@ -120,11 +119,7 @@ namespace ISD.Areas.ProductManagement.Models.ProductRepositoryFolder
                         new SqlParameter("@PRODUCTID", product.productId));
                     if (respondingRequest.status)
                     {
-                        respondingRequest = SqlHelper.update(UPDATEPS, tran,
-                            new SqlParameter("@PRODUCTID", product.productId),
-                            new SqlParameter("@QUANTITY", product.status.quantity),
-                            new SqlParameter("@NUMOFSOLD", product.status.numOfSold),
-                            new SqlParameter("@NUMOFVIEW", product.status.numOfView));
+                        respondingRequest = productStatusRepository.update(product, tran);
                         tran.Commit();
                     }
                 }
@@ -148,15 +143,12 @@ namespace ISD.Areas.ProductManagement.Models.ProductRepositoryFolder
             {
                 try
                 {
-                    respondingRequest = SqlHelper.update(REMOVE, tran,
-                             new SqlParameter("@PRODUCTID", product.productId));
-                   
-                    if (respondingRequest.status)
-                    {
-                        respondingRequest = SqlHelper.update(REMOVEPS, tran,
-                        new SqlParameter("@PRODUCTID", product.productId));
-                        tran.Commit();
-                    }
+                    imageRepository.removeByProductId(product.productId, tran);
+                    productStatusRepository.remove(product.productId, tran);
+                    SqlHelper.update(REMOVE, tran, new SqlParameter("@PRODUCTID", product.productId));
+                    tran.Commit();
+                    respondingRequest.status = true;
+                    respondingRequest.message = "Successful!";
                 }
                 catch (Exception)
                 {

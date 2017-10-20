@@ -7,7 +7,7 @@ $(function () {
 });
 function InitAction() {
     $("#grid").igGrid({
-        primaryKey: "categoryId",
+        primaryKey: "categoryId",// giá trị trả về khi select 1 dòng trong bảng
         width: '600px',
         height: '450px',
         columns: [

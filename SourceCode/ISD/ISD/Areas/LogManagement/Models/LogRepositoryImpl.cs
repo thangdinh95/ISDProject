@@ -40,11 +40,6 @@ namespace ISD.Areas.LogManagement.Models
             return lstLogs;
         }
 
-        public RespondingRequest print()
-        {
-            throw new NotImplementedException();
-        }
-
         public string logContent(LOGTYPE type, string objName, string account)
         {
             return type.ToString()+ " " + objName + " - executed by " + account + " - in " + DateTime.Now; 

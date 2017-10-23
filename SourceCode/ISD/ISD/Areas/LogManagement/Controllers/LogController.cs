@@ -26,30 +26,30 @@ namespace ISD.Areas.LogManagement.Controllers
             if (Session["Admin"] == null)
                 return RedirectToAction("Index", "Login", new { area = "" });
 
-            #region Khai báo Gembox.Spreadsheet
+            #region 
             // If using Professional version, put your serial key below.
             SpreadsheetInfo.SetLicense("FREE-LIMITED-KEY");
 
             ExcelFile ef = new ExcelFile();
             ExcelWorksheet ws = ef.Worksheets.Add("Log detail");
 
-            ws.Cells[0, 0].Value = "Log detail";// hiển thị 
+            ws.Cells[0, 0].Value = "Log detail";
             ws.Cells[0, 0].Style.Font.Weight = ExcelFont.BoldWeight;
             ws.Cells[0, 0].Style.Font.Size = 18 * 20;
             ws.Cells[0, 0].Style.Font.Color = Color.GreenYellow;
             #endregion
 
-            // lấy dữ liệu trong db
+            
             LogRepository logRepository = new LogRepositoryImpl();
             List<Logs> lstLogs = logRepository.getData();
 
             #region header
             // Column width of 8, 20, 100, 20, 20 characters.
-            ws.Columns[0].Width = 8 * 256;//no
-            ws.Columns[1].Width = 20 * 256;//type
-            ws.Columns[2].Width = 100 * 256;//content
-            ws.Columns[3].Width = 20 * 256;//date
-            ws.Columns[4].Width = 25 * 256;//account
+            ws.Columns[0].Width = 8 * 256;
+            ws.Columns[1].Width = 20 * 256;
+            ws.Columns[2].Width = 100 * 256;
+            ws.Columns[3].Width = 20 * 256;
+            ws.Columns[4].Width = 25 * 256;
             int i, j;
             // Write header data to Excel cells.
             string[] header = { "No", "Type", "Content", "Account", "Date" };
@@ -105,7 +105,7 @@ namespace ISD.Areas.LogManagement.Controllers
 
             var options = SaveOptions.XlsxDefault;
 
-            // Save spreadsheet to XLSX format in byte array.
+            
             using (var stream = new MemoryStream())
             {
                 ef.Save(stream, options);
@@ -113,7 +113,7 @@ namespace ISD.Areas.LogManagement.Controllers
                 fileContents = stream.ToArray();
             }
 
-            // Stream spreadsheet to browser in XLSX format.
+           
             return File(fileContents, options.ContentType, "Log detail.xlsx");
         }
     }

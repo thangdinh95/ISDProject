@@ -1,4 +1,4 @@
-﻿
+﻿  
 var ScreenModel = function () {
     var self = this;
     self.lstAccount = ko.observableArray([]);
@@ -17,9 +17,9 @@ var ScreenModel = function () {
 ScreenModel.prototype.start = function () {
     var self = this;
    
-    service.getAll()//send request
-        .done(function (data) {// receive response
-        //fill data into table
+    service.getAll()//
+        .done(function (data) {
+        
         self.lstAccount(data);
         $("#grid").igGrid("option", "dataSource", self.lstAccount());
         self.admin().modifiedBy(parseInt($("#modifiedBy").val()));
@@ -40,40 +40,46 @@ ScreenModel.prototype.getById = function (id) {
 
 ScreenModel.prototype.create = function () {
     var self = this;
+<<<<<<< HEAD
+    self.setData({});
+    self.canRemove(false);
+    self.isCreate(true);
+=======
     self.setData({});//clear form
     self.canRemove(false);// disable remove 
     self.isCreate(true);// chuyển thao tác nút register là thêm mới (có 2 thao tác là thêm mới và chỉnh sửa)
     $("#grid").igGridSelection("selectRow", self.lstAccount().length);
+>>>>>>> de28096d38dc0ef9dc130eb3083a604841bb6429
 }
 
 ScreenModel.prototype.register = function () {
     var self = this;
-    var obj = ko.toJSON(self.admin());// chuyển đổi  knockout object sang json object
+    var obj = ko.toJSON(self.admin());
     
-    var correctRequired = checkRequired(self.admin());// check all fields required
+    var correctRequired = checkRequired(self.admin());
     if (correctRequired) {
         if (self.isCreate()) {
             //tạo mới một tải khoản
-            service.checkAccountExist(self.admin().account())// check account exist
+            service.checkAccountExist(self.admin().account())
                 .done(function (data) {
-                if (data.status)//1. true: đã tồn tại 2. false: ko tồn tại
+                if (data.status)
                     toastr.error(data.message);
                 else {
-                    //lưu dữ liệu vào trong db
+                    
                     service.create(obj).done(function (data) {
-                        if (data.status) {//1. true: thành công 2. false: lỗi
+                        if (data.status) {
                             toastr.success(data.message);
                             self.start();
                             self.create();
                         }
                         else toastr.error(data.message);
-                    }).fail(function (res) {
+                    }).fail(function (res) {d
                         toastr.error(res.respondText);
                     });
                 }
             });
         }
-            //chỉnh sửa một tài khoản
+            
         else service.update(obj).done(function (data) {
             if (data.status) {
                 toastr.success(data.message);
@@ -104,7 +110,7 @@ ScreenModel.prototype.remove = function () {
        
 }
 
-//sét dữ liệu vào form
+//set dữ liệu vào form
 ScreenModel.prototype.setData = function (data) {
     if (data) {
         var self = this;

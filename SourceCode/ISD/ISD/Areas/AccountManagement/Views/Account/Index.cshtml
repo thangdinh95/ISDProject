@@ -9,6 +9,7 @@
 <link href="~/Content/Account/main.css" rel="stylesheet" />
 @{ Admins admin = (Admins)Session["Admin"]; }
 <div class="divCover">
+    @*<a href="~/Areas/AccountManagement/Views/Account/Indexp;.cshtml">~/Areas/AccountManagement/Views/Account/Index.cshtml</a>*@
     <table class="tblCover">
         <tr>
             <!--các nút chức năng-->
@@ -53,7 +54,7 @@
                     <tr>
                         <td class="required">Address</td>
                         <td><input type="text" maxlength="200" data-bind="value: address" class="form-control" required /></td>
-                    </tr>
+  +++,                  </tr>
                     <tr>
                         <td class="required">Role</td>
                         <td>

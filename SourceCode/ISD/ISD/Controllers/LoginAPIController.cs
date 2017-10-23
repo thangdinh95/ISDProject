@@ -21,7 +21,7 @@ namespace ISD.Controllers
         public RespondingRequest login(LoginInfo loginInfo)
         {
             RespondingRequest respondingRequest = new RespondingRequest();
-            //vào DB lấy dữ liệu theo account và psw
+            
             Admins admin = adminRepository.getDataByAccount(loginInfo.account, loginInfo.password); 
             if (admin == null)
             {
@@ -36,7 +36,7 @@ namespace ISD.Controllers
 
 
             // Create log
-            if (respondingRequest.status == true)// khi login thành công thì ghi log
+            if (respondingRequest.status == true)
             {                
                 logRepository.create(new Logs()
                 {

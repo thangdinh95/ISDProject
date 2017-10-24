@@ -16,19 +16,13 @@ namespace ISD.Helper
          * Thực hiện 4 thao tác chính: CRUD
          */
         #region Declare globle variable
-<<<<<<< HEAD
+
         private static string sqlConnection = ConfigurationManager.ConnectionStrings["conStr"].ConnectionString;//khai bao cau lenh string connect giua file va data
         private static SqlConnection con;//khai bao connection
         private static SqlCommand cmd;//khai bao command để tương tác csdl
         private static DataTable dtReturn;//khai báo datatable để chua dl
         private static RespondingRequest responding;//khai báo đối tượng respond
-=======
-        private static string sqlConnection = ConfigurationManager.ConnectionStrings["conStr"].ConnectionString;
-        private static SqlConnection con;//khai báo connection 
-        private static SqlCommand cmd;// khai báo command để tương tác với csdl
-        private static DataTable dtReturn;// khai báo data table để chứa dữ liệu
-        private static RespondingRequest responding;// khai báo đối tượng response
->>>>>>> de28096d38dc0ef9dc130eb3083a604841bb6429
+
         #endregion
 
         #region Get connection

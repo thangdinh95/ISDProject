@@ -10,15 +10,9 @@
 
 ScreenModel.prototype.start = function () {
     var self = this;
-<<<<<<< HEAD
-    service.getAll()
-        .done(function (data) {
-        self.lstCategories(data);
-=======
     service.getAll()// send request
         .done(function (data) {// receive response
         self.lstCategories(data);// gán giá trị của list = data
->>>>>>> de28096d38dc0ef9dc130eb3083a604841bb6429
         $("#grid").igGrid("option", "dataSource", self.lstCategories());
         self.category().modifiedBy(parseInt($("#modifiedBy").val()));
     });

@@ -40,16 +40,10 @@ ScreenModel.prototype.getById = function (id) {
 
 ScreenModel.prototype.create = function () {
     var self = this;
-<<<<<<< HEAD
-    self.setData({});
-    self.canRemove(false);
-    self.isCreate(true);
-=======
     self.setData({});//clear form
     self.canRemove(false);// disable remove 
     self.isCreate(true);// chuyển thao tác nút register là thêm mới (có 2 thao tác là thêm mới và chỉnh sửa)
     $("#grid").igGridSelection("selectRow", self.lstAccount().length);
->>>>>>> de28096d38dc0ef9dc130eb3083a604841bb6429
 }
 
 ScreenModel.prototype.register = function () {

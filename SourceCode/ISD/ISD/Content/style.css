@@ -1,0 +1,1800 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+	background: #EBEBEB;
+	margin: 0;
+	padding: 0;
+    font-family: 'Hind', sans-serif;
+}
+
+/*---------------------general-------------------*/
+.title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px 0px 20px 0px;
+    font-family: 'Poiret One', cursive;
+}
+
+.title.title1 {
+    color: #E36BB1;
+}
+.title.title2 {
+    color: #FFC400;
+}
+.title.title3 {
+    color: #E84723;
+}
+.title.title4 {
+    color: #00a000;
+    padding-top: 5%;
+}
+
+.hr-style {
+    border-top: 3px double grey;
+    width: 150px;
+    margin-top: 4px;
+}
+
+.padding-0 {
+    padding: 0;
+}
+
+button {
+    background-color: #bd2026;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #bd2026;
+    cursor: pointer;
+}
+
+#top {
+    position: fixed;
+    right: 25px;
+    bottom: 30px;
+    z-index: 1000;
+}
+
+#top img:hover {
+    transition: 0.5s;
+    transform: rotateZ(360deg);
+}
+
+/*#fixedinfo {
+    height: 50px;
+    width: 170px;
+    border-radius: 5%;
+    background-color: black;
+    position: fixed;
+    left: 20px;
+    bottom: 35px;
+    z-index: 1000;
+    border: 1px solid red;
+    transition: 0.5s;
+    overflow:hidden;
+
+    padding: 10px 10px;
+    background: #ff0030;
+    color: #fff;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1.3em;
+    border: 2px dashed #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 0 4px #ff0030, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+    text-shadow: -1px -1px #aa3030;
+    font-weight: normal;
+
+    transform: translateX(-150px);
+}
+
+#fixedinfo p {
+    opacity: 0;
+}
+
+#fixedinfo:hover p {
+    opacity: 1;
+}
+
+
+#fixedinfo:hover {
+    height: 130px;
+    transform: translateX(0px);
+}
+*/
+/*-------------------menu bar-----------------*/
+.navbar {
+	padding: 15px 0px;
+    background: url(/Imagesfiles//white-2398946_1920.jpg) !important;
+/*	background-color: #A8DADC !important;*/
+    -webkit-box-shadow: 0px 3px 11px 0px rgba(50, 50, 50, 0.76);
+    -moz-box-shadow:    0px 3px 11px 0px rgba(50, 50, 50, 0.76);
+    box-shadow:         0px 3px 11px 0px rgba(50, 50, 50, 0.76);
+    transition: 0.4s;
+}
+
+.navbar a {
+	color: #3A0000 !important;
+	cursor: pointer;
+    transition: 0.2s;
+
+}
+
+nav .navbar-collapse .navbar-nav .nav-item .nav-link {
+    padding: 10px 20px;
+    border: 2px solid transparent;
+}
+
+nav .navbar-collapse .navbar-nav .nav-item .nav-link:hover {
+	border: 2px solid #FFA100;
+    color: #FFA100 !important;
+    border-radius: 7px;
+}
+
+
+.navbar.menuchange {
+    padding: 0px 0px;
+}
+
+/*BANNER*/
+.carousel-control-next-icon {
+    background-image: url(/Imagesfiles/Next-Button-PNG-Photos.png);
+}
+
+.carousel-control-prev-icon {
+    background-image: url(/Imagesfiles/1024px-Back.svg.png);
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    display: inline-block;
+    width: 25%;
+    height: 8%;
+}
+
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+/*----------------- CONCEPT -------------------*/
+.img-concept1 {
+    background: url(/Imagesfiles/menu1.jpg) no-repeat;
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+.concept {
+    background: url(/Imagesfiles/Background_Pattern.png) no-repeat;
+    /*background-color: transparent;*/
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+/*    margin: 50px 0px;*/
+    padding: 65px 0px;
+    position: relative;
+    font-family: 'Hind', sans-serif;
+    font-size: 20px;
+}
+
+/*.concept-wrap {
+    padding-bottom: 10%;
+}*/
+
+.concept-text {
+    text-align: justify;
+}
+
+.concept img:nth-child(1) {
+    border: 3px solid #4E4237;
+    border-radius: 10px;
+}
+
+.button-center {
+    text-align: center;
+}
+
+.knot {
+    position: absolute;
+    top: -52px;
+    left:-93px;
+}
+
+/*---------------VAVAINFO--------------*/
+.vavainfo {
+    padding: 20px 10px;
+    margin: 5px;
+    background: #1A1406;
+    color: #C9CBA3;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.3em;
+    border: 2px dashed #C9CBA3;
+    box-shadow: 0 0 0 4px #1A1406, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+    font-weight: normal;
+}
+
+.vavainfo b {
+    color: #c0834a;
+}
+
+.vavainfo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.vavainfo a:hover {
+    color: #c0834a;
+}
+
+/*---------------CHOICE----------------*/
+.choice {
+    margin: 100px 0px;
+}
+
+.choice img {
+    width: 100%;
+}
+
+/*---------------------MENU---------------------*/
+.menu-wrap {
+    margin: 50px 0px;
+}
+
+.wrapper {
+    width: 100%;
+    height: 300px;
+    position: relative;
+
+    float: left;
+    margin: 20px;
+    margin: 10px 0px;
+
+    -webkit-box-shadow: 0px 1px 25px 0px rgba(50, 50, 50, 0.98);
+    -moz-box-shadow:    0px 1px 25px 0px rgba(50, 50, 50, 0.98);
+    box-shadow:         0px 1px 25px 0px rgba(50, 50, 50, 0.98);
+}
+
+.pic {
+    width: 100%;
+    height: 300px;
+}
+
+.grey {
+    width: 100%;
+    height: 300px;
+    background-color: rgba(70, 51, 54, 0.51);
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+.gradient {
+    width: 100%;
+    height: 300px;
+    background-image: -webkit-linear-gradient(45deg, #FFC400 0%, black 100%);
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.title-menu {
+    color: white;
+    font-size: 35px;
+    text-align: center;
+    width: 500px;
+    position: absolute;
+    z-index: 4;
+    top: 129px;
+    left: 0px;
+    font-weight: bold;
+    opacity: 1;
+    transition: 0.4s;
+    text-align: center;
+}
+
+.des {
+    color: white;
+    font-size: 20px;
+    width: 500px;
+    text-align: center;
+    position: absolute;
+    z-index: 4;
+    top: 160px;
+    left: 0px;
+    opacity: 0;
+    transform: scale(0);
+    transition: 0.4s;
+}
+
+.border {
+    width: 90%;
+    height: 250px;
+    border: 5px solid white;
+    position: absolute;
+    z-index: 3;
+    top: 24px;
+    left: 25px;
+    opacity: 0;
+    transition: 0.4s;
+    transform: scale(0);
+}
+
+.wrapper:hover .gradient{
+    opacity: 0.3;
+}
+
+.wrapper:hover .border{
+    transform: scale(1);
+    opacity: 1;
+}
+
+.wrapper:hover .title-menu{
+    transform: translateY(-20px);
+}
+
+.wrapper:hover .des{
+    transform: scale(1);
+    opacity: 1;
+}
+
+
+/*-------------------------RESERVATION----------------------------*/
+.order {
+    width: 100%;
+    height: 500px;
+    background: url(/Imagesfiles/Untitled-21full21.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.border-reservation {
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 25px;
+    margin: 85px 100px;
+}
+
+.border-reservation p {
+    text-align: center;
+}
+
+.col-f {
+    padding: 0px 5px;
+}
+
+.row-reserve {
+    margin: 0px -5px;
+}
+
+form {
+    width: 100%;
+}
+
+.border-reservation > .form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top:-14px;
+}
+
+input[type=text] { 
+    margin-top: 30px;
+    height: 35px;
+}
+
+.order button {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/*--------------------------WE LOVE --------------------------*/
+.bg-typical {
+    background-color: #140E0E;
+    color: #D6D6D6;
+}
+
+.bg-typical h5 {
+    color: #D98082;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.border-typical {
+    border: 5px solid #821518;
+    padding: 20px;
+    margin: 15px 0px;
+}
+
+/*-----------------final-pic-----------------*/
+.final-pic{
+    /*background: url(/Imagesfiles//pexels-photo-314380.jpeg) no-repeat;
+    background-size: cover;*/
+    margin-top: 50px;
+    position: relative;
+}
+
+.finalpic-text {
+    position: absolute;
+    top: 0px;
+    left: 110px;
+    color: white;
+    padding: 80px 0px;
+}
+
+.finalpic-title {
+    font-size: 40px;
+    padding-bottom: 20px;
+    font-weight: bold;
+    color: #FFA100;
+}
+
+.finalpic-des {
+    font-size: 20px;
+}
+
+.finalpic-des span {
+    color: #FFA100;
+}
+
+/*--------------------------MENU VAVABBQ--------------------------*/
+
+/*banner*/
+.banner-menu {
+    background: url(/Imagesfiles/bner.png);
+    background-size: cover;
+    height: 650px;
+    z-index: 1000;
+}
+
+.title-menubbq {
+    padding-top: 300px;
+    text-align: center;
+    color: white;
+}
+
+.title-menubbq h1 {
+    font-size: 100px;
+    font-weight: bold;
+    font-family: 'Poiret One', cursive;
+    letter-spacing: 10px;
+    color: #FFA100;
+    text-shadow: 2px 4px 10px #305D6B;
+}
+
+.title-menubbq h3 {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 50px;
+    font-weight: bold;
+    color: #3A0000;
+}
+
+/*menu*/
+
+.menuvava {
+    background: url(/Imagesfiles/asfalt-dark.png);
+}
+
+.menuvava .nav-link {
+    padding: 0;
+}
+.menu-kdeli .nav-pills {
+    margin: 5% 0%;
+}
+
+.menu-kdeli .nav-pills .nav-link {
+    filter: grayscale(100%);
+    color: black;
+    margin: 5% 0%;
+}
+
+.menu-kdeli .nav-pills .nav-link:hover {
+    opacity: 1;
+    color: #723D46;
+    filter: grayscale(0%);
+    transition: 0.5s;
+}
+
+.menu-kdeli .nav-pills .nav-link.active {
+    filter: grayscale(0%);
+    background-color: transparent !important;
+    color: #723D46;
+    opacity: 1;
+}
+
+/*.menu-kdeli .nav-item {
+    padding: 0px 25px;
+}*/
+
+.menu-kdeli a img {
+    border-radius: 50%;
+}
+
+.menu-kdeli .nav-link img:hover{
+    -webkit-box-shadow: 0px 2px 80px 0px #D95C03;
+    -moz-box-shadow:    0px 2px 80px 0px #D95C03;
+    box-shadow:         0px 2px 80px 0px #D95C03;
+    transition: 0.5s;
+}
+
+.menu-kdeli .nav-link.active img{
+    border: 3px solid #FFA100;
+    -webkit-box-shadow: 0px 2px 80px 0px #D95C03;
+    -moz-box-shadow:    0px 2px 80px 0px #D95C03;
+    box-shadow:         0px 2px 80px 0px #D95C03;
+}
+
+.menu-kdeli .nav-link img{
+    width: 200px;
+    height: 200px;
+}
+
+.menu-kdeli .nav-link h4 {
+    text-align: center;
+    padding: 20px 0px;
+    color: #3A0000;
+}
+
+.menu-kdeli .card {
+    margin-bottom: 40px;
+}
+
+/*text menubbq*/
+.card-deck-wrapper .card-title {
+    color: #3A0000;
+    text-align: center;
+    padding: 15px 0px;
+}
+
+.card-deck-wrapper .card-text {
+    padding: 0px 20px 20px 20px;
+    text-align: justify;
+}
+
+.buffet169 {
+    height: 200px;
+    background: url(/Imagesfiles//dark-denim-3.png) repeat-x;
+    margin-bottom: 50px;
+    text-align: center;
+    padding: 60px 0px;
+}
+
+/*finalPic-menu*/
+.finalPic-menu{
+    background: url(/Imagesfiles//4234887-background-pattern.jpg) no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 400px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+
+/*.finalPic-menu h1 {
+    font-family: 'Shadows Into Light', cursive;
+    color: #FFFFFF;
+    padding: 90px 0px;
+    font-weight: normal;
+}*/
+
+.finalPic-menu h1 {
+    font-family: 'Shadows Into Light', cursive;
+    color:#e84723;
+    font-weight: 500;
+    padding: 125px 0px;
+}
+
+/*--------------------------ABOUT US--------------------------*/
+.banner-about {
+    background: url(/Imagesfiles//20171009014638_slide-trang-chu-2-1366x785.jpg);
+    background-size: cover;
+    height: 650px;
+}
+
+.title-about {
+    padding-top: 200px;
+    text-align: center;
+    color: white;
+}
+
+.title-about h1 {
+    font-size: 60px;
+    font-weight: bold;
+    font-family: 'Poiret One', cursive;
+    color: #e84723;
+    text-align: left;
+}
+
+.title-about h3 {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 30px;
+    color: #3A0000;
+    text-align: right;
+}
+
+/*THOUGHTS*/
+.thoughtabout {
+    background: url(/Imagesfiles//bg-product21.png) ;
+    background-size: cover;
+    margin-top: -95px;
+    padding-top: 180px;
+    font-family: 'Hind', sans-serif;
+}
+
+.thought-div , .thought-div-left{
+    padding-bottom: 50px;
+    text-align: justify;
+    margin: 10px 0px;
+}
+
+.thought-div-left{
+    text-align: left !important;
+}
+
+.thought-div h5{
+    text-align: right;
+}
+
+.thought-div span, .thought-div-left span {
+    color: #e84723;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.thought-text {
+    padding-left: 40px;
+}
+
+.thought-text-left {
+    padding-right: 40px;
+}
+
+/*finalPic ABOUT*/
+.finalPic-about {
+    background: url(/Imagesfiles//Untitled-21full2.png) no-repeat;
+    background-size: cover;
+    height: 400px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/*--------------------------NEWS--------------------------*/
+.banner-news {
+    background: url(/Imagesfiles//HHKK-pattern-fade.png);
+    background-size: cover;
+    height: 300px;
+    z-index: 1000;
+}
+
+.title-news {
+    padding-top: 160px;
+    text-align: center;
+    color: white;
+}
+
+.title-news h1 {
+    font-size:30px;
+    font-weight: bold;
+    font-family: 'Poiret One', cursive;
+    color: #e84723;
+    text-align: left;
+}
+
+.title-news p {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 20px;
+    color: #3A0000;
+    text-align: left;
+}
+
+.news {
+    margin-top: 80px;
+}
+
+.news .card-text {
+    padding:0px 10px;
+    text-align: justify;
+    color: #3A0000;
+}
+
+.news .card-title {
+    color: #e84723;
+    padding: 10px;
+}
+
+.news .card:hover {
+    -webkit-box-shadow: 0px 1px 10px 0px rgba(50, 50, 50, 1);
+    -moz-box-shadow:    0px 1px 10px 0px rgba(50, 50, 50, 1);
+    box-shadow:         0px 1px 10px 0px rgba(50, 50, 50, 1);
+    transition: 0.2s;
+}
+
+.news .card:hover .card-title{
+    color: #b13216;
+}
+
+/*NEWS_DETAIL*/
+.newsdetail {
+    margin-top: 6%;
+    text-align: justify;
+    font-size: 20px;
+}
+
+.newsdetail_background {
+    background-color: white;
+    padding: 40px 0px;
+}
+
+.newsdetail_title {
+    border-bottom: 1px dotted red;
+    margin-bottom: 30px;
+    padding: 30px 0px;
+}
+
+.newsdetail_title h1 {
+    font-size: 300%;
+    color: #464444; 
+    font-weight: bold;
+    text-align: left;
+}
+.newsdetail .card-text {
+    margin-top: -10px;
+    margin-left: 3px;
+}
+
+.newsdetail a {
+    color: #464444;
+}
+
+.newsdetail a:hover {
+    color: #e84723;
+    text-decoration: none;
+}
+
+.newsdetail_right img{
+    margin-top: 5%;
+}
+
+.newsdetail_right h4 {
+    color: #00a000;
+}
+
+.newsdetail_right p {
+    margin-bottom: 2px;
+}
+
+.newsdetails_time_right {
+    border-left: 3px solid #00a000;
+}
+
+.newdetails_time {
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+.newdetails_time p {
+    color: #212529;
+    font-size: inherit !important;
+}
+
+.newdetails_time b{
+    color: #e84723;
+    font-size: 150%;
+}
+
+/*--------------------------CONTACT--------------------------*/
+
+.contactvava input[type=text], .contactvava input[type=email], .contactvava textarea {
+    height: 0px;
+    margin-top: 10px;
+    border: 2px solid #FFA100;
+    background-color: transparent;
+    padding: 20px;
+}
+
+.contactvava textarea {
+    height: 140px;
+}
+
+.contactvava input[type=text]:focus, .contactvava input[type=email]:focus, .contactvava textarea:focus {
+    border: 2px solid #bd2026;
+    -webkit-box-shadow: 0px 1px 8px 0px rgba(142, 50, 50, 0.83);
+    -moz-box-shadow:    0px 1px 8px 0px rgba(142, 50, 50, 0.83);
+    box-shadow:         0px 1px 8px 0px rgba(142, 50, 50, 0.83);
+    background-color: transparent;
+}
+
+
+.contactvava {
+    margin: 50px 0px;
+}
+
+.contact-right {
+    padding: 10px;
+}
+
+.contactvava .thought-div-left p {
+    font-size: 20px;
+}
+
+.contactvava .thought-div-left span {
+    font-size: 20px;
+}
+
+.contactvava .thought-div-left h5 span {
+    font-size: 50px;
+    font-family: 'Poiret One', cursive; 
+}
+
+.contactvava .thought-div-left i {
+    color: #e84723;
+    font-size: 25px;
+}
+.contactvava .thought-div-left b {
+    color: black;
+    font-weight: 100;
+    font-size: 20px;
+    padding-left: 10px;
+    text-align: left;
+}
+
+.contactvava .thought-div-left .fa {
+    padding-right: 10px;
+    margin-left:15px;
+    margin-top: 10px;
+}
+
+.contactvava .thought-div-left img {
+    margin-bottom: 20px;
+}
+
+/*----------------------RESERVATION - MODAL ----------------------*/
+@media (min-width: 576px) {
+.modal-dialog {
+    max-width: 815px;
+    margin: 30px auto;
+}
+}
+
+.modal-content {
+    background: url(/Imagesfiles//item_about.jpg);
+}
+
+.modal .border-reservation {
+    margin: 35px 70px;
+}
+
+.modal .btn {
+    padding: 12px .75rem;
+} 
+
+.modal-header {
+    border-bottom: 1px solid #FFA100;
+}
+
+.modal-footer {
+    border-top: 1px solid #FFA100;
+}
+
+nav .navbar-collapse .navbar-nav .nav-item .nav-link button {
+    background-color: inherit;
+    font-size: inherit; 
+    color: inherit; 
+    padding: 0px; 
+    border:none; 
+    font-family: inherit;
+}
+
+nav .navbar-collapse .navbar-nav .nav-item .nav-link button:focus { 
+    outline: none;
+}
+
+/*--------------------footer---------------------*/
+footer {
+  background: #1A1406;
+  color: #c0834a !important;
+  padding:40px 20px 40px 20px;
+  border-top: 3px solid #FFA100;
+}
+
+.logo-footer {
+    padding: 20px 40px 20px 0px;
+}
+
+footer h6 {
+    border-bottom: 1px dotted #e84723;
+    padding: 10px 0px;
+    margin-bottom: 30px;
+    color: #c0834a;
+}
+
+footer .footer-menu {
+    color: #C9CBA3;
+}
+
+footer .footer-menu:hover {
+    color: #c0834a;
+    text-decoration: none;
+    transition: 0.4s;
+    padding: 0px 5px;
+    font-weight: bold;
+}
+
+footer p {
+    line-height: 12px;
+    color: #C9CBA3;
+}
+
+footer a img {
+    margin-right: 10px;
+}
+
+footer a img:hover {
+    opacity: 0.5;
+}
+
+
+/*----------------responsive---------------*/
+@media (min-width: 1025px) and (max-width: 1200px){
+/*============[INDEX]===========*/
+    /*MENU*/
+.wrapper {
+    width: 100%;
+    height: 200px;
+    margin: 10px 0px;
+}
+
+.pic {
+    width: 100%;
+    height: 200px;
+}
+
+.grey {
+    width: 100%;
+    height: 200px;
+}
+
+.gradient {
+    width: 100%;
+    height: 200px;
+}
+
+.title-menu {
+    width: 100%;
+    top: 90px;
+}
+
+.des {
+    font-size: 20px;
+    width: 100%;
+    top: 100px;
+}
+
+.border {
+    width: 90%;
+    height: 150px;
+}
+
+.wrapper:hover .title-menu{
+    transform: translateY(-40px);
+}
+/*============[MENU]===========*/
+
+.menu-kdeli .nav-link img{
+    width: 180px;
+    height: 180px;
+}
+
+.menu-kdeli .nav-link h4 {
+    text-align: center;
+    padding: 20px 0px;
+    color: #3A0000;
+}
+
+.menu-kdeli .card {
+    margin-bottom: 40px;
+}
+
+/*text menubbq*/
+.card-deck-wrapper .card-title {
+    color: #3A0000;
+    text-align: center;
+    padding: 15px 0px;
+}
+
+.card-deck-wrapper .card-text {
+    padding: 0px 20px 20px 20px;
+    text-align: justify;
+}
+
+
+
+.finalPic-menu h1 {
+    padding: 90px 0px;
+}
+
+}
+
+@media(min-width: 769px) and (max-width:1024px) {
+/*============[INDEX]===========*/
+    /*CONCEPT*/
+
+    .concept {
+        height: 550px;
+    }
+    .knot {
+        position: absolute;
+        top: -34px;
+        left:-55px;
+        height: 250px;
+    }
+
+
+    /*MENU*/
+    .wrapper {
+        width: 100%;
+        height: 200px;
+        margin: 10px 0px;
+    }
+
+    .pic {
+        width: 100%;
+        height: 200px;
+    }
+
+    .grey {
+        width: 100%;
+        height: 200px;
+    }
+
+    .gradient {
+        width: 100%;
+        height: 200px;
+    }
+
+    .title-menu {
+        width: 100%;
+        top: 90px;
+    }
+
+    .des {
+        font-size: 20px;
+        width: 100%;
+        top: 100px;
+    }
+
+    .border {
+        width: 90%;
+        height: 150px;
+    }
+
+    .wrapper:hover .title-menu{
+        transform: translateY(-40px);
+    }
+
+    /*RESERVATION*/
+    .border-reservation {
+            border: 2px solid black;
+            border-radius: 4px;
+            padding: 25px;
+            margin: 80px 75px;
+        }
+
+    /*WE LOVE*/
+    .bg-typical p {
+        font-size: 12px;
+    }
+
+    /*final PIC*/
+    .final-pic{
+        margin-top: 50px;
+        position: relative;
+    }
+
+    .finalpic-text {
+        padding: 30px 0px;
+    }
+
+    .finalpic-title {
+        font-size: 30px;
+        padding-bottom: 10px;
+    }
+
+    .finalpic-des {
+        font-size: 15px;
+    }
+
+
+/*============[MENU]===========*/
+/*menu*/
+
+    .menu-kdeli .nav-link img{
+        width: 130px;
+        height: 130px;
+    }
+
+    .menu-kdeli .nav-link h4 {
+        text-align: center;
+        padding: 20px 0px;
+        color: #3A0000;
+    }
+
+    .menu-kdeli .card {
+        margin-bottom: 40px;
+    }
+
+    /*text menubbq*/
+    .card-deck-wrapper .card-title {
+        color: #3A0000;
+        text-align: center;
+        padding: 15px 0px;
+    }
+
+    .card-deck-wrapper .card-text {
+        padding: 0px 20px 20px 20px;
+        text-align: justify;
+    }
+
+    .finalPic-menu h1 {
+        padding: 90px 0px;
+    }
+
+}
+
+@media(min-width: 426px) and (max-width:768px) {
+/*============[INDEX]===========*/
+    /*banner*/
+    .carousel {
+    margin-top: 10%;
+    }
+    /*CONCEPT*/
+    .concept {
+        width: 100%;
+        height: 400px;
+        padding: 35px 0px;
+    }
+
+    .title {
+        padding: 0px 0px 20px 0px;
+    }
+
+    .knot {
+        position: absolute;
+        top: -26px;
+        left:-39px;
+        height: 190px;
+    }
+
+    .concept-text {
+        font-size: 13px;
+    }
+
+    /*MENU*/
+    .wrapper {
+        width: 100%;
+        height: 200px;
+        margin: 10px 0px;
+    }
+
+    .pic {
+        width: 100%;
+        height: 200px;
+    }
+
+    .grey {
+        width: 100%;
+        height: 200px;
+    }
+
+    .gradient {
+        width: 100%;
+        height: 200px;
+    }
+
+    .title-menu {
+        width: 100%;
+        top: 100px;
+        font-size: 20px;
+    }
+
+    .des {
+        font-size: 15px;
+        width: 100%;
+        top: 100px;
+    }
+
+    .border {
+        width: 80%;
+        height: 150px;
+    }
+
+    .wrapper:hover .title-menu{
+        transform: translateY(-40px);
+    }
+
+    /*RESERVE*/
+    .order {
+        width: 100%;
+        height: 50%;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    .border-reservation {
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 14px;
+        margin: 80px -16px;
+    }
+
+
+    /*WE LOVE*/
+    .bg-typical p {
+        font-size: 10px;
+    }
+
+    .bg-typical h5 {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+
+    .border-typical {
+        border: 2px solid #821518;
+        padding: 9px;
+        margin: 15px 0px;
+    }
+
+    /*final PIC*/
+    .final-pic{
+        margin-top: 50px;
+        position: relative;
+    }
+
+    .finalpic-text {
+        padding: 20px 0px;
+    }
+
+    .finalpic-title {
+        font-size: 20px;
+        padding-bottom: 10px;
+    }
+
+    .finalpic-des {
+        font-size: 10px;
+    }
+    /*============[ABOUT]===========*/
+    .banner-about {
+        height: 300px;
+    }
+
+    .title-about {
+        padding-top: 130px;
+    }
+
+    .title-about h1 {
+        font-size: 40px;
+    }
+
+    .title-about h3 {
+        font-size: 20px;
+    }
+
+    .thought-text {
+        padding-left: 0px;
+    }
+
+    .thought-text-left {
+        padding-right: 0px;
+    }
+
+    .title-about h1, .title-about h3 {
+        text-align: center;
+    }
+    /*============[MENU]===========*/
+    /*menu*/
+
+    .menu-kdeli .nav-link img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .menu-kdeli .nav-link h4 {
+        text-align: center;
+        padding: 20px 0px;
+        color: #3A0000;
+        font-size: 15px;
+    }
+
+    .menu-kdeli .card {
+        margin-bottom: 40px;
+    }
+
+    /*text menubbq*/
+    .card-deck-wrapper .card-title {
+        color: #3A0000;
+        text-align: center;
+        padding: 15px 0px;
+    }
+
+    .card-deck-wrapper .card-text {
+        padding: 0px 20px 20px 20px;
+        text-align: justify;
+    }
+
+
+    .buffet169 {
+    height: 200px;
+    margin-bottom: 50px;
+    padding: 40px 0px;
+    }
+
+    .buffet169 h1 {
+        font-size: 30px;
+    }
+
+    .buffet169 h5 {
+        font-size: 15px;
+    }
+
+
+    .finalPic-menu h1 {
+        padding: 90px 0px;
+    }
+
+}
+
+@media(min-width: 376px) and (max-width:425px) {
+/*============[INDEX]===========*/
+    /*banner*/
+    .carousel {
+    margin-top: 20%;
+    }
+    /*CHOICE*/
+    .choice {
+        margin: 50px 0px;
+    }
+
+    /*---------------VAVAINFO--------------*/
+    .vavainfo {
+        height: 10%;
+        padding:5% 0%;
+        background-color: #1A1406;
+        color:#C9CBA3;
+    }
+
+    .vavainfo i {
+        padding: 5px 25px;
+    }
+
+
+    /*CONCEPT*/
+    .concept {
+        width: 100%;
+        height: 80%;
+        padding: 35px 0px;
+    }
+
+    .title {
+        padding: 0px 0px 20px 0px;
+    }
+        .knot {
+        position: absolute;
+        top: -33px;
+        left:-53px;
+        height: 240px;
+    }
+
+    .concept-text {
+        font-size: 15px;
+    }
+
+    .img-concept1 {
+        width: 100%;
+        height: 50px; 
+    }
+
+    /*MENU*/
+    .wrapper {
+        width: 100%;
+        height: 200px;
+        margin: 10px 0px;
+    }
+
+    .pic {
+        width: 100%;
+        height: 200px;
+    }
+
+    .grey {
+        width: 100%;
+        height: 200px;
+    }
+
+    .gradient {
+        width: 100%;
+        height: 200px;
+    }
+
+    .title-menu {
+        width: 100%;
+        top: 90px;
+        font-size: 20px;
+    }
+
+    /*RESERVE*/
+    .order {
+        width: 100%;
+        height: 40%;
+        background: transparent;
+    }
+
+    .border-reservation {
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 30px;
+        margin: 80px 10px;
+    }
+    
+    .modal .border-reservation {
+    margin: 5px -1px;
+    }
+    /*WE LOVE*/
+    .bg-typical p {
+        font-size: 15px;
+    }
+
+    .bg-typical h5 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .border-typical {
+        border: 2px solid #821518;
+        padding: 40px;
+        margin: 15px 0px;
+    }
+
+    /*final PIC*/
+    .final-pic{
+        margin-top: 10px;
+        position: relative;
+    }
+
+    .finalpic-text {
+        position: absolute;
+        top: 0px;
+        left: 15px;
+        color: white;
+        padding: 20px 0px;
+    }
+
+    .finalpic-title {
+        font-size: 15px;
+        padding-bottom: 10px;
+    }
+
+    .finalpic-des {
+        font-size: 10px;
+    }
+    /*============[ABOUT]===========*/
+
+    .banner-about {
+    height: 300px;
+    }
+
+    .title-about {
+        padding-top: 140px;
+    }
+
+    .title-about h1 {
+        font-size: 30px;
+    }
+
+    .title-about h3 {
+        font-size: 20px;
+        color: #FFFFFF;
+    }
+
+    .thought-text {
+        padding-left: 0px;
+    }
+
+    .thought-text-left {
+        padding-right: 0px;
+    }
+
+    .title-about h1, .title-about h3 {
+        text-align: center;
+    }
+    /*============[MENU]===========*/
+
+    .banner-menu {
+    height: 300px;
+    z-index: 1000;
+    }
+
+    .title-menubbq {
+        padding-top: 150px;
+    }
+
+    .title-menubbq h1 {
+        font-size: 50px;
+        letter-spacing: 10px;
+        text-shadow: 2px 4px 10px #305D6B;
+    }
+
+    .title-menubbq h3 {
+        font-size: 20px;
+    }
+
+    .menu-kdeli .nav-link img{
+        width: 75px;
+        height: 75px;
+    }
+
+    .menu-kdeli .nav-link h4 {
+        text-align: center;
+        padding: 20px 0px;
+        color: #3A0000;
+        font-size: 15px;
+    }
+
+    .menu-kdeli .card {
+        margin-bottom: 40px;
+    }
+
+    /*text menubbq*/
+    .card-deck-wrapper .card-title {
+        color: #3A0000;
+        text-align: center;
+        padding: 15px 0px;
+    }
+
+    .card-deck-wrapper .card-text {
+        padding: 0px 20px 20px 20px;
+        text-align: justify;
+    }
+
+
+    .finalPic-menu h1 {
+        padding: 90px 0px;
+        font-size: 30px;
+    }
+
+}
+
+@media(max-width:375px) {
+/*============[INDEX]===========*/
+
+    /*---------------VAVAINFO--------------*/
+    .vavainfo {
+        height: 10%;
+        padding:5% 0%;
+        background-color: #1A1406;
+        color:#C9CBA3;
+    }
+
+    .vavainfo i {
+        padding: 5px 25px;
+    }
+
+
+    /*banner*/
+    .carousel {
+        margin-top: 25%;
+    }
+
+    /*MENU*/
+    .wrapper {
+        width: 100%;
+        height: 200px;
+        margin: 10px 0px;
+    }
+
+    .pic {
+        width: 100%;
+        height: 200px;
+    }
+
+    .grey {
+        width: 100%;
+        height: 200px;
+    }
+
+    .gradient {
+        width: 100%;
+        height: 200px;
+    }
+
+    .des {
+        width: 100%;
+        font-size: 10px;
+        top: 100px;
+    }
+
+    .border {
+        width: 110px;
+        visibility: hidden;
+    }
+
+    .title-menu {
+        width: 100%;
+        top: 90px;
+        font-size: 20px;
+    }
+
+
+    /*CHOICE*/
+    .choice {
+        margin: 30px 0px;
+    }
+
+    /*CONCEPT*/
+    .knot {
+        position: absolute;
+        top: -26px;
+        left:-39px;
+        height: 190px;
+    }
+
+    .concept-text {
+        font-size: 9px;
+    }
+
+    .img-concept1 {
+        width: 100%;
+        height: 80px; 
+    }
+
+    /*RESERVATION*/
+    .border-reservation {
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 20px;
+        margin: 0px 0px;
+    }
+
+    .order {
+    width: 100%;
+    height: 50%;
+    background: none;
+    }
+    
+    .modal .border-reservation {
+    margin: 5px -1px;
+}
+
+    /*FINAL PIC*/
+    .finalpic-text {
+        position: absolute;
+        top: -10px;
+        left: 15px;
+        color: white;
+        padding: 20px 0px;
+    }
+
+    .finalpic-title {
+        font-size: 10px;
+        padding-bottom: 4px;
+    }
+
+    .finalpic-des {
+        font-size: 8px;
+    }
+
+    /*============[ABOUT]===========*/
+    .banner-about {
+    height: 300px;
+    }
+
+    .title-about {
+        padding-top: 140px;
+    }
+
+    .title-about h1 {
+        font-size: 30px;
+    }
+
+    .title-about h3 {
+        font-size: 20px;
+        color: #FFFFFF;
+    }
+
+    .thought-text {
+        padding-left: 0px;
+    }
+
+    .thought-text-left {
+        padding-right: 0px;
+    }
+
+    .title-about h1, .title-about h3 {
+        text-align: center;
+    }
+    /*============[MENU]===========*/
+    .banner-menu {
+        height: 300px;
+        z-index: 1000;
+    }
+
+    .title-menubbq {
+        padding-top: 150px;
+    }
+
+    .title-menubbq h1 {
+        font-size: 50px;
+        letter-spacing: 10px;
+        text-shadow: 2px 4px 10px #305D6B;
+    }
+
+    .title-menubbq h3 {
+        font-size: 20px;
+    }
+
+    .menu-kdeli .nav-link img{
+        width: 40px;
+        height: 40px;
+    }
+
+    .menu-kdeli .nav-link h4 {
+        text-align: center;
+        padding: 20px 0px;
+        font-size: 10px;
+    }
+
+    .menu-kdeli .card {
+        margin-bottom: 40px;
+    }
+
+    /*text menubbq*/
+    .card-deck-wrapper .card-title {
+        color: #3A0000;
+        text-align: center;
+        padding: 15px 0px;
+    }
+
+    .card-deck-wrapper .card-text {
+        padding: 0px 20px 20px 20px;
+        text-align: justify;
+    }
+
+    .buffet169 {
+    height: 150px;
+    margin-bottom: 50px;
+    padding: 30px 0px;
+    }
+
+    .buffet169 h1 {
+        font-size: 25px;
+    }
+
+    .buffet169 h5 {
+        font-size: 15px;
+    }
+
+    /*finalPic-menu*/
+    .finalPic-menu h1 {
+        padding: 90px 0px;
+        font-size: 30px;
+    }
+}

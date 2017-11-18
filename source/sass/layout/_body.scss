@@ -1,0 +1,30 @@
+body {
+  font-family: 'Arial';
+}
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+li {
+  float: left;
+}
+input,
+button {
+  &,
+  &:focus {
+    outline: 0;
+  }
+}
+a {
+  &,
+  &:hover,
+  &:active {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+img {
+  max-width: 100%;
+}

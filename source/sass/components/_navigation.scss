@@ -1,0 +1,146 @@
+.navigation {
+  background-color: $color_nav;
+  color: $color_white;
+  padding: 0;
+  font-family: 'Arial';
+  font-size: 14px;
+}
+.navigation-wrapper {
+    display: flex;
+    align-items: center;
+    flex-directions: row;
+  }
+@include respond-to('tablet-and-down') {
+  .navigation {
+    background-color: $color_nav;
+    color: $color_white;
+    padding: 10px;
+  }
+  .navigation-wrapper {
+    display: flex;
+    align-items: center;
+    width:100%;
+    flex-directions: row;
+  }
+}
+.navigation-nav {
+  &__item {
+    padding: 5px 10px;
+    &:hover {
+      background-color: $color_nav_hover;
+    }
+  }
+  &__link {
+    color: $color_white;
+    &:hover {
+      color: $color_white;
+    }
+  }
+}
+.navigation-toggler {
+  float: left;
+  color: $color_white;
+}
+@include respond-to('tablet-and-down') {
+  .navigation-icon__bar {
+    display:none;
+  }
+}
+.navigation-dropdown {
+  background-color: $color_topnav;
+  margin:0;
+  border-radius: 0;
+  &__item {
+    color: $color_white;
+    &:hover {
+      background-color: $color_green;
+      color: $color_white;
+    }
+  }
+}
+.navigation-hover {
+  display:none;
+  border-radius: 0;
+  position: absolute;
+  top: 50px;
+  background-color: $color_topnav;
+  z-index: 3000;
+  padding: 10px 0;
+  font-size: 16px;
+  color: $color_white;
+  &__menu{
+    float: none;
+    padding: 4px 20px;
+    &:hover {
+      background-color: $color_green;
+      cursor:pointer;
+      .navigation-hover__detail {
+        display: block;
+      }
+    }
+  }
+  &__item {
+    color: $color_white;
+    &:hover {
+      text-decoration: none;
+      color: $color_white;
+    }
+  }
+  &__detail{
+    display:none;
+    min-width: 170px;
+    min-height: 148px;
+    border-radius: 0;
+    position: absolute;
+    top: 0;
+    background-color: $color_topnav;
+    z-index: 3000;
+    padding: 10px 0;
+    font-size: 16px;
+    color: $color_white;
+    left:100%;
+    border-left: 2px solid $color_footer_border;
+  }
+}
+.navigation-icon {
+  padding: 5px 0;
+  &__brand {
+    color: $color_white;
+    &:hover {
+      color: $color_white;
+    }
+    @include respond-to('smallphone-and-down') {
+      padding-left: 15px;
+    }
+  }
+  &__mobile {
+    display: none;
+    position: absolute;
+    right: 7%;
+    cursor: pointer;
+    top: 21px;
+    @include respond-to('tablet-and-down') {
+      display:block;
+      .fa-search {
+        &:before {
+          margin-right: 10px;
+          font-size: 17px;
+        }
+      }
+    }
+  }
+  &:hover {
+    .navigation-hover {
+      display:block;
+    }
+  }
+}
+@include respond-to('tablet-and-down') {
+  .navigation-icon {
+    &:hover {
+      .navigation-hover {
+        display:none;
+      }
+    }
+  }
+}

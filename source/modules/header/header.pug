@@ -1,0 +1,130 @@
+mixin header(page)
+  header.header
+    .topnav
+      .container.topnav__wrapper
+        .topnav__date
+          span.opentime
+            i.fa.fa-clock-o.topnav__icon Open time: 8:00 - 18:00 Monday - Sunday
+          ul.topnav-social
+            li.topnav-social__item
+              a.topnav-social__subitem(href='#')
+                i.fa.fa-facebook
+            li.topnav-social__item
+              a.topnav-social__subitem(href='#')
+                i.fa.fa-twitter
+            li.topnav-social__item
+              a.topnav-social__subitem(href='#')
+                i.fa.fa-tumblr
+            li.topnav-social__item
+              a.topnav-social__subitem(href='#')
+                i.fa.fa-vimeo
+        .topnav__login
+          ul.topnav-social
+            li.topnav-social__item
+              a.topnav-social__subitem(href='#')
+                i.fa.fa-user.topnav__icon Đăng nhập
+            li.topnav-social__item
+              a.topnav-social__subitem(href='#')
+                i.fa.fa-user-plus.topnav__icon Đăng kí
+
+    .header-body
+      .container
+        .header-wrapper
+          .header-wrapper__logo
+            img(src="images/logo.png", alt="")
+          .header-wrapper__img
+            img(src="images/header-img.png", alt="")
+          .header-cart
+            p.header-cart__hotline
+              i.fa.fa-phone.header-cart__icon HỖ TRỢ :  (04) 6674 2332 - (04) 3786 8904
+            .header-input.input-group
+              input.form-control.header-input__control(type="text", placeholder="Tìm kiếm...")
+              .header-input__append.input-group-append
+                button.btn-search(type="button")
+                  i.fa.fa-search
+              .header-input__product
+                i.header-input.fa.fa-shopping-basket.header-input__icon 0 Sản phẩm
+
+    nav.navigation.navbar.navbar-expand-lg
+      .container.navigation-wrapper
+        .navigation-icon
+          a.navigation-icon__brand.navbar-brand(href="#!")
+            span.navigation-icon__bar
+              i.fa.fa-bars
+            button.navigation-toggler.navbar-toggler.fa.fa-bars(
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarNavDropdown"
+              aria-control="navbarNavDropdown"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            )
+          .navigation-icon__mobile
+            span.js-searchbtn
+              i.fa.fa-search
+            span.js-cartbtn
+              i.fa.fa-shopping-basket
+          .navigation-hover
+            ul.navigation-hover__wrap
+              li.navigation-hover__menu
+                a.navigation-hover__item(href="#!") Cây trang trí
+                .navigation-hover__detail
+                  ul.navigation-hover__wrap
+                    li.navigation-hover__menu
+                      a.navigation-hover__item(href="#!") Cây hoa mai
+                    li.navigation-hover__menu
+                      a.navigation-hover__item(href="#!") Cây đào
+                    li.navigation-hover__menu
+                      a.navigation-hover__item(href="#!") Cây trúc nhân
+              li.navigation-hover__menu
+                a.navigation-hover__item(href="#!") Cây văn phòng
+                .navigation-hover__detail
+                  ul.navigation-hover__wrap
+                    li.navigation-hover__menu
+                      a.navigation-hover__item(href="#!") Cây trúc nhân
+                    li.navigation-hover__menu
+                      a.navigation-hover__item(href="#!") Cây đào
+                    li.navigation-hover__menu
+                      a.navigation-hover__item(href="#!") Cây hoa mai
+              li.navigation-hover__menu
+                a.navigation-hover__item(href="#!") Cây lễ tết
+                .navigation-hover__detail
+                  ul.navigation-hover__wrap
+                    li.navigation-hover__menu
+                      a.navigation-hover__item(href="#!") Cây đào
+                    li.navigation-hover__menu
+                      a.navigation-hover__item(href="#!") Cây trúc nhân
+                    li.navigation-hover__menu
+                      a.navigation-hover__item(href="#!") Cây hoa mai
+              li.navigation-hover__menu
+                a.navigation-hover__item(href="#!") Cây để bàn
+                .navigation-hover__detail
+                  ul.navigation-hover__wrap
+                    li.navigation-hover__menu
+                      a.navigation-hover__item(href="#!") Cây cọ
+                    li.navigation-hover__menu
+                      a.navigation-hover__item(href="#!") Cây mai
+                    li.navigation-hover__menu
+                      a.navigation-hover__item(href="#!") Cây đào
+        .collapse.navbar-collapse#navbarNavDropdown
+          ul.navigation-nav.navbar-nav
+            li.navigation-nav__item.nav-item.active
+              a.navigation-nav__link.nav-link(href="#!") TRANG CHỦ
+            li.navigation-nav__item.nav-item
+              a.navigation-nav__link.nav-link(href="#!") GIỚI THIỆU
+            li.navigation-nav__item.nav-item.dropdown
+              a.navigation-nav__link.nav-link.dropdown-toggle#navbarDropdownMenuLink(href="#!")&attributes({"data-toggle":"dropdown", "aria-haspopup":"true", "aria-expanded":"false"}) SẢN PHẤM
+              .dropdown-menu.navigation-dropdown(aria-labelledby="navbarDropdownMenuLink")
+                a.dropdown-item.navigation-dropdown__item(href="#!") Cây mới
+                a.dropdown-item.navigation-dropdown__item(href="#!") Cây khuyến mại
+                a.dropdown-item.navigation-dropdown__item(href="#!") Cây bán chạy
+            li.navigation-nav__item.nav-item.dropdown
+              a.navigation-nav__link.nav-link.dropdown-toggle#navbarDropdownMenuLink(href="#!")&attributes({"data-toggle":"dropdown", "aria-haspopup":"true", "aria-expanded":"false"}) SẢN PHẤM MỚI
+              .dropdown-menu.navigation-dropdown(aria-labelledby="navbarDropdownMenuLink")
+                a.dropdown-item.navigation-dropdown__item(href="#!") Cây hoa mai
+                a.dropdown-item.navigation-dropdown__item(href="#!") Cây đào
+                a.dropdown-item.navigation-dropdown__item(href="#!") Cây táo
+            li.navigation-nav__item.nav-item
+              a.navigation-nav__link.nav-link(href="#!") TIN TỨC
+            li.navigation-nav__item.nav-item
+              a.navigation-nav__link.nav-link(href="#!") LIÊN HỆ

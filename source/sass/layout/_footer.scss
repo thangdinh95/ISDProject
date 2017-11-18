@@ -1,0 +1,153 @@
+.footer {
+  background-color: $color_footer;
+  padding: 42px 0 23px 0;
+  border-bottom: 1px solid $color_footer_border;
+  color: $color_footer_text;
+  font-size: 12px;
+  @include respond-to('smallphone-and-down'){
+    padding: 20px 0 0 0;
+  }
+}
+.footer-describe {
+  padding-top: 10px;
+  text-align: justify;
+  line-height: 25px;
+  &__text {
+    margin: 0;
+    padding-bottom: 15px;
+    padding-right: 40px;
+  }
+  &__mobile {
+    padding-top: 10px;
+    margin-right: 4px;
+  }
+  &__info {
+    margin-right: 7px;
+    color: $color_green;
+  }
+  .fa-mobile:before {
+    font-size: 18px;
+  }
+  @include respond-to('tablet-and-down') {
+    &__text {
+      padding-right: 0;
+    }
+  }
+}
+.footer-padding-1 {
+    padding-left: 20px;
+}
+.footer-padding-2 {
+    margin-left: -40px;
+}
+.footer-padding-3 {
+    margin-left: -20px;
+}
+@include respond-to('desktop-and-down') {
+  .footer-padding-1 {
+    padding-left: 20px;
+  }
+  .footer-padding-2 {
+    margin-left: -20px;
+  }
+  .footer-padding-3 {
+    margin-left: -21px;
+  }
+}
+@include respond-to('tablet-and-down') {
+  .footer-describe {
+    padding-bottom: 5px;
+  }
+  .footer-padding-1 {
+    padding-left: 0;
+  }
+  .footer-padding-2 {
+    margin-left: 0;
+  }
+  .footer-padding-3 {
+    margin-left: 0;
+  }
+}
+.footer-col {
+  &__title {
+    font-size: 14px;
+    font-weight: 700;
+    color: $color_green;
+    margin-top: 20px;
+    @include respond-to('smallphone-and-down'){
+      margin-top: 0;
+    }
+  }
+  &__tab {
+    padding: 25px 0;
+    @include respond-to ('smallphone-and-down') {
+      padding: 0 0 15px 0;
+    }
+  }
+  &__link{
+    line-height: 35px;
+      color: $color_footer_text;
+      &:hover {
+        text-decoration: none;
+        color: $color_green;
+      }
+    }
+  &__icon {
+    font-size: 11px;
+    margin-right: 2px;
+  }
+  &__item {
+    float: none;
+  }
+}
+.subfooter {
+  background-color: $color_footer;
+  color: $color_footer_text;
+  font-size: 12px;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0;
+  @include respond-to('smallphone-and-down') {
+    display: none;
+  }
+}
+.footer-bottomtab {
+  &__list {
+    padding-left: 10px;
+  }
+  &__item {
+    float: left;
+    margin-right: 20px;
+  }
+  &__link{
+    color: $color_footer_text;
+    &:hover {
+      text-decoration: none;
+      color: $color_green;
+    }
+  }
+}
+.footer-bottomcard {
+  font-size: 16px;
+  &__carditem {
+    float: left;
+    margin-right: 10px;
+  }
+  &__link{
+  color: $color_footer_text;
+    &:hover {
+      text-decoration: none;
+      color: $color_green;
+    }
+  }
+}
+.footer-end {
+  text-align: center;
+  background-color: $color_copyright;
+  padding: 12px 0;
+  font-size: 14px;
+  color: $color_white;
+}

@@ -1,0 +1,78 @@
+mixin footer
+  section.footer
+    .container
+      .row
+        .col-lg-4
+          img.logo(src="images/logo.png", alt="Green Shop")
+          .footer-describe
+            p.footer-describe__text Green shop được thành lập từ 8/2010 được sự tin tưởng của khách hàng trong suốt thời gian hoạt động đến nay cửa hàng ngày một phát triển
+            span.footer-describe__mobile
+              i.footer-describe__info.fa.fa-mobile
+              | Điện thoại : (84-4) 66.558.868
+            p
+              i.footer-describe__info.fa.fa-envelope-o
+              | Email: info@dkt.com.vn
+        .col-lg-3.col-md-3
+          .footer-col.footer-padding-1
+            .footer-col__title THÔNG TIN KHÁCH HÀNG
+            ul.footer-col__tab
+              - var list = ["Tài khoản của tôi", "Sản phẩm yêu thích", "Lịch sử mua hàng", "Chính sách đổi trả", "Góp ý, khiếu nại"]
+              each item in list
+                li.footer-col__item
+                  a.footer-col__link(href="#!")
+                    i.footer-col__icon.fa.fa-angle-right
+                    | #{item}
+        .col-lg-2.col-md-3
+          .footer-col.footer-padding-2
+            .footer-col__title HỖ TRỢ DỊCH VỤ
+            ul.footer-col__tab
+              - var list = ["Hệ thống cửa hàng", "Hướng dẫn mua hàng", "Hướng dẫn thanh toán", "Tích điểm đổi quà", "Câu hỏi thường gặp"]
+              each item in list
+                li.footer-col__item
+                  a.footer-col__link(href="#!")
+                    i.footer-col__icon.fa.fa-angle-right
+                    | #{item}
+        .col-lg-2.col-md-3
+          .footer-col.footer-padding-2
+            .footer-col__title CHÍNH SÁCH ƯU ĐÃI
+            ul.footer-col__tab
+              - var list = ["Chính sách giao hàng", "Chính sách đổi trả sản phẩm", "Chính sách bảo hành", "Giới thiệu sản phẩm mới", "Chính sách trả góp"]
+              each item in list
+                li.footer-col__item
+                  a.footer-col__link(href="#!")
+                    i.footer-col__icon.fa.fa-angle-right
+                    | #{item}
+        .col-lg-1.col-md-3
+          .footer-col.footer-padding-3
+            .footer-col__title TIN TỨC
+            ul.footer-col__tab
+              - var list = ["Tin mới", "Khuyến mại", "Tuyển dụng", "Download", "Tags"]
+              each item in list
+                li.footer-col__item
+                  a.footer-col__link(href="#!")
+                    i.footer-col__icon.fa.fa-angle-right
+                    | #{item}
+  section.subfooter
+    .container.footer-bottom
+      .footer-bottomtab
+        ul.footer-bottomtab__list
+          - var list = ["Sitemap", "Danh mục sản phẩm", "Hợp tác","Thông tin liên hệ", "Câu hỏi thường gặp"]
+          each item in list
+            li.footer-bottomtab__item
+              a.footer-bottomtab__link(href="#!") #{item}
+      .footer-bottomcard
+        ul
+          li.footer-bottomcard__carditem
+            a.footer-bottomcard__link(href="#!")
+              i.fa.fa-cc-visa
+          li.footer-bottomcard__carditem
+            a.footer-bottomcard__link(href="#!")
+              i.fa.fa-cc-mastercard
+          li.footer-bottomcard__carditem
+            a.footer-bottomcard__link(href="#!")
+              i.fa.fa-cc-paypal
+          li.footer-bottomcard__carditem
+            a.footer-bottomcard__link(href="#!")
+              i.fa.fa-cc-discover
+    .footer-end
+      | Thiết kế bởi Bizweb &#169;

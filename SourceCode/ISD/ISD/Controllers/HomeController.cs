@@ -34,5 +34,29 @@ namespace ISD.Controllers
                 return View();
             }
         }
+
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        public ActionResult Menu()
+        {
+            return View();
+        }
+
+        public ActionResult News()
+        {
+            return View();
+        }
+        public ActionResult NewsDetail()
+        {
+            return View();
+        }
     }
 }

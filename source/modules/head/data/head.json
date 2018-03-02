@@ -1,0 +1,10 @@
+{
+  "head": {
+    "home": {
+      "title": "Main",
+      "mobile": true,
+      "meta": "default",
+      "og": "default"
+    }
+  }
+}
